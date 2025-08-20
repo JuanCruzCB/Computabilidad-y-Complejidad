@@ -11,6 +11,8 @@
 
 ## Teoría
 
+- [Playlist con las clases de teoría](https://youtube.com/playlist?list=PLDJU8kNAPOn-GmSxWQqggq0dmiLUnA6k7&si=e08xgBR2LIVdQ7P0)
+
 ## Cómo se aprueba la cursada?
 
 ## Cómo se aprueba la promoción?
