@@ -9,10 +9,16 @@
 
 ## Práctica
 
+- Las teorías 2 a 5 se corresponden con la práctica 1.
+
 ## Teoría
 
 - [Playlist con las clases de teoría](https://youtube.com/playlist?list=PLDJU8kNAPOn-GmSxWQqggq0dmiLUnA6k7&si=e08xgBR2LIVdQ7P0)
 
 ## Cómo se aprueba la cursada?
 
+- Hay un único parcial, el cual tiene 2 recuperatorios.
+
 ## Cómo se aprueba la promoción?
+
+- No hay promoción, es final si o si.
