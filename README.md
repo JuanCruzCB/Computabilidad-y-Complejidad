@@ -9,7 +9,10 @@
 
 ## Práctica
 
-- Las teorías 2 a 5 se corresponden con la práctica 1.
+- Práctica 1:
+  - Las teorías 2 a 5 se corresponden con la práctica 1.
+  - Hasta el ejercicio 7 inclusive es lógica y teoría de conjuntos.
+  - Desde el 8 inclusive al final son ejercicios de cardinalidad.
 
 ## Teoría
 
@@ -18,6 +21,10 @@
 ## Cómo se aprueba la cursada?
 
 - Hay un único parcial, el cual tiene 2 recuperatorios.
+  - Es multiple choice, con duración de 1 hora.
+  - Las respuestas incorrectas no restan.
+  - Cada inciso tiene muchas opciones.
+  - Se corrige y se muestra en el mismo día del parcial.
 
 ## Cómo se aprueba la promoción?
 
