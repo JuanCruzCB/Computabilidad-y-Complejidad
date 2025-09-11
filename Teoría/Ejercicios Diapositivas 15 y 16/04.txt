@@ -1,0 +1,17 @@
+q0, a
+q1, a, D
+
+q0, b
+q1, b, D
+
+q0, B
+qd, B, D
+
+q1, a
+q0, B, D
+
+q1, b
+q0, B, D
+
+q1, B
+qd, B, D

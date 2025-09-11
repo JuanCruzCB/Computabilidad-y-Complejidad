@@ -1,0 +1,16 @@
+// Se asume que la cinta está vacía al inicio.
+
+q0, B
+q1, a, I
+
+q1, B
+q2, s, I
+
+q2, B
+q3, a, I
+
+q3, B
+q4, c, I
+
+q4, B
+q0, -, I

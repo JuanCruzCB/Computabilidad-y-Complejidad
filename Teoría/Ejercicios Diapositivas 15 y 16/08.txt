@@ -1,0 +1,13 @@
+// Se asume que la cinta está vacía al inicio.
+
+q0, B
+q1, c, D
+
+q1, B
+q2, a, D
+
+q2, B
+q3, s, D
+
+q3, B
+qd, a, D
