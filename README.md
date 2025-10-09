@@ -6,6 +6,7 @@
 
 - [Material de la cátedra](https://ideas.info.unlp.edu.ar/2025-cyc/Communication/Board/View/show?idCourseTool=b6baef25-ef8e-41e1-9419-8086a6335278)
 - [Google Drive de la cátedra](https://drive.google.com/drive/folders/1ojefa3SVRgseWLQf6oQasKmHz85_kzro)
+- [Resolución de ejercicios del libro de Hopcroft](http://infolab.stanford.edu/~ullman/ialcsols/sols.html)
 
 ## Práctica
 
