@@ -262,7 +262,7 @@
   - $\Sigma$ es un alfabeto si y solo si:
     - $\Sigma \neq \emptyset$
     - $\Sigma$ es finito
-    - $(\forall x)(x \in \Sigma \rightarrow x$ es un símbolo indivisible)
+    - $(\forall x)(x \in \Sigma \rightarrow \text{x es un símbolo indivisible})$
 - **Ejemplo**:
   - $\Sigma = \{a, b, c\}$ es un alfabeto con tres símbolos: a, b y c.
   - $\Sigma = \{aa, b, c\}$ no es un alfabeto porque "aa" no es un símbolo indivisible.
