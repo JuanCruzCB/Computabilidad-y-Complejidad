@@ -310,7 +310,7 @@
   - $\Sigma^*$ es el conjunto de todas las cadenas (incluyendo la cadena vacía) que se pueden formar con los símbolos del alfabeto $\Sigma$.
   - Es un conjunto infinito.
 - **Definición formal**:
-  - $\Sigma^* = \{w | w$ es una cadena (incluyendo la cadena vacía) formada por símbolos de $\Sigma\}$
+  - $\Sigma^* = \{w | \text{w es una cadena (incluyendo la cadena vacía) formada por símbolos de } \Sigma\}$
 - **Ejemplo**:
   - Si $\Sigma = \{a, b\}$, entonces:
     - $\Sigma^* = \{\lambda, a, b, aa, ab, ba, bb, aaa, aab, aba, abb, baa, bab, bba, bbb, ...\}$
@@ -331,7 +331,7 @@
     - $L_2 = \emptyset$
     - $L_3 = \{\lambda\}$
     - $L_4 = \Sigma^*$
-    - $L_5 = \{w | w$ es una cadena que empieza con 1$\}$
+    - $L_5 = \{w | \text{w es una cadena que empieza con 1}\}$
 - **Nota**: Si $L$ es un lenguaje sobre el alfabeto $\Sigma$, su complemento también es un lenguaje sobre el mismo alfabeto, definido como $\overline{L} = \Sigma^* - L$.
 - **L cursiva ($\mathscr{L}$)**:
   - $\mathscr{L}$ es el conjunto de todos los lenguajes posibles sobre un alfabeto $\Sigma$.
