@@ -525,3 +525,165 @@
 ## Diagrama de Venn de los lenguajes vistos
 
 ![Diagrama de Venn](https://i.imgur.com/ltqDKfF.png)
+
+---
+
+# Reducibilidad
+
+## Definición de reducción
+
+- Sean $L_1$ y $L_2$ dos lenguajes sobre un alfabeto $\Sigma$.
+- $L1$ se reduce a $L2$ (denotado $L_1$ $\alpha$ $L_2$) si existe una **función total computable** $f: \Sigma^* \rightarrow \Sigma^*$ tal que: $$(\forall w \in \Sigma^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
+- Equivalentemente: $$(\forall w \in \Sigma^*)((w \in L_1 \rightarrow f(w) \in L_2) \land (f(w) \in L_2 \rightarrow w \in L_1))$$
+- O, por contrarecíproco $(A \rightarrow B \Leftrightarrow \lnot B \rightarrow \lnot A)$ de lo anterior: $$(\forall w \in \Sigma^*)((w \in L_1 \rightarrow f(w) \in L_2) \land (w \notin L_1 \rightarrow f(w) \notin L_2)$$
+- Intuitivamente, una reducibilidad es una función que transforma instancias de un problema/lenguaje en otro.
+  - A cada palabra de $L_1$ se le asigna una palabra de $L_2$.
+  - A cada palabra que NO pertenece a $L_1$ se le asigna una palabra que NO pertenece a $L_2$.
+
+## Función total computable
+
+- Una función $f$ es **computable** si existe una máquina de Turing que la computa y que siempre se detiene.
+- Una función $f$ es **total** si está definida para todos los elementos de su dominio, es decir, se debe poder aplicar a cualquier cadena de $\Sigma^*$.
+
+![](https://i.imgur.com/Lw0eePJ.png)
+
+- $M_f$ nunca loopea. La expresión $M_f(w)$ se refiere a la función computada por la máquina de Turing $M_f$.
+
+## Ejemplo 1
+
+- Sea $L_1 = \{w \in \{a, b\}^* \mid \text{w comienza con a}\}$
+- Sea $L_2 = \{w \in \{a, b\}^* \mid \text{w comienza con b}\}$
+
+Se demostrará que existe una reducción: $L_1$ $\alpha$ $L_2$.
+
+Para esto, queremos encontrar una función total computable $f: \{a, b\}^* \rightarrow \{a, b\}^*$ tal que: $$(\forall w \in \{a, b\}^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
+
+Para lo anterior, necesitamos encontrar una MT $M_f$ que compute la función $f$ mencionada y que siempre se detenga.
+
+$M_f$ es una MT de cómputo y se define de la siguiente manera:
+
+$M_f = \langle Q, Σ, Γ, δ, q_0, q_d\rangle$ donde:
+
+- $Q = \{q_0\}$
+- $\Sigma = \{a, b\}$
+- $\Gamma = \{a, b, B\}$
+
+Y su función de transición $δ$ es:
+
+- $δ(q_0, a) = (q_d, b, S)$
+- $δ(q_0, b) = (q_d, a, S)$
+- $δ(q_0, B) = (q_d, B, S)$
+
+Es decir, $M_f$ lee **únicamente el primer símbolo de la cadena de entrada** y lo reemplaza por el símbolo "opuesto" (a por b, b por a). Si la cadena está vacía, no hace nada.
+
+Podemos ver que:
+
+1. $M_f$ **siempre se detiene**, ya que en cualquier caso llega al estado de detención $q_d$ después de leer el primer símbolo.
+2. $f$ es **total**, ya que está definida para todas las cadenas en $\{a, b\}^*$.
+3. La función $f$ cumple con la **condición de reducción**:
+
+   - $(\forall w \in \Sigma^*)(w \in L_1 \rightarrow f(w) \in L_2)$ se cumple porque si $w$ comienza con "a", entonces $f(w)$ comenzará con "b", por lo cual se cumple que $f(w) \in L_2$, ya que cumple la condición de $L_2$.
+   - $(\forall w \in \Sigma^*)(w \notin L_1 \rightarrow f(w) \notin L_2)$ se cumple porque si $w$ no comienza con "a" (es decir, comienza con "b" o es la cadena vacía), entonces $f(w)$ no comenzará con "b" (comenzará con "a" o será vacío).
+
+## Ejemplo 2
+
+- Sea $L_1 = \{w \in \{0, 1\}^* \mid \text{Cantidad de unos de w es par}\}$
+- Sea $L_2 = \{w \in \{0, 1\}^* \mid \text{Cantidad de unos de w es impar}\}$
+
+Se demostrará que existe una reducción: $L_1$ $\alpha$ $L_2$.
+
+Para esto, queremos encontrar una función total computable $f: \{0, 1\}^* \rightarrow \{0, 1\}^*$ tal que: $$(\forall w \in \{0, 1\}^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
+
+Para lo anterior, necesitamos encontrar una MT $M_f$ que compute la función $f$ mencionada y que siempre se detenga.
+
+$M_f$ es una MT de cómputo y se define de la siguiente manera:
+
+$M_f = \langle Q, Σ, Γ, δ, q_0, q_d\rangle$ donde:
+
+- $Q = \{q_0, q_1\}$
+- $\Sigma = \{0, 1\}$
+- $\Gamma = \{0, 1, B\}$
+
+Y su función de transición $δ$ es:
+
+- $δ(q_0, 0) = (q_1, 0, I)$
+- $δ(q_0, 1) = (q_1, 1, I)$
+- $δ(q_0, B) = (q_1, B, I)$
+- $δ(q_1, B) = (q_d, 1, S)$
+
+Es decir, $M_f$ se mueve una posición a la izquierda al comenzar, y como está al inicio de la cadena, siempre llega a un símbolo blanco. En ese momento escribe un 1 en ese lugar y se detiene.
+
+Podemos ver que:
+
+1. $M_f$ **siempre se detiene**, ya que en cualquier caso llega al estado de detención $q_d$ después de leer el primer símbolo y moverse a la izquierda, dado que siempre hay blanco a la izquierda del inicio de la cadena.
+2. $f$ es **total**, ya que está definida para todas las cadenas en $\{0, 1\}^*$.
+3. La función $f$ cumple con la **condición de reducción**:
+
+   - $(\forall w \in \Sigma^*)(w \in L_1 \rightarrow f(w) \in L_2)$ se cumple porque si $w$ tiene una cantidad par de unos, al agregarle un 1 al inicio, la cantidad de unos en $f(w)$ siempre será impar, por lo cual se cumple que $f(w) \in L_2$, ya que cumple la condición de $L_2$ que es tener una cantidad impar de unos.
+   - $(\forall w \in \Sigma^*)(w \notin L_1 \rightarrow f(w) \notin L_2)$ se cumple porque si $w$ tiene una cantidad impar de unos, al agregarle un 1 al inicio, la cantidad de unos en $f(w)$ siempre será par, por lo cual se cumple que $f(w) \notin L_2$, ya que no cumple la condición de $L_2$.
+   - **En ambos casos se aprovecha la propiedad matemática**: $$\text{par} + 1 = \text{impar}$$ $$\text{impar} + 1 = \text{par}$$
+
+## Implicaciones de la reducción
+
+Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
+
+1. Se puede construir una MT que acpete $L_1$ a partir de la MT que acepta $L_2$ (si existe).
+2. Intuitivamente, $L_1$ no puede ser más difícil computacionalmente que $L_2$, porque se puede usar $L_2$ para resolver $L_1$.
+3. Intuitivamente, la reducción establece una relación de $\leq$ grado de dificultad computacional entre los lenguajes. Si $L_1$ $\alpha$ $L_2$, entonces $L_1$ no es más dificil que $L_2$, es o igual de difícil o más fácil. Si puedo computar $L_2$, entonces puedo computar $L_1$.
+
+## Teoremas fundamentales
+
+### Decibilidad
+
+- Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1$ $\alpha$ $L_2$. Entonces:
+  - $L_2 \in R \rightarrow L_1 \in R$
+  - $L_1 \notin R \rightarrow L_2 \notin R$ (por contrarrecíproco)
+  - Es decir, si $L_2$ es decidible, entonces $L_1$ es decidible.
+- Este teorema nos sirve para poder determinar si un lenguaje es decidible o no, partiendo de saber que otro lenguaje al que se reduce es decidible o no.
+
+## Recursivamente enumerable
+
+- Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1$ $\alpha$ $L_2$. Entonces:
+  - $L_2 \in RE \rightarrow L_1 \in RE$
+  - $L_1 \notin RE \rightarrow L_2 \notin RE$ (por contrarrecíproco)
+  - Es decir, si $L_2$ es recursivamente enumerable, entonces $L_1$ es recursivamente enumerable.
+- Este teorema nos sirve para poder determinar si un lenguaje es recursivamente enumerable o no, partiendo de saber que otro lenguaje al que se reduce es recursivamente enumerable o no.
+
+# Halting Problem (HP)
+
+## Definición
+
+- El lenguaje Halting Problem se define como: $$HP = \{(\langle M \rangle, w) \mid \text{M es una MT que se detiene con input w}\}$$
+- Intuitivamente, este lenguaje contiene las codificaciones de todas las máquinas de Turing que se detienen al recibir una cadena de entrada específica.
+- Este lenguaje es **recursivamente enumerable pero no decidible**, es decir: $$ HP \in (RE - R) \Leftrightarrow (HP \in RE) \land (HP \notin R)$$
+
+# Lenguaje $L_{\Sigma^*}$
+
+## Definición
+
+- El lenguaje $L_{\Sigma^*}$ se define como: $$L_{\Sigma^*} = \{\langle M \rangle \mid \text{M es una MT y } L(M) = \Sigma^* \}$$
+- Intuitivamente, este lenguaje contiene las codificaciones de todas las máquinas de Turing que aceptan todas las cadenas posibles sobre el alfabeto $\Sigma$.
+- Este lenguaje no es decidible ni recursivamente enumerable:
+  - $L_{\Sigma^*} \notin R$
+  - $L_{\Sigma^*} \notin RE$
+
+# Lenguaje $L_{EQ}$
+
+## Definición
+
+- El lenguaje $L_{EQ}$ se define como: $$L_{EQ} = \{(\langle M_1 \rangle, \langle M_2 \rangle) \mid L(M_1) = L(M_2) \}$$
+- Intuitivamente, este lenguaje contiene los pares de codificaciones de máquinas de Turing que reconocen el mismo lenguaje.
+- Este lenguaje no es recursivamente enumerable:
+  - $L_{EQ} \notin RE$
+
+---
+
+# Notación Asintótica
+
+---
+
+# Complejidad Temporal
+
+---
+
+# Análisis de Algoritmos
