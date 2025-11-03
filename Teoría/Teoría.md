@@ -88,7 +88,7 @@
 - **Definición intuitiva**:
   - La intersección de A y B es el conjunto de elementos que pertenecen a **ambos** conjuntos.
 - **Definición formal**:
-  - $A \cap B = \{x | x \in A \land x \in B\}$
+  - $A \cap B = \lbrace x | x \in A \land x \in B \rbrace$
 - **Ejemplo**:
   - Si A = {1, 2, 3} y B = {1, 2, 5} entonces $A \cap B$ = {1, 2}.
 
@@ -100,7 +100,7 @@
   - Es decir, todos los elementos de A y todos los elementos de B.
   - Si hay repetidos entre A y B, se cuentan solo una vez.
 - **Definición formal**:
-  - $A \cup B = \{x | x \in A \lor x \in B\}$
+  - $A \cup B = \lbrace x | x \in A \lor x \in B \rbrace$
 - **Ejemplo**:
   - Si A = {1, 2, 3} y B = {1, 2, 4} entonces $A \cup B$ = {1, 2, 3, 4}.
   - Si A = {1, 2, 3} y B = {4, 5, 6} entonces $A \cup B$ = {1, 2, 3, 4, 5, 6}.
@@ -111,7 +111,7 @@
 - **Definición intuitiva**:
   - La diferencia de A y B es el conjunto de elementos que pertenecen a A pero no pertenecen a B.
 - **Definición formal**:
-  - $A - B = \{x | x \in A \land x \notin B\}$
+  - $A - B = \lbrace x | x \in A \land x \notin B \rbrace$
 - **Nota 1**: Si $A \cap B = \emptyset$ entonces $A - B = A$.
 - **Nota 2**: $A - B \neq B - A$ en general.
 - **Ejemplo**:
@@ -124,7 +124,7 @@
 - **Definición intuitiva**:
   - El complemento de A es el conjunto de elementos que no pertenecen a A.
 - **Definición formal**:
-  - $\overline{A} = \{x | x \notin A\}$
+  - $\overline{A} = \lbrace x | x \notin A \rbrace$
 - **Nota**: El complemento siempre se define respecto a un conjunto universal U, es decir, $\overline{A} = U - A$.
 - **Ejemplo**:
   - Si el conjunto universal U = {1, 2, 3, 4, 5} y A = {1, 2, 3} entonces $\overline{A}$ = {4, 5}.
@@ -135,7 +135,7 @@
 - **Definición intuitiva**:
   - El producto cartesiano de A y B es el conjunto de todos los pares ordenados (x, y) donde x pertenece a A, y pertenece a B.
 - **Definición formal**:
-  - $A \times B = \{(x, y) | x \in A \land y \in B\}$
+  - $A \times B = \lbrace (x, y) | x \in A \land y \in B \rbrace$
 - **Ejemplo**:
   - Si A = {1, 2} y B = {3, 4} entonces $A \times B$ = {(1, 3), (1, 4), (2, 3), (2, 4)}.
 
@@ -145,7 +145,7 @@
 - **Definición intuitiva**:
   - El conjunto potencia de A es el conjunto de todos los subconjuntos de A, incluyendo el conjunto vacío y A mismo.
 - **Definición formal**:
-  - $\mathcal{P}(A) = \{B | B \subseteq A\}$
+  - $\mathcal{P}(A) = \lbrace B | B \subseteq A \rbrace$
 - **Nota 1**: Si A tiene n elementos, entonces $\mathcal{P}(A)$ tiene $2^n$ elementos.
 - **Nota 2**: $(\forall A) \emptyset \in \mathcal{P}(A)$ y $A \in \mathcal{P}(A)$.
 - **Nota 3**: Si $A \subseteq B$ entonces $\mathcal{P}(A) \subseteq \mathcal{P}(B)$.
@@ -201,7 +201,7 @@
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta $(Σ \subseteq Γ$, $B \in (Γ - Σ))$.
-  - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \times Γ \times \{D, I\}$).
+  - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \times Γ \times \lbrace D, I \rbrace$).
   - $q_0$: Estado inicial ($q_0 \in Q$).
 - Nota: $Q \cap Γ = \emptyset$
 
@@ -211,7 +211,7 @@
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta $(Σ \subseteq Γ$, $B \in (Γ - Σ))$.
-  - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \cup \{q_d\} \times Γ \times \{D, I\}$).
+  - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \cup \lbrace q_d \rbrace \times Γ \times \lbrace D, I \rbrace$).
   - $q_0$: Estado inicial ($q_0 \in Q$).
   - $q_d$: Estado de detención ($q_d \notin Q$).
 - La máquina deja de computar cuando llega a $q_d$ porque $q_d$ no es parte del dominio de $δ$.
@@ -222,7 +222,7 @@
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta ($Σ \subseteq Γ$).
-  - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \cup \{q_A, q_R\} \times Γ \times \{D, I\}$).
+  - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \cup \lbrace q_A, q_R \rbrace \times Γ \times \lbrace D, I \rbrace$).
   - $q_0$: Estado inicial ($q_0 \in Q$).
   - $q_A$: Estado de aceptación ($q_A \notin Q$).
   - $q_R$: Estado de rechazo ($q_R \notin Q$).
@@ -232,7 +232,7 @@
   - En ambos casos, la máquina se detiene. Si no llega nunca a ninguno de estos estados, entonces nunca se detendrá.
 - **Lenguaje que acepta o reconoce**:
   - El lenguaje que acepta o reconoce una máquina de Turing reconocedora $M$ es el conjunto de todas las cadenas que $M$ **acepta**.
-  - Formalmente: $L(M) = \{w \in Σ^*  | M \text{ acepta } w\}$
+  - Formalmente: $L(M) = \lbrace w \in Σ^*  | M \text{ acepta } w \rbrace$
   - Dicho de otra forma:
     - $w \in L(M) \leftrightarrow$ con entrada $w$, $M$ termina en el estado $q_A$.
     - Para $v \notin L(M)$, se tiene que $M$ termina en el estado $q_R$ o $M$ loopea infinitamente.
@@ -264,8 +264,8 @@
     - $\Sigma$ es finito
     - $(\forall x)(x \in \Sigma \rightarrow \text{x es un símbolo indivisible})$
 - **Ejemplo**:
-  - $\Sigma = \{a, b, c\}$ es un alfabeto con tres símbolos: a, b y c.
-  - $\Sigma = \{aa, b, c\}$ no es un alfabeto porque "aa" no es un símbolo indivisible.
+  - $\Sigma = \lbrace a, b, c \rbrace$ es un alfabeto con tres símbolos: a, b y c.
+  - $\Sigma = \lbrace aa, b, c \rbrace$ no es un alfabeto porque "aa" no es un símbolo indivisible.
 
 ## Cadena / palabra / sentencia / string
 
@@ -277,7 +277,7 @@
     - $w = x_1 x_2 ... x_n$, donde $n \geq 0$ y $x_i \in \Sigma$ para $1 \leq i \leq n$.
     - Si $n = 0$, entonces $w = \lambda$ (cadena vacía, sin ningún símbolo).
 - **Ejemplo**:
-  - Si $\Sigma = \{a, b\}$, entonces algunas cadenas posibles son:
+  - Si $\Sigma = \lbrace a, b \rbrace$, entonces algunas cadenas posibles son:
     - $w_1 = abba$
     - $w_2 = aab$
     - $w_3 = b$
@@ -310,10 +310,10 @@
   - $\Sigma^*$ es el conjunto de todas las cadenas (incluyendo la cadena vacía) que se pueden formar con los símbolos del alfabeto $\Sigma$.
   - Es un conjunto infinito.
 - **Definición formal**:
-  - $\Sigma^* = \{w | \text{w es una cadena (incluyendo la cadena vacía) formada por símbolos de } \Sigma\}$
+  - $\Sigma^* = \lbrace w | \text{w es una cadena (incluyendo la cadena vacía) formada por símbolos de } \Sigma \rbrace$
 - **Ejemplo**:
-  - Si $\Sigma = \{a, b\}$, entonces:
-    - $\Sigma^* = \{\lambda, a, b, aa, ab, ba, bb, aaa, aab, aba, abb, baa, bab, bba, bbb, ...\}$
+  - Si $\Sigma = \lbrace a, b \rbrace$, entonces:
+    - $\Sigma^* = \lbrace \lambda, a, b, aa, ab, ba, bb, aaa, aab, aba, abb, baa, bab, bba, bbb, ... \rbrace$
 
 ## Lenguaje
 
@@ -324,14 +324,14 @@
   - $L$ es un lenguaje si y solo si:
     - $L \subseteq \Sigma^*$
 - **Ejemplo**:
-  - Si $\Sigma = \{0, 1\}$, entonces:
-    - $\Sigma^* = \{\lambda, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, 100, 101, 110, 111, ...\}$
+  - Si $\Sigma = \lbrace 0, 1 \rbrace$, entonces:
+    - $\Sigma^* = \lbrace \lambda, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, 100, 101, 110, 111, ... \rbrace$
   - Posibles lenguajes definidos sobre $\Sigma$ podrían ser:
-    - $L_1 = \{0, 1, 00, 01\}$
+    - $L_1 = \lbrace 0, 1, 00, 01 \rbrace$
     - $L_2 = \emptyset$
-    - $L_3 = \{\lambda\}$
+    - $L_3 = \lbrace \lambda \rbrace$
     - $L_4 = \Sigma^*$
-    - $L_5 = \{w | \text{w es una cadena que empieza con 1}\}$
+    - $L_5 = \lbrace w | \text{w es una cadena que empieza con 1} \rbrace$
 - **Nota**: Si $L$ es un lenguaje sobre el alfabeto $\Sigma$, su complemento también es un lenguaje sobre el mismo alfabeto, definido como $\overline{L} = \Sigma^* - L$.
 - **L cursiva ($\mathscr{L}$)**:
   - $\mathscr{L}$ es el conjunto de todos los lenguajes posibles sobre un alfabeto $\Sigma$.
@@ -365,7 +365,7 @@
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta ($Σ \subseteq Γ$).
-  - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \cup \{q_A, q_R\} \times Γ \times \{D, I, S\}$).
+  - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \cup \lbrace q_A, q_R \rbrace \times Γ \times \lbrace D, I, S \rbrace$).
   - $q_0$: Estado inicial ($q_0 \in Q$).
   - $q_A$: Estado de aceptación ($q_A \notin Q$).
   - $q_R$: Estado de rechazo ($q_R \notin Q$).
@@ -378,7 +378,7 @@
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta ($Σ \subseteq Γ$).
-  - $δ$: Función de transición ($δ: Q \times Γ^k \rightarrow Q \cup \{q_A, q_R\} \times (Γ \times \{D, I, S\})^k$).
+  - $δ$: Función de transición ($δ: Q \times Γ^k \rightarrow Q \cup \lbrace q_A, q_R \rbrace \times (Γ \times \lbrace D, I, S \rbrace)^k$).
   - $q_0$: Estado inicial ($q_0 \in Q$).
   - $q_A$: Estado de aceptación ($q_A \notin Q$).
   - $q_R$: Estado de rechazo ($q_R \notin Q$).
@@ -451,9 +451,9 @@
 - Sea $\Sigma$ un alfabeto finito.
 - El orden canónico para $\Sigma^*$ es una forma de listar todas las cadenas posibles formadas con los símbolos de $\Sigma$ en orden lexicográfico.
 - Ejemplo:
-  - Si $\Sigma = \{0, 1\}$, entonces el orden canónico para $\Sigma^*$ es:
+  - Si $\Sigma = \lbrace 0, 1 \rbrace$, entonces el orden canónico para $\Sigma^*$ es:
     - $\lambda, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, 100, 101, 110, 111, ...$
-    - Si $w$ es un string de $\{0,1\}^*$, la posición $i$ que ocupa en el orden canónico se escribe en binario como $1w$. Decimos entonces que $w$ es el $i$-ésimo string y por ello lo denotamos $w_i$.
+    - Si $w$ es un string de $\lbrace 0,1 \rbrace^*$, la posición $i$ que ocupa en el orden canónico se escribe en binario como $1w$. Decimos entonces que $w$ es el $i$-ésimo string y por ello lo denotamos $w_i$.
     - Por ejemplo el string $\lambda$ ocupa la posición 1 ($1\lambda$) el string 01 ocupa la posición 5 ($101$), el string 100 la posición 12 ($1100$), etc.
 
 ## Codificación binaria de una MT
@@ -461,9 +461,9 @@
 - Es una forma de representar una máquina de Turing como una cadena binaria para que la misma pueda ser usada como entrada de otra máquina de Turing.
 - Ejemplo:
   - Sea $M = <Q, Σ, Γ, δ, q_0, q_A, q_R>$ una máquina de Turing reconocedora D-I-S tal que:
-  - $Q = \{q_0\}$
-  - $\Sigma = \{a, b\}$
-  - $\Gamma = \{B, a, b\}$
+  - $Q = \lbrace q_0 \rbrace$
+  - $\Sigma = \lbrace a, b \rbrace$
+  - $\Gamma = \lbrace B, a, b \rbrace$
   - $\delta(q_0, a) = (q_A, a, D)$
   - $\delta(q_0, b) = (q_R, b, S)$
   - $\delta(q_0, B) = (q_R, B, S)$
@@ -480,18 +480,18 @@
   - Entonces la codificación binaria de $M$ es (usamos dos ceros para separar las funciones de transición):
     - $111_{q_0} 0 11_{a} 0 1_{q_a} 0 11_{a} 0 1_{D} 00_{sig} 111_{q_0} 0 111_{b} 0 11_{q_R} 0 111_{b} 0 111_{S} 00_{sig} 111_{q_0} 0 1_{B} 0 11_{q_R} 0 1_{B} 0 111_{S}$
 - Hay N! formas de codificar una MT, si tenemos N funciones de transición. En este caso 3! = 6.
-- Se denomina i-ésima máquina de Turing y se denota $M_i$ a la MT cuyo código binario es el i-ésimo string en el orden canónico de $\{0,1\}^*$, es decir $<M_i> = w_i$.
+- Se denomina i-ésima máquina de Turing y se denota $M_i$ a la MT cuyo código binario es el i-ésimo string en el orden canónico de $\lbrace 0,1 \rbrace^*$, es decir $<M_i> = w_i$.
   - Si se da el caso que $w_i$ no es un código válido de una MT, entonces $M_i$ es una MT ficticia que rechaza todo, es decir $L(M_i) = \emptyset$.
-  - Por lo tanto $\forall w_i \in \{0,1\}^* \exists M_i$.
+  - Por lo tanto $\forall w_i \in \lbrace 0,1 \rbrace^* \exists M_i$.
 
 ## Lenguaje diagonal ($L_D$)
 
 - **Definición intuitiva**: El lenguaje diagonal $L_D$ es el conjunto de todas las cadenas que no son aceptadas por su **correspondiente** máquina de Turing. Consiste en las codificaciones de MT que rechazan su propia codificación.
 - **Definición formal**:
-  - $\Sigma = \{0,1\}$
+  - $\Sigma = \lbrace 0,1 \rbrace$
   - $w_i = \text{i-ésimo string en orden canónico de } \Sigma^*$
   - $M_i = \text{i-ésima máquina de Turing}$
-  - $L_D = \{ w_i \in \Sigma^* \mid w_i \notin L(M_i) \}$
+  - $L_D = \lbrace  w_i \in \Sigma^* \mid w_i \notin L(M_i)  \rbrace$
 - Este lenguaje no es recursivamente enumerable, por lo tanto no es decidible tampoco y no existe una máquina de Turing que lo reconozca.
 - **Teoremas**:
   - $L_D \notin RE$
@@ -508,7 +508,7 @@
 
 - **Definición intuitiva**: El lenguaje universal $L_u$ es el conjunto de todos los pares (máquina, cadena) tales que la máquina acepta esa cadena.
 - **Definición formal**:
-  - $L_u = \{ (<M>,w) \mid w \in L(M) \}$
+  - $L_u = \lbrace  (<M>,w) \mid w \in L(M)  \rbrace$
   - $L_u = L(M_u)$
 - **Teoremas**:
   - $L_u \in RE$
@@ -519,7 +519,7 @@
 ## Lenguaje L
 
 - **Definición formal**:
-  - $L = \{1w | w \in L_D\} \cup \{0w | w \notin L_D\}$
+  - $L = \lbrace 1w | w \in L_D \rbrace \cup \lbrace 0w | w \notin L_D \rbrace$
 - **Teorema**: $L \in (\mathscr{L} - (RE \cup \text{Co-RE}))$
 
 ## Diagrama de Venn de los lenguajes vistos
@@ -551,12 +551,12 @@
 
 ## Ejemplo 1
 
-- Sea $L_1 = \{w \in \{a, b\}^* \mid \text{w comienza con a}\}$
-- Sea $L_2 = \{w \in \{a, b\}^* \mid \text{w comienza con b}\}$
+- Sea $L_1 = \lbrace w \in \lbrace a, b \rbrace^* \mid \text{w comienza con a} \rbrace$
+- Sea $L_2 = \lbrace w \in \lbrace a, b \rbrace^* \mid \text{w comienza con b} \rbrace$
 
 Se demostrará que existe una reducción: $L_1$ $\alpha$ $L_2$.
 
-Para esto, queremos encontrar una función total computable $f: \{a, b\}^* \rightarrow \{a, b\}^*$ tal que: $$(\forall w \in \{a, b\}^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
+Para esto, queremos encontrar una función total computable $f: \lbrace a, b \rbrace^* \rightarrow \lbrace a, b \rbrace^*$ tal que: $$(\forall w \in \lbrace a, b \rbrace^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
 
 Para lo anterior, necesitamos encontrar una MT $M_f$ que compute la función $f$ mencionada y que siempre se detenga.
 
@@ -564,9 +564,9 @@ $M_f$ es una MT de cómputo y se define de la siguiente manera:
 
 $M_f = \langle Q, Σ, Γ, δ, q_0, q_d\rangle$ donde:
 
-- $Q = \{q_0\}$
-- $\Sigma = \{a, b\}$
-- $\Gamma = \{a, b, B\}$
+- $Q = \lbrace q_0 \rbrace$
+- $\Sigma = \lbrace a, b \rbrace$
+- $\Gamma = \lbrace a, b, B \rbrace$
 
 Y su función de transición $δ$ es:
 
@@ -579,7 +579,7 @@ Es decir, $M_f$ lee **únicamente el primer símbolo de la cadena de entrada** y
 Podemos ver que:
 
 1. $M_f$ **siempre se detiene**, ya que en cualquier caso llega al estado de detención $q_d$ después de leer el primer símbolo.
-2. $f$ es **total**, ya que está definida para todas las cadenas en $\{a, b\}^*$.
+2. $f$ es **total**, ya que está definida para todas las cadenas en $\lbrace a, b \rbrace^*$.
 3. La función $f$ cumple con la **condición de reducción**:
 
    - $(\forall w \in \Sigma^*)(w \in L_1 \rightarrow f(w) \in L_2)$ se cumple porque si $w$ comienza con "a", entonces $f(w)$ comenzará con "b", por lo cual se cumple que $f(w) \in L_2$, ya que cumple la condición de $L_2$.
@@ -587,12 +587,12 @@ Podemos ver que:
 
 ## Ejemplo 2
 
-- Sea $L_1 = \{w \in \{0, 1\}^* \mid \text{Cantidad de unos de w es par}\}$
-- Sea $L_2 = \{w \in \{0, 1\}^* \mid \text{Cantidad de unos de w es impar}\}$
+- Sea $L_1 = \lbrace w \in \lbrace 0, 1 \rbrace^* \mid \text{Cantidad de unos de w es par} \rbrace$
+- Sea $L_2 = \lbrace w \in \lbrace 0, 1 \rbrace^* \mid \text{Cantidad de unos de w es impar} \rbrace$
 
 Se demostrará que existe una reducción: $L_1$ $\alpha$ $L_2$.
 
-Para esto, queremos encontrar una función total computable $f: \{0, 1\}^* \rightarrow \{0, 1\}^*$ tal que: $$(\forall w \in \{0, 1\}^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
+Para esto, queremos encontrar una función total computable $f: \lbrace 0, 1 \rbrace^* \rightarrow \lbrace 0, 1 \rbrace^*$ tal que: $$(\forall w \in \lbrace 0, 1 \rbrace^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
 
 Para lo anterior, necesitamos encontrar una MT $M_f$ que compute la función $f$ mencionada y que siempre se detenga.
 
@@ -600,9 +600,9 @@ $M_f$ es una MT de cómputo y se define de la siguiente manera:
 
 $M_f = \langle Q, Σ, Γ, δ, q_0, q_d\rangle$ donde:
 
-- $Q = \{q_0, q_1\}$
-- $\Sigma = \{0, 1\}$
-- $\Gamma = \{0, 1, B\}$
+- $Q = \lbrace q_0, q_1 \rbrace$
+- $\Sigma = \lbrace 0, 1 \rbrace$
+- $\Gamma = \lbrace 0, 1, B \rbrace$
 
 Y su función de transición $δ$ es:
 
@@ -616,7 +616,7 @@ Es decir, $M_f$ se mueve una posición a la izquierda al comenzar, y como está 
 Podemos ver que:
 
 1. $M_f$ **siempre se detiene**, ya que en cualquier caso llega al estado de detención $q_d$ después de leer el primer símbolo y moverse a la izquierda, dado que siempre hay blanco a la izquierda del inicio de la cadena.
-2. $f$ es **total**, ya que está definida para todas las cadenas en $\{0, 1\}^*$.
+2. $f$ es **total**, ya que está definida para todas las cadenas en $\lbrace 0, 1 \rbrace^*$.
 3. La función $f$ cumple con la **condición de reducción**:
 
    - $(\forall w \in \Sigma^*)(w \in L_1 \rightarrow f(w) \in L_2)$ se cumple porque si $w$ tiene una cantidad par de unos, al agregarle un 1 al inicio, la cantidad de unos en $f(w)$ siempre será impar, por lo cual se cumple que $f(w) \in L_2$, ya que cumple la condición de $L_2$ que es tener una cantidad impar de unos.
@@ -653,7 +653,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
 ## Definición
 
-- El lenguaje Halting Problem se define como: $$HP = \{(\langle M \rangle, w) \mid \text{M es una MT que se detiene con input w}\}$$
+- El lenguaje Halting Problem se define como: $$HP = \lbrace (\langle M \rangle, w) \mid \text{M es una MT que se detiene con input w} \rbrace$$
 - Intuitivamente, este lenguaje contiene las codificaciones de todas las máquinas de Turing que se detienen al recibir una cadena de entrada específica.
 - Este lenguaje es **recursivamente enumerable pero no decidible**, es decir: $$ HP \in (RE - R) \Leftrightarrow (HP \in RE) \land (HP \notin R)$$
 
@@ -661,7 +661,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
 ## Definición
 
-- El lenguaje $L_{\Sigma^*}$ se define como: $$L_{\Sigma^*} = \{\langle M \rangle \mid \text{M es una MT y } L(M) = \Sigma^* \}$$
+- El lenguaje $L_{\Sigma^*}$ se define como: $$L_{\Sigma^*} = \lbrace \langle M \rangle \mid \text{M es una MT y } L(M) = \Sigma^*  \rbrace$$
 - Intuitivamente, este lenguaje contiene las codificaciones de todas las máquinas de Turing que aceptan todas las cadenas posibles sobre el alfabeto $\Sigma$.
 - Este lenguaje no es decidible ni recursivamente enumerable:
   - $L_{\Sigma^*} \notin R$
@@ -671,7 +671,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
 ## Definición
 
-- El lenguaje $L_{EQ}$ se define como: $$L_{EQ} = \{(\langle M_1 \rangle, \langle M_2 \rangle) \mid L(M_1) = L(M_2) \}$$
+- El lenguaje $L_{EQ}$ se define como: $$L_{EQ} = \lbrace (\langle M_1 \rangle, \langle M_2 \rangle) \mid L(M_1) = L(M_2)  \rbrace$$
 - Intuitivamente, este lenguaje contiene los pares de codificaciones de máquinas de Turing que reconocen el mismo lenguaje.
 - Este lenguaje no es recursivamente enumerable:
   - $L_{EQ} \notin RE$
