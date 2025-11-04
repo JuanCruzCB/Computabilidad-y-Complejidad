@@ -680,6 +680,62 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
 # Notación Asintótica
 
+## Contexto
+
+- La notación asintótica está asociada al crecimiento de las funciones matemáticas.
+- En el contexto de la computación, asociamos estas funciones a la cantidad de operaciones o tareas que el algoritmo debe realizar en función del tamaño de la entrada.
+- Normalmente, a mayor entrada, mayor cantidad de operaciones (monotonía).
+- La notación asintótica nos permite describir el comportamiento de estas funciones cuando la entrada crece arbitrariamente, es decir, tiende a infinito.
+
+## Primera definición de Orden O
+
+- Sea $t(n)$ una función.
+- Decimos que $t(n)$ está en el orden de $f(n)$ si:
+  - $\exists c \in \mathbb{R}, c > 0$
+  - $\exists u_0 \in \mathbb{N}, u_0 > 0$
+  - Tal que $t(n) \leq c \cdot f(n) \quad \forall n > u_0$
+- Notaciones útiles:
+
+## Notaciones útiles
+
+- **Conjuntos**:
+  - $\mathbb{N}$ es el conjunto de todos los números naturales, **incluyendo el cero**.
+  - $\mathbb{R}^{\geq 0}$ es el conjunto de todos los números reales positivos, **incluyendo el cero**.
+  - $\mathbb{R}^+$ es el conjunto de todos los números reales positivos, **excluyendo el cero**.
+- **Cuantificadores**:
+  - $\exists$: Existe al menos un elemento que satisface la propiedad.
+  - $\exists^\infty$: Existen **infinitos** elementos que satisfacen la propiedad.
+  - $\forall$: Todos los elementos satisfacen la propiedad, sin excepción.
+  - $\forall^\infty$: Todos los elementos excepto un número **finito** de ellos satisfacen la propiedad.
+
+## Segunda definición de Orden O
+
+- $O(f(n)) = \lbrace t: \mathbb{N} \rightarrow \mathbb{R}^{\geq 0} \mid (\exists c \in \mathbb{R}^+)(\forall^\infty n \in \mathbb{N}) \space [t(n) \leq c \cdot f(n)] \rbrace$
+  - Es decir, es un conjunto de funciones de los naturales a los reales mayores o iguales a cero, tales que existe una constante real positiva y hay infinitos naturales para los cuales se cumple que la función $t(n)$ es acotada superiormente por $c \cdot f(n)$.
+- $O(f(n)) = \lbrace t: \mathbb{N} \rightarrow \mathbb{R}^+ \mid \exists c \in \mathbb{R}^+, \space n_0 \in \mathbb{N} \mid t(n) \leq c \cdot f(n), n \geq n_0 \rbrace$
+  - Esta es una definición alternativa, donde en vez de ir de los naturales a los reales mayores o iguales a cero, va de los naturales a los reales estrictamente mayores que cero, y además se reemplaza el cuantificador $\forall^\infty$ por el umbral, es decir, existe un $n_0$ a partir del cual se cumple la condición.
+  - Es una cota **superior**.
+
+## Definición de Orden Omega $(\Omega)$
+
+- La definición es muy similar a la de Orden O, pero en este caso se trata de una cota **inferior**:
+- $\Omega(f(n)) = \lbrace t: \mathbb{N} \rightarrow \mathbb{R}^+ \mid \exists c \in \mathbb{R}^+, \space n_0 \in \mathbb{N} \mid t(n) \geq c \cdot f(n), n \geq n_0 \rbrace$
+
+## Definición de Orden Theta $(\Theta)$
+
+- La definición de Orden Theta combina las definiciones de Orden O y Orden Omega:
+- $\Theta(f(n)) = \lbrace t: \mathbb{N} \rightarrow \mathbb{R}^+ \mid \exists c_1, c_2 \in \mathbb{R}^+, \space n_0 \in \mathbb{N} \mid c_1 \cdot f(n) \leq t(n) \leq c_2 \cdot f(n), n \geq n_0 \rbrace$
+  - Es decir, es el conjunto de funciones que están acotadas **tanto superior como inferiormente** por $f(n)$.
+  - En este sentido, $t(n)$ crece de manera "similar" a $f(n)$.
+
+## Propiedades
+
+- **$g(n) \in \Omega(f(n)) \leftrightarrow f(n) \in O(g(n))$** (Regla de dualidad)
+- **$g(n) \in \Theta(f(n)) \leftrightarrow [g(n) \in O(f(n)) \land g(n) \in \Omega(f(n))]$**
+- **$\Theta(f(n)) = O(f(n)) \cap \Omega(f(n))$**
+- **$f(n) \in O(f(n))$** (Reflexividad)
+- **[$f(n) \in O(g(n)) \land g(n) \in O(h(n))] \rightarrow f(n) \in O(h(n))$** (Transitividad)
+
 ---
 
 # Complejidad Temporal
