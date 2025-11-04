@@ -197,7 +197,7 @@
 
 ## MT General
 
-- **Notación**: $M = <Q, Σ, Γ, δ, q_0>$
+- **Notación**: $M = \langle Q, Σ, Γ, δ, q_0 \rangle$
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta $(Σ \subseteq Γ$, $B \in (Γ - Σ))$.
@@ -207,7 +207,7 @@
 
 ## MT Alternativa
 
-- **Notación**: $M = <Q, Σ, Γ, δ, q_0, q_d>$
+- **Notación**: $M = \langle Q, Σ, Γ, δ, q_0, q_d \rangle$
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta $(Σ \subseteq Γ$, $B \in (Γ - Σ))$.
@@ -218,7 +218,7 @@
 
 ## MT Reconocedora
 
-- **Notación**: $M = <Q, Σ, Γ, δ, q_0, q_A, q_R>$
+- **Notación**: $M = \langle Q, Σ, Γ, δ, q_0, q_A, q_R \rangle$
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta ($Σ \subseteq Γ$).
@@ -361,7 +361,7 @@
 ## Modelo D-I-S
 
 - Es una máquina de Turing que admite transiciones sin mover el cabezal.
-- **Notación**: $M = <Q, Σ, Γ, δ, q_0, q_A, q_R>$
+- **Notación**: $M = \langle Q, Σ, Γ, δ, q_0, q_A, q_R \rangle$
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta ($Σ \subseteq Γ$).
@@ -374,7 +374,7 @@
 
 - Es una máquina de Turing que tiene $k$ cintas y $k$ cabezales que pueden moverse de forma independiente.
 - El input se encuentra en la primer cinta y las demás cintas están inicialmente vacías.
-- **Notación**: $M = <Q, Σ, Γ, δ, q_0, q_A, q_R>$
+- **Notación**: $M = \langle Q, Σ, Γ, δ, q_0, q_A, q_R \rangle$
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
   - $Γ$: Alfabeto de la cinta ($Σ \subseteq Γ$).
@@ -460,7 +460,7 @@
 
 - Es una forma de representar una máquina de Turing como una cadena binaria para que la misma pueda ser usada como entrada de otra máquina de Turing.
 - Ejemplo:
-  - Sea $M = <Q, Σ, Γ, δ, q_0, q_A, q_R>$ una máquina de Turing reconocedora D-I-S tal que:
+  - Sea $M = \langle Q, Σ, Γ, δ, q_0, q_A, q_R \rangle$ una máquina de Turing reconocedora D-I-S tal que:
   - $Q = \lbrace q_0 \rbrace$
   - $\Sigma = \lbrace a, b \rbrace$
   - $\Gamma = \lbrace B, a, b \rbrace$
@@ -480,7 +480,7 @@
   - Entonces la codificación binaria de $M$ es (usamos dos ceros para separar las funciones de transición):
     - $111_{q_0} 0 11_{a} 0 1_{q_a} 0 11_{a} 0 1_{D} 00_{sig} 111_{q_0} 0 111_{b} 0 11_{q_R} 0 111_{b} 0 111_{S} 00_{sig} 111_{q_0} 0 1_{B} 0 11_{q_R} 0 1_{B} 0 111_{S}$
 - Hay N! formas de codificar una MT, si tenemos N funciones de transición. En este caso 3! = 6.
-- Se denomina i-ésima máquina de Turing y se denota $M_i$ a la MT cuyo código binario es el i-ésimo string en el orden canónico de $\lbrace 0,1 \rbrace^*$, es decir $<M_i> = w_i$.
+- Se denomina i-ésima máquina de Turing y se denota $M_i$ a la MT cuyo código binario es el i-ésimo string en el orden canónico de $\lbrace 0,1 \rbrace^*$, es decir $\langle M_i \rangle = w_i$.
   - Si se da el caso que $w_i$ no es un código válido de una MT, entonces $M_i$ es una MT ficticia que rechaza todo, es decir $L(M_i) = \emptyset$.
   - Por lo tanto $\forall w_i \in \lbrace 0,1 \rbrace^* \exists M_i$.
 
@@ -508,7 +508,7 @@
 
 - **Definición intuitiva**: El lenguaje universal $L_u$ es el conjunto de todos los pares (máquina, cadena) tales que la máquina acepta esa cadena.
 - **Definición formal**:
-  - $L_u = \lbrace  (<M>,w) \mid w \in L(M)  \rbrace$
+  - $L_u = \lbrace  (\langle M \rangle,w) \mid w \in L(M)  \rbrace$
   - $L_u = L(M_u)$
 - **Teoremas**:
   - $L_u \in RE$
@@ -519,7 +519,7 @@
 ## Lenguaje L
 
 - **Definición formal**:
-  - $L = \lbrace 1w | w \in L_D \rbrace \cup \lbrace 0w | w \notin L_D \rbrace$
+  - $L = \lbrace 1w \mid w \in L_D \rbrace \cup \lbrace 0w \mid w \notin L_D \rbrace$
 - **Teorema**: $L \in (\mathscr{L} - (RE \cup \text{Co-RE}))$
 
 ## Diagrama de Venn de los lenguajes vistos
