@@ -736,6 +736,32 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 - **$f(n) \in O(f(n))$** (Reflexividad)
 - **[$f(n) \in O(g(n)) \land g(n) \in O(h(n))] \rightarrow f(n) \in O(h(n))$** (Transitividad)
 
+## Regla del Umbral
+
+- El umbral $n_0$ en las definiciones de Orden O, Omega y Theta puede resultar útil pero nunca es necesario cuando se consideran funciones estrictamente positivas, es decir $t, f:  \mathbb{N} \rightarrow \mathbb{R}^+$.
+- La Regla del Umbral dice: $f, t: \mathbb{N} \rightarrow \mathbb{R}^+, t(n) \in O(f(n)) \leftrightarrow \exists c \in \mathbb{R}^+ \mid t(n) \leq c \cdot f(n) \quad \forall n \in \mathbb{N}$
+
+## Regla del Máximo
+
+- Sean $f$ y $g$ dos funciones tales que $f, g: \mathbb{N} \rightarrow \mathbb{R}^+$.
+- $O(f(n) + g(n)) = O(\max(f(n), g(n)))$
+- Es decir, el orden de la suma de dos funciones es igual al orden de la función que crece más rápido entre las dos.
+- Vale para $\Theta$ también.
+- Se puede generalizar a $N$ funciones.
+
+## Regla del Límite
+
+- La notación asintótica tiene relación con la idea de crecimiento arbitrario de la entrada y de cómo se comportan las funciones en el límite.
+- Sea $f$ y $g$ dos funciones tales que $f, g: \mathbb{N} \rightarrow \mathbb{R}^+$.
+- Las reglas para O son:
+  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R}^+ \rightarrow f(n) \in O(g(n)) \land g(n) \in O(f(n))$
+  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \rightarrow f(n) \in O(g(n)) \land g(n) \notin O(f(n))$
+  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty \rightarrow f(n) \notin O(g(n)) \land g(n) \in O(f(n))$
+- Las reglas para $\Omega$ y $\Theta$ son:
+  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R}^+ \rightarrow f(n) \in \Theta(g(n))$
+  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \rightarrow f(n) \in O(g(n)) \land f(n) \notin \Theta(g(n))$
+  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty \rightarrow f(n) \notin \Omega(g(n)) \land f(n) \notin \Theta(g(n))$
+
 ---
 
 # Complejidad Temporal
