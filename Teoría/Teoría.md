@@ -687,15 +687,6 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 - Normalmente, a mayor entrada, mayor cantidad de operaciones (monotonía).
 - La notación asintótica nos permite describir el comportamiento de estas funciones cuando la entrada crece arbitrariamente, es decir, tiende a infinito.
 
-## Primera definición de Orden O
-
-- Sea $t(n)$ una función.
-- Decimos que $t(n)$ está en el orden de $f(n)$ si:
-  - $\exists c \in \mathbb{R}, c > 0$
-  - $\exists u_0 \in \mathbb{N}, u_0 > 0$
-  - Tal que $t(n) \leq c \cdot f(n) \quad \forall n > u_0$
-- Notaciones útiles:
-
 ## Notaciones útiles
 
 - **Conjuntos**:
@@ -708,25 +699,41 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
   - $\forall$: Todos los elementos satisfacen la propiedad, sin excepción.
   - $\forall^\infty$: Todos los elementos excepto un número **finito** de ellos satisfacen la propiedad.
 
-## Segunda definición de Orden O
+## Orden O
+
+### Primera definición
+
+- Sea $t(n)$ una función.
+- Decimos que $t(n)$ está en el orden de $f(n)$ $(t(n) \in O(f(n)))$ si:
+  - $\exists c \in \mathbb{R}, c > 0$
+  - $\exists u_0 \in \mathbb{N}, u_0 > 0$
+  - Tal que $t(n) \leq c \cdot f(n) \quad \forall n > u_0$
+- Intuitivamente, $t(n) \in O(f(n))$ significa que la función $t(n)$ crece **a lo sumo tan rápido como** $f(n)$ cuando $n$ tiende a infinito. Puede crecer más lento, pero no más rápido.
+
+### Segunda definición
 
 - $O(f(n)) = \lbrace t: \mathbb{N} \rightarrow \mathbb{R}^{\geq 0} \mid (\exists c \in \mathbb{R}^+)(\forall^\infty n \in \mathbb{N}) \space [t(n) \leq c \cdot f(n)] \rbrace$
   - Es decir, es un conjunto de funciones de los naturales a los reales mayores o iguales a cero, tales que existe una constante real positiva y hay infinitos naturales para los cuales se cumple que la función $t(n)$ es acotada superiormente por $c \cdot f(n)$.
+
+### Tercera definición
+
 - $O(f(n)) = \lbrace t: \mathbb{N} \rightarrow \mathbb{R}^+ \mid \exists c \in \mathbb{R}^+, \space n_0 \in \mathbb{N} \mid t(n) \leq c \cdot f(n), n \geq n_0 \rbrace$
   - Esta es una definición alternativa, donde en vez de ir de los naturales a los reales mayores o iguales a cero, va de los naturales a los reales estrictamente mayores que cero, y además se reemplaza el cuantificador $\forall^\infty$ por el umbral, es decir, existe un $n_0$ a partir del cual se cumple la condición.
   - Es una cota **superior**.
 
-## Definición de Orden Omega $(\Omega)$
+## Orden Omega $(\Omega)$
 
 - La definición es muy similar a la de Orden O, pero en este caso se trata de una cota **inferior**:
 - $\Omega(f(n)) = \lbrace t: \mathbb{N} \rightarrow \mathbb{R}^+ \mid \exists c \in \mathbb{R}^+, \space n_0 \in \mathbb{N} \mid t(n) \geq c \cdot f(n), n \geq n_0 \rbrace$
+- Intuitivamente, $t(n) \in \Omega(f(n))$ significa que la función $t(n)$ crece **al menos tan rápido como** $f(n)$ cuando $n$ tiende a infinito. Puede crecer más rápido, pero no más lento.
 
-## Definición de Orden Theta $(\Theta)$
+## Orden Theta $(\Theta)$
 
 - La definición de Orden Theta combina las definiciones de Orden O y Orden Omega:
 - $\Theta(f(n)) = \lbrace t: \mathbb{N} \rightarrow \mathbb{R}^+ \mid \exists c_1, c_2 \in \mathbb{R}^+, \space n_0 \in \mathbb{N} \mid c_1 \cdot f(n) \leq t(n) \leq c_2 \cdot f(n), n \geq n_0 \rbrace$
   - Es decir, es el conjunto de funciones que están acotadas **tanto superior como inferiormente** por $f(n)$.
   - En este sentido, $t(n)$ crece de manera "similar" a $f(n)$.
+- Intuitivamente, $t(n) \in \Theta(f(n))$ significa que la función $t(n)$ crece **exactamente al mismo ritmo que** $f(n)$ cuando $n$ tiende a infinito, salvo constantes multiplicativas. Solo se cumple si tanto $t(n) \in O(f(n))$ como $t(n) \in \Omega(f(n))$ se cumplen a la vez.
 
 ## Propiedades
 
@@ -734,7 +741,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 - **$g(n) \in \Theta(f(n)) \leftrightarrow [g(n) \in O(f(n)) \land g(n) \in \Omega(f(n))]$**
 - **$\Theta(f(n)) = O(f(n)) \cap \Omega(f(n))$**
 - **$f(n) \in O(f(n))$** (Reflexividad)
-- **[$f(n) \in O(g(n)) \land g(n) \in O(h(n))] \rightarrow f(n) \in O(h(n))$** (Transitividad)
+- **($f(n) \in O(g(n)) \land g(n) \in O(h(n))) \rightarrow f(n) \in O(h(n))$** (Transitividad)
 
 ## Regla del Umbral
 
@@ -753,14 +760,20 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
 - La notación asintótica tiene relación con la idea de crecimiento arbitrario de la entrada y de cómo se comportan las funciones en el límite.
 - Sea $f$ y $g$ dos funciones tales que $f, g: \mathbb{N} \rightarrow \mathbb{R}^+$.
-- Las reglas para O son:
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R}^+ \rightarrow f(n) \in O(g(n)) \land g(n) \in O(f(n))$
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \rightarrow f(n) \in O(g(n)) \land g(n) \notin O(f(n))$
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty \rightarrow f(n) \notin O(g(n)) \land g(n) \in O(f(n))$
-- Las reglas para $\Omega$ y $\Theta$ son:
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R}^+ \rightarrow f(n) \in \Theta(g(n))$
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \rightarrow f(n) \in O(g(n)) \land f(n) \notin \Theta(g(n))$
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty \rightarrow f(n) \notin \Omega(g(n)) \land f(n) \notin \Theta(g(n))$
+- Las reglas son:
+  - Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R}^+$ se cumple:
+    - $f(n) \in O(g(n))$
+    - $f(n) \in \Theta(g(n))$
+    - $g(n) \in O(f(n))$
+  - Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$ se cumple:
+    - $f(n) \in O(g(n))$
+    - $f(n) \notin \Theta(g(n))$
+    - $g(n) \notin O(f(n))$
+  - Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty$ se cumple:
+    - $f(n) \notin O(g(n))$
+    - $f(n) \in \Omega(g(n))$
+    - $f(n) \notin \Theta(g(n))$
+    - $g(n) \in O(f(n))$
 
 ---
 
