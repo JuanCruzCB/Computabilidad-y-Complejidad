@@ -1,0 +1,12 @@
+ 1) L1 red Lu, con L1 = { 0w | w e E* }
+
+Describir la función de transición de la MT Mf que aplica la función de reducción.
+
+2) L1 red L2, con L1 = { lambda } y L2 = { 0^n1^n, n < 0 }
+
+Explicar la función de reducción.
+
+3) Marcar verdadero o falso, y justificar. Si A y B son conjuntos no contables.
+
+a. A - B puede ser contable.
+b. A - B puede ser no contable.
