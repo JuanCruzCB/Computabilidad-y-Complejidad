@@ -17,7 +17,7 @@
 
 ## Teoría
 
-- [Playlist con las clases de teoría](https://youtube.com/playlist?list=PLDJU8kNAPOn-GmSxWQqggq0dmiLUnA6k7&si=e08xgBR2LIVdQ7P0)
+- [Playlist con las clases de teoría y clases de consulta de 2021](https://youtube.com/playlist?list=PLDJU8kNAPOn-GmSxWQqggq0dmiLUnA6k7&si=e08xgBR2LIVdQ7P0)
 
 ## Cómo se aprueba la cursada?
 
