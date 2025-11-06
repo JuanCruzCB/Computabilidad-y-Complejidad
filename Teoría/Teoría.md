@@ -734,7 +734,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 - **$g(n) \in \Theta(f(n)) \leftrightarrow [g(n) \in O(f(n)) \land g(n) \in \Omega(f(n))]$**
 - **$\Theta(f(n)) = O(f(n)) \cap \Omega(f(n))$**
 - **$f(n) \in O(f(n))$** (Reflexividad)
-- **[$f(n) \in O(g(n)) \land g(n) \in O(h(n))] \rightarrow f(n) \in O(h(n))$** (Transitividad)
+- **($f(n) \in O(g(n)) \land g(n) \in O(h(n))) \rightarrow f(n) \in O(h(n))$** (Transitividad)
 
 ## Regla del Umbral
 
@@ -753,14 +753,20 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
 - La notación asintótica tiene relación con la idea de crecimiento arbitrario de la entrada y de cómo se comportan las funciones en el límite.
 - Sea $f$ y $g$ dos funciones tales que $f, g: \mathbb{N} \rightarrow \mathbb{R}^+$.
-- Las reglas para O son:
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R}^+ \rightarrow f(n) \in O(g(n)) \land g(n) \in O(f(n))$
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \rightarrow f(n) \in O(g(n)) \land g(n) \notin O(f(n))$
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty \rightarrow f(n) \notin O(g(n)) \land g(n) \in O(f(n))$
-- Las reglas para $\Omega$ y $\Theta$ son:
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R}^+ \rightarrow f(n) \in \Theta(g(n))$
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \rightarrow f(n) \in O(g(n)) \land f(n) \notin \Theta(g(n))$
-  - $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty \rightarrow f(n) \notin \Omega(g(n)) \land f(n) \notin \Theta(g(n))$
+- Las reglas son:
+  - Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R}^+$ se cumple:
+    - $f(n) \in O(g(n))$
+    - $f(n) \in \Theta(g(n))$
+    - $g(n) \in O(f(n))$
+  - Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$ se cumple:
+    - $f(n) \in O(g(n))$
+    - $f(n) \notin \Theta(g(n))$
+    - $g(n) \notin O(f(n))$
+  - Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty$ se cumple:
+    - $f(n) \notin O(g(n))$
+    - $f(n) \in \Omega(g(n))$
+    - $f(n) \notin \Theta(g(n))$
+    - $g(n) \in O(f(n))$
 
 ---
 
