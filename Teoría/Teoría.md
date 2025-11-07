@@ -3,32 +3,32 @@
 ## Definición
 
 - **Notación**:
-  - A = {...}
+  - $A = \lbrace...\rbrace$
   - $x \in A$ (x pertenece al conjunto A)
-  - $x \notin A$ (x no pertenece al conjunto A).
+  - $x \notin A$ (x no pertenece al conjunto A)
 - **Conjunto**:
   - Colección de objetos bien definidos llamados elementos.
   - Se denotan comunmente con letras mayúsculas (A, B, C, etc) y se definen con llaves.
-    - Ejemplo: A = {1, 2, 3} es un conjunto con tres elementos: 1, 2 y 3.
+    - Ejemplo: $A = \lbrace 1, 2, 3 \rbrace$ es un conjunto con tres elementos: 1, 2 y 3.
   - Un conjunto puede ser finito o infinito.
 - **Elemento**:
   - Cada elemento es único e "indivisible".
-  - No hay ningún orden entre los elementos, es decir que por ejemplo: A = {1, 2, 3} es equivalente a B = {3, 2, 1}, A = B.
+  - No hay ningún orden entre los elementos, es decir que por ejemplo: $A = \lbrace 1, 2, 3 \rbrace$ es equivalente a $B = \lbrace 3, 2, 1 \rbrace$, $A = B$.
 
 ## Formas de expresar conjuntos
 
 1. **Por extensión**:
    - Listando todos los elementos del conjunto.
-   - Ejemplo: A = {a, b, c, d}
+   - Ejemplo: $A = \lbrace a, b, c, d \rbrace$
 2. **Por comprensión**:
    - Describiendo una propiedad que caracteriza a los elementos del conjunto.
-     - Ejemplo: A = {x | x es un número par y 1 < x < 7} = {2, 4, 6}.
+     - Ejemplo: $A = \lbrace x \mid x \text{ es un número par y } 1 < x < 7 \rbrace = \lbrace 2, 4, 6 \rbrace$.
 3. **Por diagramas de Venn**:
    - Representación gráfica de conjuntos y sus relaciones.
 
 ## Conjunto vacío
 
-- **Notación**: $\emptyset$ o {}.
+- **Notación**: $\emptyset$ o $\lbrace \rbrace$.
 - **Definición intuitiva**:
   - El conjunto vacío es el conjunto sin elementos.
   - Es decir, ningun objeto puede jamás pertenecer al conjunto vacío.
@@ -44,12 +44,13 @@
   - A es un subconjunto estricto de B si todos los elementos de A están en B, pero B no es igual a A: porque B tiene uno o más elementos que no están en A.
 - **Definición formal**:
   - $(\forall x)(x \in A \rightarrow x \in B) \land (\exists x)(x \in B \land x \notin A)$
-- **Nota 1**: Si A es subconjunto estricto de B, entonces A es subconjunto no estricto de B.
-  - $A \subset B \implies A \subseteq B$
-- **Nota 2**: Ningún conjunto es subconjunto estricto de sí mismo.
-  - $\forall A (A \not\subset A)$
+- **Propiedades**:
+  - Si A es subconjunto estricto de B, entonces A es subconjunto no estricto de B:
+    - $A \subset B \implies A \subseteq B$
+  - Ningún conjunto es subconjunto estricto de sí mismo:
+    - $\forall A (A \not\subset A)$
 - **Ejemplo**:
-  - Si A = {1, 2} y B = {1, 2, 3} entonces A ⊂ B.
+  - Si $A = \lbrace 1, 2 \rbrace$ y $B = \lbrace 1, 2, 3 \rbrace$ entonces $A \subset B$.
 
 ### Subconjunto no estricto
 
@@ -59,15 +60,16 @@
   - A puede ser igual a B.
 - **Definición formal**:
   - $(\forall x)(x \in A \rightarrow x \in B)$
-- **Nota 1**: El conjunto vacío es subconjunto de cualquier conjunto.
-  - $(\forall A) (\emptyset \subseteq A)$
-- **Nota 2**: Todo conjunto es subconjunto no estricto de sí mismo.
-  - $(\forall A) (A \subseteq A)$
-- **Nota 3**: La inclusión es transitiva:
-  - Si $A \subseteq B$ y $B \subseteq C$ entonces $A \subseteq C$.
+- **Propiedades**:
+  - El conjunto vacío es subconjunto de cualquier conjunto:
+    - $(\forall A) (\emptyset \subseteq A)$
+  - Todo conjunto es subconjunto no estricto de sí mismo:
+    - $(\forall A) (A \subseteq A)$
+  - La inclusión es transitiva:
+    - Si $A \subseteq B$ y $B \subseteq C$ entonces $A \subseteq C$.
 - **Ejemplo**:
-  - Si A = {1, 2} y B = {1, 2, 3} entonces A ⊆ B.
-  - Si A = {1, 2, 3} y B = {1, 2, 3} entonces A ⊆ B.
+  - Si $A = \lbrace 1, 2 \rbrace$ y $B = \lbrace 1, 2, 3 \rbrace$ entonces $A \subseteq B$.
+  - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 1, 2, 3 \rbrace$ entonces $A \subseteq B$.
 
 ### Igualdad
 
@@ -79,8 +81,8 @@
 - **Equivalencia lógica con el subconjunto**:
   - $A = B \iff (A \subseteq B) \land (B \subseteq A)$
 - **Ejemplo**:
-  - Si A = {1, 2, 3} y B = {1, 2, 3} entonces A = B.
-  - Si A = {1, 2, 3} y B = {3, 2, 1} entonces A = B.
+  - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 1, 2, 3 \rbrace$ entonces $A = B$.
+  - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 3, 2, 1 \rbrace$ entonces $A = B$.
 
 ### Intersección
 
@@ -88,9 +90,9 @@
 - **Definición intuitiva**:
   - La intersección de A y B es el conjunto de elementos que pertenecen a **ambos** conjuntos.
 - **Definición formal**:
-  - $A \cap B = \lbrace x | x \in A \land x \in B \rbrace$
+  - $A \cap B = \lbrace x \mid x \in A \land x \in B \rbrace$
 - **Ejemplo**:
-  - Si A = {1, 2, 3} y B = {1, 2, 5} entonces $A \cap B$ = {1, 2}.
+  - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 1, 2, 5 \rbrace$ entonces $A \cap B = \lbrace 1, 2 \rbrace$.
 
 ### Unión
 
@@ -100,10 +102,10 @@
   - Es decir, todos los elementos de A y todos los elementos de B.
   - Si hay repetidos entre A y B, se cuentan solo una vez.
 - **Definición formal**:
-  - $A \cup B = \lbrace x | x \in A \lor x \in B \rbrace$
+  - $A \cup B = \lbrace x \mid x \in A \lor x \in B \rbrace$
 - **Ejemplo**:
-  - Si A = {1, 2, 3} y B = {1, 2, 4} entonces $A \cup B$ = {1, 2, 3, 4}.
-  - Si A = {1, 2, 3} y B = {4, 5, 6} entonces $A \cup B$ = {1, 2, 3, 4, 5, 6}.
+  - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 1, 2, 4 \rbrace$ entonces $A \cup B = \lbrace 1, 2, 3, 4 \rbrace$.
+  - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 4, 5, 6 \rbrace$ entonces $A \cup B = \lbrace 1, 2, 3, 4, 5, 6 \rbrace$.
 
 ### Diferencia
 
@@ -111,12 +113,13 @@
 - **Definición intuitiva**:
   - La diferencia de A y B es el conjunto de elementos que pertenecen a A pero no pertenecen a B.
 - **Definición formal**:
-  - $A - B = \lbrace x | x \in A \land x \notin B \rbrace$
-- **Nota 1**: Si $A \cap B = \emptyset$ entonces $A - B = A$.
-- **Nota 2**: $A - B \neq B - A$ en general.
+  - $A - B = \lbrace x \mid x \in A \land x \notin B \rbrace$
+- **Propiedades**:
+  - Si $A \cap B = \emptyset$ entonces $A - B = A$.
+  - $A - B \neq B - A$ en general.
 - **Ejemplo**:
-  - Si A = {1, 2, 3} y B = {1, 2, 4} entonces $A - B$ = {3}.
-  - Si A = {1, 2, 3} y B = {4, 5, 6} entonces $A - B$ = {1, 2, 3}.
+  - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 1, 2, 4 \rbrace$ entonces $A - B = \lbrace 3 \rbrace$.
+  - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 4, 5, 6 \rbrace$ entonces $A - B = \lbrace 1, 2, 3 \rbrace$.
 
 ### Complemento
 
@@ -124,10 +127,10 @@
 - **Definición intuitiva**:
   - El complemento de A es el conjunto de elementos que no pertenecen a A.
 - **Definición formal**:
-  - $\overline{A} = \lbrace x | x \notin A \rbrace$
+  - $\overline{A} = \lbrace x \mid x \notin A \rbrace$
 - **Nota**: El complemento siempre se define respecto a un conjunto universal U, es decir, $\overline{A} = U - A$.
 - **Ejemplo**:
-  - Si el conjunto universal U = {1, 2, 3, 4, 5} y A = {1, 2, 3} entonces $\overline{A}$ = {4, 5}.
+  - Si el conjunto universal $U = \lbrace 1, 2, 3, 4, 5 \rbrace$ y $A = \lbrace 1, 2, 3 \rbrace$ entonces $\overline{A} = \lbrace 4, 5 \rbrace$.
 
 ### Producto cartesiano
 
@@ -135,9 +138,9 @@
 - **Definición intuitiva**:
   - El producto cartesiano de A y B es el conjunto de todos los pares ordenados (x, y) donde x pertenece a A, y pertenece a B.
 - **Definición formal**:
-  - $A \times B = \lbrace (x, y) | x \in A \land y \in B \rbrace$
+  - $A \times B = \lbrace (x, y) \mid x \in A \land y \in B \rbrace$
 - **Ejemplo**:
-  - Si A = {1, 2} y B = {3, 4} entonces $A \times B$ = {(1, 3), (1, 4), (2, 3), (2, 4)}.
+  - Si $A = \lbrace 1, 2 \rbrace$ y $B = \lbrace 3, 4 \rbrace$ entonces $A \times B = \lbrace (1, 3), (1, 4), (2, 3), (2, 4) \rbrace$.
 
 ### Conjunto potencia
 
@@ -145,12 +148,12 @@
 - **Definición intuitiva**:
   - El conjunto potencia de A es el conjunto de todos los subconjuntos de A, incluyendo el conjunto vacío y A mismo.
 - **Definición formal**:
-  - $\mathcal{P}(A) = \lbrace B | B \subseteq A \rbrace$
+  - $\mathcal{P}(A) = \lbrace B \mid B \subseteq A \rbrace$
 - **Nota 1**: Si A tiene n elementos, entonces $\mathcal{P}(A)$ tiene $2^n$ elementos.
 - **Nota 2**: $(\forall A) \emptyset \in \mathcal{P}(A)$ y $A \in \mathcal{P}(A)$.
 - **Nota 3**: Si $A \subseteq B$ entonces $\mathcal{P}(A) \subseteq \mathcal{P}(B)$.
 - **Ejemplo**:
-  - Si A = {1, 2}, entonces $\mathcal{P}(A)$ = {$\emptyset$, {1}, {2}, {1, 2}}.
+  - Si $A = \lbrace 1, 2 \rbrace$, entonces $\mathcal{P}(A) = \lbrace \emptyset, \lbrace 1 \rbrace, \lbrace 2 \rbrace, \lbrace 1, 2 \rbrace \rbrace$.
 
 ### Equivalencias de las operaciones
 
