@@ -782,6 +782,194 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
 # Complejidad Temporal
 
+## Máquinas de Turing No Determinísticas (MTN)
+
+### Definición
+
+- Una MTN es una máquina de Turing que dado un estado y un símbolo siendo leido por el cabezal, tiene un conjunto finito de posibles transiciones a seguir para el siguiente movimiento.
+- La MTN acepta su entrada si cualquier sucesión de transiciones de movimiento se detiene en $q_A$.
+- Formalmente: $M = \langle Q, \Sigma, \Gamma, \Delta, q_0, q_A, q_R \rangle$
+  - $Q$: Conjunto finito de estados.
+  - $\Sigma$: Alfabeto de la entrada.
+  - $\Gamma$: Alfabeto de la cinta ($\Sigma \subseteq \Gamma$).
+  - $\Delta$: Función de transición ($\Delta: Q \times \Gamma \rightarrow \mathcal{P}(Q \cup \lbrace q_A, q_R \rbrace \times \Gamma \times \lbrace D, I, S \rbrace)$).
+  - $q_0$: Estado inicial ($q_0 \in Q$).
+  - $q_A$: Estado de aceptación ($q_A \notin Q$).
+  - $q_R$: Estado de rechazo ($q_R \notin Q$).
+- Una MTN acepta su entrada $w$ si y solo si existe al menos una computación a partir de $w$ que alcanza el estado $q_A$.
+- Para diferenciar, denotamos a la máquina de Turing determinística como MTD y a la máquina de Turing no determinística como MTN. Una MTD es un caso especial de MTN donde la función de transición $\Delta$ devuelve un único movimiento posible para cada par (estado, símbolo leído), es decir, un conjunto unitario.
+- Este tipo de MT es equivalente en cuanto a poder de cómputo a la MTD, es decir, cualquier lenguaje que pueda ser reconocido por una MTN también puede ser reconocido por una MTD y viceversa. Sin embargo, la eficiencia en términos de tiempo de cómputo puede variar significativamente entre ambos modelos.
+
+### Ejemplo
+
+- Construir una MTN M tal que $L(M) = \lbrace w \in \lbrace 0, 1, 2, 3 \rbrace^* \mid \text{w empieza con 00 o 01} \rbrace$.
+- Se define la función de transición $\Delta$ de la siguiente manera:
+  - $\Delta(q_0, 0) = \lbrace (q_1, 0, D), (q_2, 0, D) \rbrace$ **No determinismo**
+  - $\Delta(q_0, x) = \lbrace (q_R, x, S) \rbrace$ Para todo $x \in (\Gamma - \lbrace 0 \rbrace)$
+  - $\Delta(q_1, 0) = \lbrace (q_A, 0, S) \rbrace$
+  - $\Delta(q_1, x) = \lbrace (q_R, x, S) \rbrace$ Para todo $x \in (\Gamma - \lbrace 0 \rbrace)$
+  - $\Delta(q_2, 1) = \lbrace (q_A, 1, S) \rbrace$
+  - $\Delta(q_1, x) = \lbrace (q_R, x, S) \rbrace$ Para todo $x \in (\Gamma - \lbrace 1 \rbrace)$
+
+### Traza de computación
+
+- Para una MTN, la traza de computación tiene forma de árbol, donde cada rama representa una computación, es decir, una sucesión de alternativas de movimiento.
+- En el ejemplo anterior, si $w = 021$, la traza de computación sería:
+  - $q_0 021 \vdash 0 q_1 21 \vdash 0 q_R 21$
+  - $q_0 021 \vdash 0 q_2 21 \vdash 0 q_R 21$
+  - $M$ rechaza a $021$.
+- Si $w = 0054$, la traza de computación sería:
+  - $q_0 0054 \vdash 0 q_1 054 \vdash 0 q_A 054$
+  - $q_0 0054 \vdash 0 q_2 054 \vdash 0 q_R 054$
+  - $M$ acepta a $0054$ en el primer "universo", mientras que rechaza en el segundo. **Como existe al menos un universo donde acepta, entonces $M$ acepta a $0054$, sin importar que en otro universo lo rechace o incluso loopee**.
+
+### Aceptación
+
+- Una MTN acepta una cadena de entrada $w$ si existe al menos una secuencia de transiciones que lleva al estado de aceptación $q_A$.
+- Es decir, no importa que algunas secuencias lleven al estado de rechazo $q_R$ o que algunas computaciones nunca terminen (loopeen) siempre y cuando haya al menos una secuencia que termine en $q_A$, la MTN acepta la cadena.
+
+### Equivalencia
+
+- Si $L$ es un lenguaje aceptado por una MTN $M_1$, entonces L es aceptado por una MTD $M_2$.
+- Esto se demuestra usando el famoso recorrido BFS (Breadth-First Search) en el árbol de computación de la MTN $M_1$.
+
+## Complejidad Temporal
+
+### De una MTD
+
+- Sea $M$ una MTD con $k$ cintas.
+- $M$ es de complejidad temporal $t(n)$ si para toda cadena de entrada $w$ de longitud $n$, $M$ hace a lo sumo $t(n)$ movimientos antes de detenerse (aceptar o rechazar).
+
+### De una MTN
+
+- Sea $M$ una MTN con $k$ cintas.
+- $M$ es de complejidad temporal $t(n)$ si para toda cadena de entrada $w$ de longitud $n$, **todas** las posibles computaciones de $M$ hacen a lo sumo $t(n)$ movimientos antes de detenerse (aceptar o rechazar).
+
+## Clases de Complejidad
+
+### DTIME
+
+- Sea $L$ un lenguaje.
+- Decimos que $L \in DTIME(t(n))$ si y solo si existe una MTD $M$ con $L = L(M)$ tal que la complejidad temporal de $M$ pertenece a $O(t(n))$.
+
+### NTIME
+
+- Sea $L$ un lenguaje.
+- Decimos que $L \in NTIME(t(n))$ si y solo si existe una MTN $M$ con $L = L(M)$ tal que la complejidad temporal de $M$ pertenece a $O(t(n))$.
+- $DTIME(t(n)) \subseteq NTIME(t(n))$ siempre, ya que una MTD es un caso especial de MTN.
+
+### P
+
+- La clase de lenguajes $P$ está formada por todos los lenguajes que pueden ser decididos por una MTD en **tiempo polinomial**.
+- Formalmente: $P = \bigcup_{i \geq 0} DTIME(n^i)$
+
+### NP
+
+- La clase de lenguajes $NP$ está formada por todos los lenguajes que pueden ser decididos por una MTN en **tiempo polinomial**.
+- Formalmente: $NP = \bigcup_{i \geq 0} NTIME(n^i)$
+- Claramente, $P \subseteq NP$, ya que todas las MTD son también MTN.
+
+### Teorema
+
+- Si $L$ es un lenguaje recursivo que es aceptado por una MTN $M_1$ en tiempo $t(n)$, entonces existe una MTD $M_2$ que acepta a $L$ en tiempo menor o igual que $d^{t(n)}$ con $d$ una constante mayor que $1$ que depende de $M_1$.
+- Es decir, para todo lenguaje que es aceptado por una MTN en $t(n)$, existe una MTD que lo acepta en tiempo exponencial $d^{t(n)}$.
+- Se sabe que existen lenguajes recursivos que NO pertenecen a $NP$, es decir, $(R - NP) \neq \emptyset$ pero no se sabe si $NP = P$.
+
+### Tratabilidad
+
+- En general se considera que la clase $P$ representa los problemas "tratables". La mayoría de los problemas de esta clase tienen algoritmos con una implementación razonablemente eficiente. (Máximo Común Divisor, Multiplicación de matrices, 2-SAT, etc).
+- Sin embargo existen ciertos problemas en $P$ que no son tratables debido a que:
+  - El grado del polinomio es muy alto (por ejemplo $O(n^{30})$).
+  - Las constantes ocultas de la notación asintótica son muy grandes.
+  - La demostración de pertenencia a $P$ no es constructiva y no se conoce un algoritmo eficiente para resolver el problema en la práctica.
+- El mapa de la tratabilidad es el siguiente:
+
+  ![Mapa de la tratabilidad](https://i.imgur.com/BMrA9g1.png)
+
+  - El punto principal es que la brecha es inaceptablemente grande pues existen muchos problemas importantes que están en $NP$ a los que no se les conoce una solución tratable, pero tampoco se ha demostrado que esta solución no exista.
+
+### Problema del Viajante de Comercio (TSP)
+
+- Tenemos un gráfico de ciudades.
+- Hay un comerciante.
+- El comerciante tiene que recorrer todas las ciudades partiendo desde una y volviendo a la misma pasando por todas las ciudades sin repetir ninguna e intentando minimizar la distancia total recorrida, es decir, que la distancia total recorrida no sea mayor que una constante $d$.
+- Este problema se puede resolver con una MTN:
+  - El input $w$ contiene:
+    - La lista de $m$ ciudades (identificadas con números del $1$ al $m$)
+    - Las distancias de los caminos entre las ciudades.
+    - La longitud máxima $d$ permitida.
+  - Se genera de forma no determinística las $m!$ trayectorias, que son todas las posibles permutaciones de las $m$ ciudades.
+    - Se escribe una permutación cualquiera de los números entre $1$ y $m$ en la cinta. Se escriben dos listas, la primera con los números ordenados de $1$ a $m$ y la segunda vacía. Se elige de manera no determinística uno de la primera lista que se tacha y pasa a la segunda. Cada ciclo tiene un costo de $O(m)$ y se repite $m$ veces hasta completar la permutación $(O(m^2))$, como la lista de ciudades es parte de la entrada podemos acotarlo con $O(n^2)$.
+  - Se calcula la distancia del recorrido elegido. Suponiendo un costo $(O(n)$ para localizar en la entrada de la distancia entre 2 ciudades cualquiera, el costo de calcular la distancia del recorrido es $O(n^2)$.
+  - Si la distancia del recorrido es $\leq d$, para en $q_A$, sino para en $q_R$.
+  - $M$ trabaja en tiempo polinomial $O(n^2)$.
+
+### CO-NP
+
+- Sea $L$ un lenguaje.
+- Decimos que $L \in \text{CO-NP}$ si y solo si el complemento de $L$ pertenece a $NP$.
+- Es decir, $L \in \text{CO-NP} \leftrightarrow \overline{L} \in NP$
+- **Teorema 1**: $L \in P \Rightarrow L \in (NP \cap \text{CO-NP})$
+  - $L \in P \Rightarrow L \in NP$
+  - $L \in P \Rightarrow \overline{L} \in P \Rightarrow \overline{L} \in NP \Rightarrow L \in \text{CO-NP}$
+- Si un lenguaje está en $NP$, no se puede saber si su complemento también está en $NP$.
+
+## Reducción Polinomial
+
+### Definición
+
+- Sean $L_1$ y $L_2$ dos lenguajes sobre un alfabeto $\Sigma$.
+- Decimos que $L_1$ se reduce polinomialmente a $L_2$, denotado como $L_1$ $\alpha_p$ $L_2$, si y solo si $L_1$ $\alpha$ $L_2$ y además la función de reducción $f$ es computada por una MTD que trabaja en tiempo polinomial, es decir, $(f \in P)$.
+
+### Teorema 3
+
+- Sean $L_1$ y $L_2$ dos lenguajes.
+- Si $L_1$ $\alpha_p$ $L_2$ y además $L_2 \in P$ entonces $L_1 \in P$.
+
+### Teorema 4
+
+- Sea $L$ un lenguaje tal que $\emptyset \subset L \subset \Sigma^*$.
+- Entonces para cualquier lenguaje $L'$ con $L' \in P$, se tiene que $L'$ $\alpha_p$ $L$.
+
+## NP-Hard
+
+- Sea $L$ un lenguaje.
+- $L \in NPH$ si para todo lenguaje $L' \in NP$, se cumple que $L'$ $\alpha_p$ $L$.
+
+## NP-Completo
+
+- Sea $L$ un lenguaje.
+- $L \in NPC$ si y solo si:
+  - $L \in NPH$
+  - $L \in NP$
+
+## Teorema 5
+
+- Si existe un lenguaje $L \in NPC$ tal que $L \in P$, entonces $P = NP$.
+- Hasta ahora no se ha encontrado ningún lenguaje que cumpla lo anterior.
+- Según este teorema, para demostrar que $P = NP$ alcanzaría con encontrar una solución polinomial para cualquiera de los problemas NPC conocidos.
+
+## Teorema 6
+
+- Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1 \in NP$ y $L_2 \in NP$.
+- Si $L_1 \in NPC$ y $L_1$ $\alpha_p$ $L_2$, entonces $L_2 \in NPC$.
+
+## Ejemplo de lenguaje NPC - SAT
+
+- **Literal**: Variable proposicional o su negación.
+- **FNC**: Forma normal conjuntiva, es una fórmula lógica que es una conjunción de cláusulas, donde cada cláusula es una disyunción de literales. Por ejemplo: $(x_1 \lor \neg x_2) \land (x_2 \lor x_3) \land (\neg x_1 \lor \neg x_3)$
+- **Enunciado del problema SAT**: Dada una fórmula proposicional en FNC, determinar si es satisfactible, es decir, si existe alguna asignación de valores de verdad a las variables que haga que la fórmula tenga el valor de verdad verdadero.
+- $SAT = \lbrace \varphi \mid \varphi \text{ es una fórmula booleana en FNC satisfactible} \rbrace$
+- Se ha demostrado que $SAT \in NPC$ vía el teorema de Cook/Levin.
+
+## P = NP?
+
+- Por varias décadas de estudio los investigadores no han podido determinar si la afirmación $P = NP$ es verdadera o falsa.
+- Se cree ampliamente que $P \neq NP$, es decir, que existen problemas en $NP$ que no pueden ser resueltos en tiempo polinomial por una MTD, pero hasta ahora no se ha encontrado una prueba formal que lo demuestre.
+- La resolución de esta cuestión es uno de los problemas más importantes y desafiantes en la teoría de la computación y tiene implicaciones significativas en campos como la criptografía, la optimización y la inteligencia artificial.
+- Mapa completo de P, NP, NPC, CO-NPC y CO-NP:
+  ![Mapa completo de P, NP, NPC, CO-NPC y CO-NP](https://i.imgur.com/YNM7urQ.png)
+
 ---
 
 # Análisis de Algoritmos
