@@ -973,3 +973,74 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 ---
 
 # Análisis de Algoritmos
+
+## Asociación de conceptos vistos a lo largo de la materia
+
+- Un problema computacional se puede asociar a una Máquina de Turing Determinística.
+- Una entrada a un problema se puede asociar a una instancia específica del problema computacional.
+- Los problemas computables se pueden asociar a los lenguajes decidibles $(R)$.
+- Una Máquina de Turing Determinística se puede asociar a un algoritmo.
+- Computable no es lo mismo que Tratable.
+- La complejidad temporal es principalmente un análisis y clasificación de los distintos tipos de lenguajes decidibles.
+- Un problema computable tiene infinitas formas de ser resuelto, es decir, infinitas Máquinas de Turing Determinísticas que lo resuelven. Obviamente, algunas formas de resolverlo son mejores que otras.
+
+## Análisis de algoritmos
+
+### Definición
+
+Consiste en el estudio teórico de la eficiencia de los algoritmos, generalmente en términos del uso de los recursos de hardware. La eficiencia se mide en qué cantidad de recursos (tiempo y espacio) utiliza un algoritmo para resolver un problema en función del tamaño de la entrada.
+
+### Utilidad
+
+- Permite comparar diferentes algoritmos de forma puramente teórica, sin necesidad de implementarlos y ejecutarlos en hardware real.
+- Permite analizar la escalabilidad de los algoritmos, es decir, cómo se comportan a medida que el tamaño de la entrada crece.
+- La matemática algorítmica provee un lenguaje de comportamiento abstracto que permite razonar sobre los algoritmos sin necesidad de entrar en detalles de implementación específicos.
+
+### Principio de Invarianza
+
+- Dos implementaciones diferentes del mismo algoritmo difieren en eficiencia a lo sumo en una constante multiplicativa.
+- Intuitivamente, esto significa que si tenemos dos versiones de un mismo algoritmo, una puede ser más rápida que la otra, pero la diferencia en tiempo de ejecución no crecerá desproporcionadamente a medida que aumente el tamaño de la entrada. La eficiencia relativa entre las dos implementaciones se mantendrá constante.
+
+### Tiempo vs espacio
+
+- Sea $A$ un algoritmo que resuelve un problema computacional.
+- El **tiempo de ejecución $t_A(n)$ de A** es la cantidad de pasos, operaciones, o acciones elementales que debe realizar el algoritmo al ser ejecutado con una entrada de tamaño $n$.
+- El **espacio de ejecución $e_A(n)$ de A** es la cantidad de datos elementales que el algoritmo necesita al ser ejecutado en una instancia de tamaño $n$, sin contar la representación de la entrada.
+- Ambas definiciones son claramente ambiguas, porque no se especifica claramente cuáles son las operaciones o datos elementales. Además, dado que existe más de una instancia de tamaño $n$, no está claro cuál de todas ellas es la que se tiene en cuenta para el análisis.
+
+### Operaciones elementales
+
+- El tiempo de ejecución está cotado por una constante que depende solo de la implementación usada.
+- Las operaciones elementales no dependen del tamaño de la entrada: solo interesa el número de operaciones elementales realizadas.
+- En general, las sumas, multiplicaciones, asignaciones, etc, son consideradas operaciones elementales.
+
+### Tipos de análisis
+
+- **Peor caso**: Se analiza la instancia de tamaño $n$ que hace que el algoritmo tarde más tiempo en ejecutarse.
+- **Caso promedio**: Se analiza el tiempo de ejecución promedio del algoritmo sobre todas las instancias de tamaño $n$.
+- **Mejor caso**: Se analiza la instancia de tamaño $n$ que hace que el algoritmo tarde menos tiempo en ejecutarse.
+- **Probabilístico**: Se analiza el tiempo de ejecución esperado del algoritmo considerando que la entrada es generada aleatoriamente según una distribución de probabilidad dada.
+
+### Uso de la notación asintótica
+
+En el contexto de análisis de algoritmos, la notación asintótica es útil por varias razones:
+
+1. Caracteriza en forma simple a la eficiencia o uso de recursos de los algoritmos.
+2. Se independiza de detalles de implementación específicos.
+3. Analiza el comportamiento de las funciones en el límite cuando la entrada crece arbitrariamente.
+
+## Temas principales a considerar
+
+### 1. Estructuras de control
+
+### 2. Barómetro
+
+### 3. Análisis del caso promedio
+
+### 4. Análisis amortizado
+
+### 5. Recurrencias
+
+### 6. Estructuras de datos
+
+### 7. Diseño + Análisis
