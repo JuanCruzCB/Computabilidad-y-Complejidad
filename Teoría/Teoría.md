@@ -31,7 +31,7 @@
 - **Notación**: $\emptyset$ o $\lbrace \rbrace$.
 - **Definición intuitiva**:
   - El conjunto vacío es el conjunto sin elementos.
-  - Es decir, ningun objeto puede jamás pertenecer al conjunto vacío.
+  - Es decir, ningún objeto puede jamás pertenecer al conjunto vacío.
 - **Definición formal**:
   - $(\forall x)(x \notin \emptyset)$
 
@@ -292,7 +292,7 @@
 - **Concatenación de cadenas**:
   - Si $w_1$ y $w_2$ son cadenas, la concatenación de $w_1$ y $w_2$ se denota como $w_1 w_2$ y es la cadena formada al unir $w_1$ seguido de $w_2$.
     - Ejemplo: Si $w_1 = ca$ y $w_2 = sa$, entonces $w_1 w_2 = casa$.
-  - Esta operación es **asociativa** pero no conmutativa: $(w_1 w_2) w_3 = w_1 (w_2 w_3)$ pero $w_1 w_2 \neq w_2 w_1$ en general.
+  - Esta operación es **asociativa** pero no **conmutativa**: $(w_1 w_2) w_3 = w_1 (w_2 w_3)$ pero $w_1 w_2 \neq w_2 w_1$ en general.
   - La cadena vacía $\lambda$ actúa como el elemento neutro en la concatenación: $w \lambda = \lambda w = w$ para cualquier cadena $w$.
   - La concatenación de cadenas puede aumentar la longitud: $|w_1 w_2| = |w_1| + |w_2|$.
     - Ejemplo: Si $w_1 = ab$ y $w_2 = ba$, entonces $w_1 w_2 = abba$ y $|w_1 w_2| = 4$.
@@ -348,7 +348,7 @@
 
 - **Definición intuitiva**:
   - Una máquina de Turing $M_1$ es equivalente a una máquina de Turing $M_2$ si y solo si ambas máquinas reconocen el mismo lenguaje.
-- **Definción formal**:
+- **Definición formal**:
   - $M_1 \equiv M_2 \leftrightarrow L(M_1) = L(M_2)$
 
 ## Definición de equivalencia de modelo de MT
@@ -1246,6 +1246,6 @@ En el contexto de análisis de algoritmos, la notación asintótica es útil por
 - Asociados a problemas donde se deben tomar decisiones.
 - En este tipo de algoritmos, estas decisiones se toman al azar.
 - Hay tres tipos:
-  - **Númericos**: Usan intervalos de confianza sobre la respuesta.
+  - **Numéricos**: Usan intervalos de confianza sobre la respuesta.
   - **Monte Carlo**: Respuesta exacta con alta probabilidad, pero puede ser incorrecta.
   - **Las Vegas**: Respuesta exacta o sin respuesta.
