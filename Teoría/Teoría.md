@@ -1033,14 +1033,219 @@ En el contexto de análisis de algoritmos, la notación asintótica es útil por
 
 ### 1. Estructuras de control
 
+#### Secuencias
+
+- Sean $P1$ y $P2$ dos procesos secuenciales.
+- $P1$ tiene un tiempo de ejecución $t_1(n)$.
+- $P2$ tiene un tiempo de ejecución $t_2(n)$.
+- El tiempo de ejecución total del proceso secuencial $P1; P2$ es: $t_{1; 2}(n) = t_1(n) + t_2(n)$
+- En términos de notación asintótica se usa la Regla del Máximo:
+  - $t_{1; 2}(n) = t_1(n) + t_2(n) \in O(\max(t_1(n), t_2(n)))$
+  - $t_{1; 2}(n) = t_1(n) + t_2(n) \in \Theta(\max(t_1(n), t_2(n)))$
+- Intuitivamente, el tiempo de ejecución total de dos procesos secuenciales es igual a la suma de sus tiempos de ejecución individuales.
+- Esto se puede generalizar a $N$ procesos secuenciales.
+- Esto se puede aplicar no solo a procesos enteros sino también a instrucciones individuales.
+
+#### Condicional
+
+- La estructura típica del condicional es:
+  ```c
+  if (cond)
+  {
+      ...
+  }
+  else
+  {
+      ...
+  }
+  ```
+- Se puede definir:
+  - $t_1(n)$: Tiempo de ejecución para evaluar la condición.
+  - $t_2(n)$: Tiempo de ejecución del bloque "then".
+  - $t_3(n)$: Tiempo de ejecución del bloque "else".
+- Para analizarlo, siempre se considera el peor caso:
+  - $t_{if}(n) = t_1(n) + \max(t_2(n), t_3(n))$
+  - O más directamente: $\max(t_1(n), t_2(n), t_3(n))$
+
+#### Iteraciones uniformes
+
+- La estructura típica de una iteración uniforme es:
+  ```c
+  for (i = 0; i < N; i++)
+  {
+      ...
+  }
+  ```
+- En el inicio del `for`, siempre se sabe de antemano cuántas veces se va a ejecutar el cuerpo del ciclo.
+- Para analizar el tiempo total, se debe saber el tiempo de ejecución del cuerpo del ciclo, al que llamamos $t(i)$.
+- Normalmente hay dos alternativas: que el tiempo del cuerpo dependa de $i$ o que no dependa de $i$.
+  - Si no depende de $i$, es decir, $t(i) = t$, entonces el tiempo total es: $t_{for}(n) = (N \cdot t)$
+  - Si depende de $i$, entonces el tiempo total es: $t_{for}(n) = \sum_{i=0}^{N-1} t(i)$
+    - No hay un mejor o peor caso, ya que el número de iteraciones es fijo.
+- Más sumatorias útiles:
+  - $\sum_{i=1}^{N} i = \frac{N(N+1)}{2}$
+  - $\sum_{i=1}^{N} i^2 = \frac{N(N+1)(2N+1)}{6}$
+- Todo lo anterior vale si y solo si $1 \leq N$, es decir, que el valor de inicio sea menor o igual que el valor final.
+
+#### Iteraciones no uniformes
+
+- La estructura típica de una iteración no uniforme es:
+
+  ```c
+  while (cond)
+  {
+      ...
+  }
+
+  do
+  {
+      ...
+  } while (cond)
+  ```
+
+- En este caso, no se sabe de antemano cuántas veces se va a ejecutar el cuerpo del ciclo.
+- Existen dos formas de analizar estas estructuras:
+  - Funciones de variables que decrece.
+  - Recurrencias.
+
 ### 2. Barómetro
+
+- Una instrucción barómetro es una instrucción que se ejecuta al menos tantas veces como cualquier otra instrucción excepto quizás una cantidad constante de veces.
+- Si $t(n)$ es el tiempo del algoritmo a analizar, $t(n)$ es $\Theta(f(n))$ donde $f(n)$ es la cantidad de veces que se ejecuta la instrucción barómetro.
 
 ### 3. Análisis del caso promedio
 
+- Requiere hacer un uso implícito/explícito de distribución de probabilidades de las instancias de tamaño $n$.
+
 ### 4. Análisis amortizado
+
+- Es útil cuando:
+  - Es muy poco probable que en todas las llamadas a una función se tenga siempre el peor caso.
+  - La cantidad de operaciones está relacionada con una secuencia de uso de un algoritmo.
+- Ejemplos:
+  - Estructuras de datos, inserción en un grafo.
+- Es muy específico a ciertos casos/algoritmos.
+- Es una alternativa al análisis del caso peor/mejor/promedio.
+- En términos simples, la cantidad de veces que se realiza una operación depende del estado actual de la estructura de datos.
+- Normalmente se busca un promedio del $t(n)$ en llamadas sucesivas y no independientes.
+- Existen tres método principales:
+  - Agregado.
+  - Contable.
+  - Potencial.
 
 ### 5. Recurrencias
 
+#### Concepto
+
+- Son funciones de tiempo que están definidas en función de sí mismas.
+- Describen una secuencia de números, donde el o los término/s inicial/es (cantidad finita) son dados de forma explicita y el resto de los términos se definen en función de los términos anteriores.
+- Se los suele asociar a la estrategia Divide and Conquer y a la estrategia Divide-Solve/Conquer-Combine.
+- En cualquier caso, se asocian a algoritmos recursivos.
+
+#### Ejemplo
+
+- El ejemplo clásico es el cálculo del factorial de un número $n$:
+
+  ```c
+
+  int factorial(int n)
+  {
+      if (n == 0)
+          return 1;
+      else
+          return n * factorial(n - 1);
+  }
+  ```
+
+- El tiempo de ejecución $t(n)$ de este algoritmo se puede definir como:
+  - $t_{fac}(n) = \begin{cases} 1 & \text{si } n = 0 \\ t_{fac}(n - 1) + 2 & \text{si } n > 0\end{cases}$
+  - El $+2$ se debe a que se tiene dos operaciones, primero una resta `n - 1` y luego una multiplicación `n * factorial(n - 1)`.
+- Análisis:
+  - $t_{fac}(n) = t_{fac}(n - 1) + 2$
+  - $t_{fac}(n) = t_{fac}(n - 2) + 2 + 2$
+  - $t_{fac}(n) = t_{fac}(n - 3) + 2 + 2 + 2$
+  - ...
+  - $t_{fac}(n) = t_{fac}(0) + 2 + 2 + ... + 2$ ($n$ veces $2$)
+  - $t_{fac}(n) = t_{fac}(0) + 2n$
+  - $t_{fac}(n) = 1 + 2n$
+  - Por lo tanto $t_{fac}(n) \in O(n)$.
+
+#### Recurrencias homogéneas vs no homogéneas
+
+- Una recurrencia es homogénea si la ecuación es igual a cero si se pasan todos los términos $t(n)$ a un mismo lado de la igualdad.
+  - Por ejemplo: $t(n) = 2t(n-1) + 3t(n-2)$ es homogénea porque se puede escribir como $t(n) - 2t(n-1) - 3t(n-2) = 0$.
+- Una recurrencia es no homogénea si la ecuación es igual a algo distinto de cero si se pasan todos los términos $t(n)$ a un mismo lado de la igualdad.
+  - Por ejemplo: $t(n) = 2t(n-1) + 1$ es no homogénea porque se puede escribir como $t(n) - 2t(n - 1) = 1$.
+
+#### Recetas para resolver recurrencias
+
+1. $t(n) = a \cdot t(n - b) + f(n)$ (reduce restando)
+   1. $t(n) = \begin{cases} c & \text{si } n \leq b \\ a \cdot t(n - b) + f(n) & \text{si } n > b, \text{con } f(n) \in O(n^k)\end{cases}$
+   2. $t(n) \in \begin{cases} O(n^{k + 1}) & \text{si a = 1} \\ O(a^\text{n div b}) & \text{si a > 1} \end{cases}$
+   3. Vale con todos los $\Theta()$.
+2. $t(n) = a \cdot t(\frac{n}{b}) + f(n)$ (reduce dividiendo)
+   1. $t(n) = \begin{cases} c & \text{si } n \leq b \\ a \cdot t(\frac{n}{b}) + f(n) & \text{si } n > b, \text{con } f(n) \in O(n^k)\end{cases}$
+   2. $t(n) \in \begin{cases} O(n^{log_b{a}}) & \text{si } a > b^k \\ O(n^k \cdot log_b{n}) & \text{si } a = b^k \\ O(n^k) & \text{si } a < b^k \end{cases}$
+   3. Vale con todos los $\Theta()$.
+
+- $a$ es la cantidad de llamadas recursivas.
+- $b$ es una constante.
+- $f(n)$ son operaciones extra a las llamadas recursivas.
+- Estas dos recetas no cubren todos los casos posibles de recurrencias, pero sí los más comunes.
+
 ### 6. Estructuras de datos
 
+- La mayoría son recursivas por naturaleza.
+- En algunos casos sirve el análisis amortizado para estructuras de datos.
+
 ### 7. Diseño + Análisis
+
+#### Concepto
+
+- Mucho más asociado al diseño que al análisis.
+- Las alternativas más comunes son:
+  - Divide and Conquer.
+  - Greedy.
+  - Programación Dinámica.
+  - Algoritmos probabilísticos.
+
+#### Divide and Conquer
+
+- Se relaciona directamente con la recursión y por lo tanto con las recurrencias ya vistas.
+- Básicamente, consiste en dividir el problema en subproblemas más pequeños, resolver esos subproblemas de forma recursiva y luego combinar las soluciones de los subproblemas para obtener la solución del problema original.
+- Ejemplos clásicos:
+  - Merge Sort.
+  - Quick Sort.
+  - Búsqueda binaria.
+
+#### Greedy
+
+- Se aplica principalmente a problemas de optimización, construyendo la solución paso a paso de manera iterativa.
+- En cada paso, se elige una o varias decisiones, dependiendo del estado de avance/solución actual.
+- Las elecciones se hacen basándose en un criterio local que parece ser el mejor en ese momento.
+- Se llama greedy justamente porque el algoritmo "toma lo que parece mejor" en cada paso sin considerar las consecuencias futuras.
+- El ejemplo clásico es el Traveling Salesman Problem:
+  - Se elige la primer ciudad al azar.
+  - Luego se elige la ciudad más cercana a la que se visitó en el paso anterior.
+  - Se repite hasta visitar todas las ciudades.
+  - Es decir, siempre se elige viajar a la ciudad más cercana relativa a la ciudad actual, sin considerar si esa elección es peor en el largo plazo.
+- Los algoritmos de tipo Greedy siempre proveen una solución, pero no siempre es la solución óptima. Son muy sencillos de implementar.
+
+#### Programación Dinámica
+
+- Estrategia bottom-up, es decir, intenta resolver primero los subproblemas más pequeños y sencillos y luego utiliza esas soluciones para construir soluciones a subproblemas más grandes.
+- El ejemplo clásico es el cálculo de la secuencia de Fibonacci:
+  - Se calcula $F(0)$ y $F(1)$ directamente.
+  - Luego se calcula $F(2) = F(0) + F(1)$.
+  - Luego se calcula $F(3) = F(1) + F(2)$.
+  - Y así sucesivamente hasta llegar a $F(n)$.
+  - En este caso los "problemas sencillos" son los primeros dos términos de la secuencia de Fibonacci.
+
+#### Algoritmos probabilísticos
+
+- Asociados a problemas donde se deben tomar decisiones.
+- En este tipo de algoritmos, estas decisiones se toman al azar.
+- Hay tres tipos:
+  - **Númericos**: Usan intervalos de confianza sobre la respuesta.
+  - **Monte Carlo**: Respuesta exacta con alta probabilidad, pero puede ser incorrecta.
+  - **Las Vegas**: Respuesta exacta o sin respuesta.
