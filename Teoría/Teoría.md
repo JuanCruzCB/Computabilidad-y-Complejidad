@@ -1,3 +1,186 @@
+# Lógica Proposicional
+
+## Definición
+
+- Una **proposición** es una afirmación con valor declarativo/informativo que puede ser verdadera (V) o falsa (F), pero no ambas cosas a la vez.
+
+## Ejemplos
+
+- Expresiones que son proposiciones:
+  - Hoy es viernes.
+  - 5 > 25.
+  - 7 es primo.
+- Expresiones que no son proposiciones:
+  - Hola.
+  - ¿Cómo estás?
+  - Quédense quietos.
+  - ¡Buenísimo!
+
+## Tablas de verdad básicas
+
+### Negación $(\lnot)$
+
+| $p$ | $\lnot p$ |
+| --- | --------- |
+| V   | F         |
+| F   | V         |
+
+### Conjunción $(\land)$
+
+| $p$ | $q$ | $p \land q$ |
+| --- | --- | ----------- |
+| V   | V   | V           |
+| V   | F   | F           |
+| F   | V   | F           |
+| F   | F   | F           |
+
+### Disyunción $(\lor)$
+
+| $p$ | $q$ | $p \lor q$ |
+| --- | --- | ---------- |
+| V   | V   | V          |
+| V   | F   | V          |
+| F   | V   | V          |
+| F   | F   | F          |
+
+### Condicional $(\rightarrow)$
+
+| $p$ | $q$ | $p \rightarrow q$ |
+| --- | --- | ----------------- |
+| V   | V   | V                 |
+| V   | F   | F                 |
+| F   | V   | V                 |
+| F   | F   | V                 |
+
+### Bicondicional $(\leftrightarrow)$
+
+| $p$ | $q$ | $p \leftrightarrow q$ |
+| --- | --- | --------------------- |
+| V   | V   | V                     |
+| V   | F   | F                     |
+| F   | V   | F                     |
+| F   | F   | V                     |
+
+## Equivalencia lógica
+
+### Definición
+
+- Dos proposiciones $p$ y $q$ son lógicamente equivalentes si coinciden sus resultados para los mismos valores de verdad.
+- Se denota $p \Leftrightarrow q$.
+
+### Ejemplos
+
+- $p \rightarrow q \nLeftrightarrow q \rightarrow p$
+- $p \rightarrow q \nLeftrightarrow \lnot q \rightarrow \lnot p$
+
+## Tautología
+
+### Definición
+
+- Una tautología es una proposición que es verdadera para todos los valores de verdad de sus variables.
+- Si $p \leftrightarrow q$ es una tautología, entonces $p \Leftrightarrow q$, es decir, $p$ es lógicamente equivalente a $q$.
+
+### Ejemplos
+
+- $(p \rightarrow q) \leftrightarrow (\lnot q \rightarrow \lnot p)$
+
+## Ejemplos de equivalencias conocidas
+
+### Doble negación
+
+- $\lnot \lnot p \Leftrightarrow p$
+
+### Leyes conmutativas
+
+- **De la conjunción**: $(p \land q) \Leftrightarrow (q \land p)$
+- **De la disyunción**: $(p \lor q) \Leftrightarrow (q \lor p)$
+
+### Leyes asociativas
+
+- **De la conjunción**: $((p \land q) \land r) \Leftrightarrow (p \land (q \land r)) \Leftrightarrow (p \land q \land r)$
+- **De la disyunción**: $((p \lor q) \lor r) \Leftrightarrow (p \lor (q \lor r)) \Leftrightarrow (p \lor q \lor r)$
+
+### Leyes distributivas
+
+- **De la conjunción**: $(p \lor (q \land r)) \Leftrightarrow ((p \lor q) \land (p \lor r))$
+- **De la disyunción**: $(p \land (q \lor r)) \Leftrightarrow ((p \land q) \lor (p \land r))$
+
+### Leyes de idempotencia
+
+- $p \land p \Leftrightarrow p$
+- $p \lor p \Leftrightarrow p$
+
+### Leyes de De Morgan
+
+- $\lnot (A \land B) \Leftrightarrow (\lnot A \lor \lnot B)$
+  - Se generaliza a n conjunciones: $\lnot (A_1 \land A_2 \land ... \land A_n) \Leftrightarrow (\lnot A_1 \lor \lnot A_2 \lor ... \lor \lnot A_n)$
+- $\lnot (A \lor B) \Leftrightarrow (\lnot A \land \lnot B)$
+  - Se generaliza a n disyunciones: $\lnot (A_1 \lor A_2 \lor ... \lor A_n) \Leftrightarrow (\lnot A_1 \land \lnot A_2 \land ... \land \lnot A_n)$
+
+### Contrapositiva
+
+- $(p \rightarrow q) \Leftrightarrow (\lnot q \rightarrow \lnot p)$
+
+### Condicional
+
+- $(p \rightarrow q) \Leftrightarrow \lnot p \lor q$
+- $(p \rightarrow q) \Leftrightarrow \lnot (p \land \lnot q)$
+
+### Bicondicional
+
+- $(p \leftrightarrow q) \Leftrightarrow ((p \rightarrow q) \land (q \rightarrow p))$
+
+### Adición
+
+- $p \Rightarrow (p \lor q)$
+
+### Simplificación
+
+- $(p \land q) \Rightarrow p$
+
+### Modus Ponens
+
+- $p \land (p \rightarrow q) \Rightarrow q$
+
+### Modus Tollens
+
+- $\lnot q \land (p \rightarrow q) \Rightarrow \lnot p$
+
+### Transitividad del condicional
+
+- $(p \rightarrow q) \land (q \rightarrow r) \Rightarrow (p \rightarrow r)$
+
+### Transitividad del bicondicional
+
+- $(p \leftrightarrow q) \land (q \leftrightarrow r) \Rightarrow (p \leftrightarrow r)$
+
+---
+
+# Esquemas Proposicionales
+
+## Definición
+
+- Un esquema proposicional en la indeterminada $x$ es una expresión que contiene a $x$ y posee la propiedad: "Existe por lo menos un nombre tal que la expresión obtenida al reemplazar $x$ por dicho nombre es una proposición válida".
+- Las indeterminadas suelen llamarse variables o incógnitas.
+- Ejemplo: "$x$ es blanca" es un esquema, porque si reemplazamos $x$ por "la flor" obtenemos la proposición "La flor es blanca".
+- Normalmente se usan símbolos como $P(x)$, $Q(x)$, $F(x)$ para denotar esquemas de incógnita $x$.
+
+## Operadores universal y existencial
+
+- Si se tiene un esquema $P(n)$ puede obtenerse a partir de él una proposición mediante el uso de los operadores:
+  - **Universal**: $(\forall n) : (P(n))$
+    - La proposición resultante es verdadera si todos los valores posibles de $n$ hacen verdadera a $P(n)$. Falsa en caso contrario.
+  - **Existencial**: $(\exists n) : (P(n))$
+    - La proposición resultante es verdadera si al menos un valor posible de $n$ hace verdadera a $P(n)$. Falsa en caso contrario.
+- Alcance: El alcance de un cuantificador es la parte de la expresión en la cual el cuantificador ejerce su efecto.
+  - Ejemplo: En la expresión $(\forall n) : (P(n) \lor Q(n))$, el alcance del cuantificador es toda la expresión $P(n) \lor Q(n)$.
+  - En la expresión $(\exists n) : (P(n)) \land Q(n)$, el alcance del cuantificador es solo $P(n)$.
+- Equivalencias:
+  - $\lnot (\forall n) : (P(n)) \Leftrightarrow (\exists n) : (\lnot P(n))$
+  - $\lnot (\exists n) : (P(n)) \Leftrightarrow (\forall n) : (\lnot P(n))$
+
+---
+
 # Teoría de Conjuntos
 
 ## Definición
@@ -171,6 +354,76 @@
    2. $\overline{A \cap B} = \overline{A} \cup \overline{B}$
 5. **Doble complemento**:
    1. $\overline{\overline{A}} = A$
+
+---
+
+# Cardinalidad
+
+## Definición para conjuntos finitos
+
+- Sea $A$ un conjunto finito.
+- La cardinalidad de $A$, denotada como $|A|$, es el número de elementos que tiene el conjunto $A$.
+- Ejemplos:
+  - Si $A = \lbrace 1, 2, 3, 4 \rbrace$, entonces $|A| = 4$.
+  - Si $B = \lbrace a, b, c \rbrace$, entonces $|B| = 3$.
+- Siempre se cumple que $|\mathcal{P}(A)| = 2^{|A|}$.
+  - Ejemplo: Si $A = \lbrace 1, 2 \rbrace$, entonces $|\mathcal{P}(A)| = 2^2 = 4$. Esto es correcto ya que $\mathcal{P}(A) = \lbrace \emptyset, \lbrace 1 \rbrace, \lbrace 2 \rbrace, \lbrace 1, 2 \rbrace \rbrace$ tiene 4 elementos.
+  - Se demuestra vía inducción.
+
+## Definición para conjuntos infinitos
+
+### Concepto
+
+- La cardinalidad de un conjunto finito es un número, pero la cardinalidad de un conjunto infinito no lo es, sino que es una **propiedad** del conjunto llamada número cardinal. Éste nos permite hacer comparaciones de tamaño entre conjuntos infinitos.
+- Para entender este concepto, se suele usar el principio del Palomar:
+  - Si se tienen muchos objetos y varios cajones, pero menos cajones que objetos, entonces al menos un cajón debe contener más de un objeto.
+  - Por ejemplo, si se tienen 10 objetos y 9 cajones, al menos un cajón debe contener más de un objeto.
+  - La utilidad de este principio es que si un conjunto es más grande que otro, no se puede asignar cada elemento un lugar distinto en el más chico. En cierto punto, dos elementos tendrán que compartir lugar. Sirve para ver rápidamente que ciertas correspondencias entre conjuntos no pueden nunca existir.
+
+### Menor o igual
+
+- $A$ tiene cardinalidad menor o igual que $B$ (denotado $|A| \leq |B|$) si y solo si se puede establecer una correspondencia uno a uno de cada elemento de $A$ con un elemento distinto de $B$. Formalmente: $|A| \leq |B| \leftrightarrow (\exists f) : (\text{f es una función inyectiva tal que } f: A \rightarrow B)$.
+
+### Menor estricto
+
+- $A$ tiene cardinalidad menor que $B$ (denotado $|A| < |B|$) si se cumplen simultáneamente $|A| \leq |B|$ y $|A| \neq |B|$. Formalmente: $|A| < |B| \leftrightarrow |A| \leq |B| \land |A| \neq |B|$. Esto es equivalente a decir que existe una función inyectiva de $A$ en $B$, pero no existe una función biyectiva entre $A$ y $B$. Formalmente: $|A| < |B| \leftrightarrow (\exists f) : (\text{f es una función inyectiva tal que } f: A \rightarrow B) \land (\nexists g) : (\text{g es una función biyectiva tal que } g: A \rightarrow B)$.
+
+### Igualdad
+
+- $A$ tiene cardinalidad igual que $B$ si se cumplen simultáneamente $|A| \leq |B|$ y $|B| \leq |A|$. Formalmente: $|A| = |B| \leftrightarrow |A| \leq |B| \land |B| \leq |A|$. Esto es equivalente a decir que existe una correspondencia biunívoca entre los elementos de $A$ y los elementos de $B$. Formalmente: $|A| = |B| \leftrightarrow (\exists f) : (\text{f es una función biyectiva tal que } f: A \rightarrow B)$.
+
+### Utilidad de la función identidad
+
+- Cuando se quiere demostrar que $|A| \leq |B|$ y se sabe que $A \subseteq B$, se puede usar la función identidad como función inyectiva de $A$ en $B$. Lo que hace esta función es asignar a cada elemento de $A$ el mismo elemento en $B$.
+
+### Ejemplos
+
+- $\mathbb{N}$ (números naturales) y $\mathbb{N^+}$ (números naturales sin el cero) tienen la misma cardinalidad.
+  1. Se demuestra que $|\mathbb{N^+}| \leq |\mathbb{N}|$ usando la función identidad: $f: \mathbb{N^+} \rightarrow \mathbb{N}$ tal que $f(n) = n$.
+  2. Se demuestra que $|\mathbb{N}| \leq |\mathbb{N^+}|$ usando la función $g: \mathbb{N} \rightarrow \mathbb{N^+}$ tal que $g(n) = n + 1$.
+  3. Por lo tanto queda demostrado que $|\mathbb{N}| = |\mathbb{N^+}|$.
+- $\mathbb{N}$ (números naturales) y $P$ (números naturales pares) tienen la misma cardinalidad.
+  1. Se demuestra que $|P| \leq |\mathbb{N}|$ usando la función identidad: $f: P \rightarrow \mathbb{N}$ tal que $f(n) = n$.
+  2. Se demuestra que $|\mathbb{N}| \leq |P|$ usando la función $g: \mathbb{N} \rightarrow P$ tal que $g(n) = 2n$.
+  3. Por lo tanto queda demostrado que $|\mathbb{N}| = |P|$.
+- $\mathbb{N}$ (números naturales) y $\mathbb{N \times N}$ (pares ordenados de números naturales) tienen la misma cardinalidad.
+  1. Se demuestra que $|\mathbb{N \times N}| \leq |\mathbb{N}|$ usando una función que genere un "ordenamiento" de los pares ordenados de números naturales. Por ejemplo, se puede usar la función $f: \mathbb{N \times N} \rightarrow \mathbb{N}$ tal que $f(a, b) = \frac{(a + b)(a + b + 1)}{2} + a$
+  2. Se demuestra que $|\mathbb{N}| \leq |\mathbb{N \times N}|$ usando la función identidad $g: \mathbb{N} \rightarrow \mathbb{N \times N}$ tal que $g(n) = (n, n)$.
+  3. Por lo tanto queda demostrado que $|\mathbb{N}| = |\mathbb{N \times N}|$.
+
+## Conjuntos infinitos contables vs incontables
+
+### Contables
+
+- Un conjunto infinito es **contable** si tiene la misma cardinalidad que $\mathbb{N}$ (números naturales).
+- Para saber si un conjunto es contable alcanza con probar que $|A| \leq |\mathbb{N}|$ ya que si $A$ es infinito se sabe que $|\mathbb{N}| \leq |A|$. Por lo tanto: Si $|A| \leq |\mathbb{N}| \Rightarrow \text{A es contable}$
+
+### Incontables
+
+- Un conjunto infinito es **incontable** si no tiene la misma cardinalidad que $\mathbb{N}$ (números naturales).
+- Para saber si un conjunto es incontable alcanza con probar que $|\mathbb{N}| < |A|$. Por lo tanto: Si $|\mathbb{N}| < |A| \Rightarrow \text{A es incontable}$
+- **El conjunto de partes de cualquier conjunto infinito contable es incontable**.
+  - Por ejemplo, el conjunto de partes de los números naturales, $\mathcal{P}(\mathbb{N})$, es incontable, ya que $|\mathbb{N}| < |\mathcal{P}(\mathbb{N})|$.
 
 ---
 
