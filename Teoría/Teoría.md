@@ -132,27 +132,27 @@
 
 ### Adición
 
-- $p \Rightarrow (p \lor q)$
+- $p \implies (p \lor q)$
 
 ### Simplificación
 
-- $(p \land q) \Rightarrow p$
+- $(p \land q) \implies p$
 
 ### Modus Ponens
 
-- $p \land (p \rightarrow q) \Rightarrow q$
+- $p \land (p \rightarrow q) \implies q$
 
 ### Modus Tollens
 
-- $\lnot q \land (p \rightarrow q) \Rightarrow \lnot p$
+- $\lnot q \land (p \rightarrow q) \implies \lnot p$
 
 ### Transitividad del condicional
 
-- $(p \rightarrow q) \land (q \rightarrow r) \Rightarrow (p \rightarrow r)$
+- $(p \rightarrow q) \land (q \rightarrow r) \implies (p \rightarrow r)$
 
 ### Transitividad del bicondicional
 
-- $(p \leftrightarrow q) \land (q \leftrightarrow r) \Rightarrow (p \leftrightarrow r)$
+- $(p \leftrightarrow q) \land (q \leftrightarrow r) \implies (p \leftrightarrow r)$
 
 ---
 
@@ -416,12 +416,12 @@
 ### Contables
 
 - Un conjunto infinito es **contable** si tiene la misma cardinalidad que $\mathbb{N}$ (números naturales).
-- Para saber si un conjunto es contable alcanza con probar que $|A| \leq |\mathbb{N}|$ ya que si $A$ es infinito se sabe que $|\mathbb{N}| \leq |A|$. Por lo tanto: Si $|A| \leq |\mathbb{N}| \Rightarrow \text{A es contable}$
+- Para saber si un conjunto es contable alcanza con probar que $|A| \leq |\mathbb{N}|$ ya que si $A$ es infinito se sabe que $|\mathbb{N}| \leq |A|$. Por lo tanto: Si $|A| \leq |\mathbb{N}| \implies \text{A es contable}$
 
 ### Incontables
 
 - Un conjunto infinito es **incontable** si no tiene la misma cardinalidad que $\mathbb{N}$ (números naturales).
-- Para saber si un conjunto es incontable alcanza con probar que $|\mathbb{N}| < |A|$. Por lo tanto: Si $|\mathbb{N}| < |A| \Rightarrow \text{A es incontable}$
+- Para saber si un conjunto es incontable alcanza con probar que $|\mathbb{N}| < |A|$. Por lo tanto: Si $|\mathbb{N}| < |A| \implies \text{A es incontable}$
 - **El conjunto de partes de cualquier conjunto infinito contable es incontable**.
   - Por ejemplo, el conjunto de partes de los números naturales, $\mathcal{P}(\mathbb{N})$, es incontable, ya que $|\mathbb{N}| < |\mathcal{P}(\mathbb{N})|$.
 
@@ -1162,9 +1162,9 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 - Sea $L$ un lenguaje.
 - Decimos que $L \in \text{CO-NP}$ si y solo si el complemento de $L$ pertenece a $NP$.
 - Es decir, $L \in \text{CO-NP} \leftrightarrow \overline{L} \in NP$
-- **Teorema 1**: $L \in P \Rightarrow L \in (NP \cap \text{CO-NP})$
-  - $L \in P \Rightarrow L \in NP$
-  - $L \in P \Rightarrow \overline{L} \in P \Rightarrow \overline{L} \in NP \Rightarrow L \in \text{CO-NP}$
+- **Teorema 1**: $L \in P \implies L \in (NP \cap \text{CO-NP})$
+  - $L \in P \implies L \in NP$
+  - $L \in P \implies \overline{L} \in P \implies \overline{L} \in NP \implies L \in \text{CO-NP}$
 - Si un lenguaje está en $NP$, no se puede saber si su complemento también está en $NP$.
 
 ## Reducción Polinomial
