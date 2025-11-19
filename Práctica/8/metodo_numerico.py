@@ -1,6 +1,6 @@
-# Cantidad de microsegundos que hay en un segundo
-import math
+import math  # noqa: INP001
 
+# Cantidad de microsegundos que hay en un segundo
 UN_SEGUNDO = 10**6
 
 datos = [
@@ -84,7 +84,7 @@ def convertir_a_notacion_cientifica(numero: float) -> str:
     return f"{coeficiente:.3f} * 10^{exponente}"
 
 
-def main():
+def main() -> None:  # noqa: D103
     for dato in datos:
         n = encontrar_n_entre_rangos(
             dato["limite_inferior"],
@@ -101,7 +101,7 @@ def main():
 
         print(f"Valor de n para {dato['cant_tiempo_legible']}:")
         print(
-            f"    Está entre {limite_inferior_cientifico} y {limite_superior_cientifico}",
+            f"    Está entre {limite_inferior_cientifico} y {limite_superior_cientifico}",  # noqa: E501
         )
         print(f"    Y su valor aproximado es: {n_cientifico}\n")
 
