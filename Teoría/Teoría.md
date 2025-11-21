@@ -324,21 +324,27 @@
   - El producto cartesiano de A y B es el conjunto de todos los pares ordenados (x, y) donde x pertenece a A, y pertenece a B.
 - **Definición formal**:
   - $A \times B = \lbrace (x, y) \mid x \in A \land y \in B \rbrace$
-- **Ejemplo**:
+- **Nota 1**: El producto cartesiano se puede generalizar a más de dos conjuntos: $A_1 \times A_2 \times ... \times A_n = \lbrace (x_1, x_2, ..., x_n) \mid x_1 \in A_1 \land x_2 \in A_2 \land ... \land x_n \in A_n \rbrace$
+- **Nota 2**: El producto cartesiano de un conjunto consigo mismo n veces se denota como $A^n = A \times A \times ... \times A$ (n veces).
+- **Ejemplos**:
   - Si $A = \lbrace 1, 2 \rbrace$ y $B = \lbrace 3, 4 \rbrace$ entonces $A \times B = \lbrace (1, 3), (1, 4), (2, 3), (2, 4) \rbrace$.
+  - $\lbrace 1 \rbrace^5 = \lbrace 1 \rbrace \times \lbrace 1 \rbrace \times \lbrace 1 \rbrace \times \lbrace 1 \rbrace \times \lbrace 1 \rbrace = \lbrace (1, 1, 1, 1, 1) \rbrace$
 
-### Conjunto potencia
+### Conjunto de partes
 
 - **Notación**: $\mathcal{P}(A)$.
 - **Definición intuitiva**:
-  - El conjunto potencia de A es el conjunto de todos los subconjuntos de A, incluyendo el conjunto vacío y A mismo.
+  - El conjunto de partes de A es el conjunto de todos los subconjuntos de A, incluyendo el conjunto vacío y A mismo.
 - **Definición formal**:
   - $\mathcal{P}(A) = \lbrace B \mid B \subseteq A \rbrace$
 - **Nota 1**: Si A tiene n elementos, entonces $\mathcal{P}(A)$ tiene $2^n$ elementos.
 - **Nota 2**: $(\forall A) \emptyset \in \mathcal{P}(A)$ y $A \in \mathcal{P}(A)$.
 - **Nota 3**: Si $A \subseteq B$ entonces $\mathcal{P}(A) \subseteq \mathcal{P}(B)$.
-- **Ejemplo**:
+- **Ejemplos**:
   - Si $A = \lbrace 1, 2 \rbrace$, entonces $\mathcal{P}(A) = \lbrace \emptyset, \lbrace 1 \rbrace, \lbrace 2 \rbrace, \lbrace 1, 2 \rbrace \rbrace$.
+  - $\mathcal{P}(\emptyset) = \lbrace \emptyset \rbrace$
+  - $\mathcal{P}(\lbrace \emptyset \rbrace) = \lbrace \emptyset, \lbrace \emptyset \rbrace \rbrace$
+  - $\mathcal{P}(\lbrace \emptyset, \lbrace \emptyset \rbrace \rbrace) = \lbrace \emptyset, \lbrace \emptyset \rbrace, \lbrace \lbrace \emptyset \rbrace \rbrace, \lbrace \emptyset, \lbrace \emptyset \rbrace \rbrace \rbrace$
 
 ### Equivalencias de las operaciones
 
@@ -419,6 +425,7 @@
 
 - Un conjunto infinito es **contable** si tiene la misma cardinalidad que $\mathbb{N}$ (números naturales).
 - Para saber si un conjunto es contable alcanza con probar que $|A| \leq |\mathbb{N}|$ ya que si $A$ es infinito se sabe que $|\mathbb{N}| \leq |A|$. Por lo tanto: Si $|A| \leq |\mathbb{N}| \implies \text{A es contable}$
+- **Propiedad**: La unión de dos conjuntos infinitos contables es un conjunto infinito contable.
 
 ### Incontables
 
@@ -426,6 +433,12 @@
 - Para saber si un conjunto es incontable alcanza con probar que $|\mathbb{N}| < |A|$. Por lo tanto: Si $|\mathbb{N}| < |A| \implies \text{A es incontable}$
 - **El conjunto de partes de cualquier conjunto infinito contable es incontable**.
   - Por ejemplo, el conjunto de partes de los números naturales, $\mathcal{P}(\mathbb{N})$, es incontable, ya que $|\mathbb{N}| < |\mathcal{P}(\mathbb{N})|$.
+
+## Clasificación de cardinalidades de conjuntos infinitos típicos
+
+- $\mathbb{N} = \mathbb{Q} = \mathbb{Z} < \mathbb{R} = \mathcal{P}(\mathbb{N})$
+- Es decir, los números naturales, enteros y racionales son conjuntos infinitos **contables**, mientras que los números reales y el conjunto de partes de los números naturales son conjuntos infinitos **incontables**.
+- Además existen muchos otros ejemplos, como que el conjunto de los numeros impares tiene la misma cardinalidad que los números naturales, y lo mismo con los números pares y los números naturales.
 
 ---
 
