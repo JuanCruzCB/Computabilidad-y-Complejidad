@@ -38,6 +38,123 @@
 
 <h1 align="center">2023 - 1° fecha</h1>
 
+## 1) Marcar sólo las afirmaciones verdaderas
+
+### a) La cardinalidad de $\mathbb{N}$ es igual a la cardinalidad de los pares
+
+### b) La cardinalidad de $\mathbb{N}$ es igual a la cardinalidad de los racionales
+
+### c) La cardinalidad de $\mathbb{N}$ es igual a la cardinalidad de los reales
+
+### d) Todas las anteriores son falsas
+
+## 2) Marcar sólo las afirmaciones verdaderas
+
+### a) La reducción es reflexiva
+
+### b) La reducción es simétrica
+
+### c) La función de reducción entre dos lenguajes debe ser computada por una MT en tiempo polinomial
+
+### d) Todas las anteriores son falsas
+
+## 3) Marcar sólo las afirmaciones verdaderas acerca de los lenguajes:
+
+- $L_1 = \emptyset$
+- $L_2 = \lbrace \lambda \rbrace$
+- $L_3 = \Sigma^* \cup L_1$
+- $L_4 = \Sigma^* \cup L_2$
+- $L_5 = \Sigma^*$
+
+### a) $L_1$ es igual a $L_2$
+
+### b) La cardinalidad de $L_1$ es igual a la cardinalidad de $L_2$
+
+### c) Una MT que acepte $L_3$ también aceptará $L_4$ y $L_5$
+
+### d) La cardinalidad de ($L_5 - L_1$) es igual a la cardinalidad de ($L_5 - L_2$)
+
+### e) Todas las anteriores son falsas
+
+## 4) Marcar sólo las afirmaciones verdaderas: en qué casos puede existir la reducción polinomial $L_1 \space \alpha_p \space L_2$?
+
+- a)
+  - $L_1 = \lbrace 0^n1 \mid n > 0 \rbrace$
+  - $L_2 = \emptyset$
+- b)
+  - $L_1 = \Sigma^*$
+  - $L_2 = \lbrace 0^n1 \mid n > 0 \rbrace$
+- c)
+  - $L_1 = L_D$
+  - $L_2 = \lbrace 0^n1 \mid n > 0 \rbrace$
+- d)
+  - $L_1 = \lbrace 0^n1 \mid n > 0 \rbrace$
+  - $L_2 = L_D$
+
+$L_D$ es el Lenguaje Diagonal definido en la teoría.
+
+### a) En (a) puede existir la reducción polinomial de $L_1$ a $L_2$
+
+### b) En (b) puede existir la reducción polinomial de $L_1$ a $L_2$
+
+### c) En (c) puede existir la reducción polinomial de $L_1$ a $L_2$
+
+### d) En (d) puede existir la reducción polinomial de $L_1$ a $L_2$
+
+### e) Todas las anteriores son falsas
+
+## 5) Marcar sólo las afirmaciones verdaderas
+
+### a) $\emptyset \in RE$
+
+### b) Si $L$ es un lenguaje formado por una sola palabra, entonces $L \in R$
+
+### c) Si $L$ es un lenguaje finito, entonces $L \in R$
+
+### d) Si $L$ es un lenguaje infinito contable, entonces $L \in RE$
+
+### e) Todas las anteriores son falsas
+
+## 6) Sea $M$ la MT definida a continuación, marcar sólo las afirmaciones verdaderas (Todas las $\delta$ que faltan conducen a $q_R$)
+
+- $Q = \lbrace q_0, q_1, \rbrace$
+- $\Sigma = \lbrace 0, 1 \rbrace$
+- $\Gamma = \lbrace 0, 1, B \rbrace$
+- $\delta(q_0, 0) = (q_1, B, D)$
+- $\delta(q_1, B) = (q_A, B, D)$
+- $\delta(q_1, 0) = (q_A, 0, D)$
+- $\delta(q_1, 1) = (q_A, 1, D)$
+
+### a) $L(M) = \Sigma^*$
+
+### b) $L(M) = \lbrace 0w \mid w \in \Sigma^* \rbrace$
+
+### c) $L(M) = \lbrace 0, 00, 01 \rbrace$
+
+### d) $L(M) = \lbrace \lambda, 0, 00, 01 \rbrace$
+
+### e) Ninguno de los anteriores
+
+## 7) Marcar sólo las afirmaciones verdaderas acerca del $t(n)$ del siguiente algoritmo:
+
+```
+p = 0
+for i = 1  to n do
+    for j = 1 to n^2 do
+        for k = 1 to n^3 do
+            p = p + 1
+```
+
+### A) $t(n)$ es de $O(n)$
+
+### B) $t(n)$ es de $O(n^3)$
+
+### C) $t(n)$ es de $O(n^6)$
+
+### D) $t(n)$ es de $O(n)$ en el mejor caso y $O(n^6)$ en el peor caso
+
+### E) Todas las afirmaciones anteriores son falsas
+
 ---
 
 <h1 align="center">2024 - 1° fecha</h1>
