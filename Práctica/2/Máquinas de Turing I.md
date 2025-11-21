@@ -2,7 +2,7 @@
 
 ## 1. Construir máquinas de Turing que:
 
-### a. Haga un corrimiento a derecha de la cadena binaria en la cinta, marcando con un símbolo especial $\#$ la celda que corresponde al primer símbolo desplazado. $\Gamma = \lbrace B, \#, 0, 1 \rbrace$.
+### a. Haga un corrimiento a derecha de la cadena binaria en la cinta, marcando con un símbolo especial \# la celda que corresponde al primer símbolo desplazado. $\Gamma = \lbrace B, numeral, 0, 1 \rbrace$.
 
 Si tenemos por ejemplo la cadena $w = 0110$ en la cinta, luego de aplicar el corrimiento a derecha, la cinta debería quedar así: $...\# 0 1 1 0...$
 
@@ -464,23 +464,38 @@ $L_1 \cap L_2 = \emptyset$
 
 $L_1 \cap L_2 = \lbrace c^n \mid n > 10 \rbrace$
 
-### d. $L_1 = \lbrace 1^n 2^m \mid n , m \ge 0, \text{ n par, m impar} \rbrace$ con $L_2 = \lbrace  2^n \mid n \ge 0 \rbrace$
+### d. $L_1 = \lbrace 1^{2n} 2^{2m + 1} \mid n , m \ge 0 \rbrace$ con $L_2 = \lbrace  2^n \mid n \ge 0 \rbrace$
 
-$\dots$
+- $L_1 = \lbrace 2, 222, 22222, \dots, 112, 11112, 1111112, \dots, 11222, 1122222, \dots \rbrace$
+- $L_2 = \lbrace \lambda, 2, 22, 222, 2222, 22222, \dots \rbrace$
+- $L_1 \cap L_2 = \lbrace \lambda, 2, 222, 22222, \dots \rbrace = \lbrace 2^{2n + 1} \mid n \ge 0 \rbrace$
 
-### e. $L_1 = \lbrace 1^n 2^m \mid n , m \ge 0, \text{ n par, m impar} \rbrace$ con $L_2 = \lbrace  1^n \mid n \ge 0 \rbrace$
+### e. $L_1 = \lbrace 1^{2n} 2^{2m + 1} \mid n , m \ge 0 \rbrace$ con $L_2 = \lbrace  1^n \mid n \ge 0 \rbrace$
 
-$\dots$
+- $L_1 = \lbrace 2, 222, 22222, \dots, 112, 11112, 1111112, \dots, 11222, 1122222, \dots \rbrace$
+- $L_2 = \lbrace \lambda, 1, 11, 111, 1111, 11111, \dots \rbrace$
+- $L_1 \cap L_2 = \emptyset$
 
 ## 12. Encontrar si es posible un lenguaje $L_1$ que cumpla:
 
 ### a. $L_1 \cap \lbrace 1^k2^m3^n \mid \text{m = k + n + 1 y n, k} \ge 0 \rbrace = \lbrace 1^n2^{n+1} \mid n \ge 0 \rbrace$
 
-$\dots$
+- Llamamos $L_X = \lbrace 1^k2^m3^n \mid \text{m = k + n + 1 y n, k} \ge 0 \rbrace$
+- Llamamos $L_Y = \lbrace 1^n2^{n+1} \mid n \ge 0 \rbrace$
+- $L_X = \lbrace 2, 12223, 112222233, 1112222222333 \dots 2, 122, 11222, 1112222, 111122222, \dots \rbrace$
+- $L_Y = \lbrace 2, 122, 11222, 1112222, \dots \rbrace$
+- Se necesita $L_1$ tal que $L_1 \cap L_X = L_Y$
+- Por lo tanto $L_1 = \lbrace 1^n2^{n+1} \mid n \ge 0\rbrace$
 
 ### b. $L_1 \cap \lbrace 1^n2^m \mid n \ne m \text{ y } n, m \ge 0 \rbrace = \lbrace 1^n2^n \mid n > 0 \rbrace$
 
-$\dots$
+- Llamamos $L_X = \lbrace 1^n2^m \mid n \ne m \text{ y } n, m \ge 0 \rbrace$
+- Llamamos $L_Y = \lbrace 1^n2^n \mid n > 0 \rbrace$
+- (0 y 1; 1 y 0; 2 y 1; 1 y 2, 3 y 1, 1 y 3)
+- $L_X = \lbrace 2, 1, 112, 122, \dots \rbrace$
+- $L_Y = \lbrace 12, 1122, 111222, 11112222, \dots \rbrace$
+- Se necesita $L_1$ tal que $L_1 \cap L_X = L_Y$
+- No es posible ya que $L_X \nsubseteq L_Y$
 
 ## 13. Conteste las siguientes preguntas sobre Máquinas de Turing
 
