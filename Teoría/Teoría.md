@@ -186,9 +186,10 @@
 ## Definición
 
 - **Notación**:
-  - $A = \lbrace...\rbrace$
+  - $A = \lbrace \dots \rbrace$
   - $x \in A$ (x pertenece al conjunto A)
   - $x \notin A$ (x no pertenece al conjunto A)
+    - Es equivalente a $\lnot (x \in A)$
 - **Conjunto**:
   - Colección de objetos bien definidos llamados elementos.
   - Se denotan comunmente con letras mayúsculas (A, B, C, etc) y se definen con llaves.
@@ -250,7 +251,7 @@
     - $(\forall A) (A \subseteq A)$
   - La inclusión es transitiva:
     - Si $A \subseteq B$ y $B \subseteq C$ entonces $A \subseteq C$.
-- **Ejemplo**:
+- **Ejemplos**:
   - Si $A = \lbrace 1, 2 \rbrace$ y $B = \lbrace 1, 2, 3 \rbrace$ entonces $A \subseteq B$.
   - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 1, 2, 3 \rbrace$ entonces $A \subseteq B$.
 
@@ -286,7 +287,7 @@
   - Si hay repetidos entre A y B, se cuentan solo una vez.
 - **Definición formal**:
   - $A \cup B = \lbrace x \mid x \in A \lor x \in B \rbrace$
-- **Ejemplo**:
+- **Ejemplos**:
   - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 1, 2, 4 \rbrace$ entonces $A \cup B = \lbrace 1, 2, 3, 4 \rbrace$.
   - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 4, 5, 6 \rbrace$ entonces $A \cup B = \lbrace 1, 2, 3, 4, 5, 6 \rbrace$.
 
@@ -295,12 +296,13 @@
 - **Notación**: $A - B$.
 - **Definición intuitiva**:
   - La diferencia de A y B es el conjunto de elementos que pertenecen a A pero no pertenecen a B.
+  - Algorítmicamente, para obtener $A - B$ se recorren todos los elementos de $A$ uno por uno y se chequea si pertenecen a $B$. Si no pertenecen, se agregan al conjunto resultado.
 - **Definición formal**:
   - $A - B = \lbrace x \mid x \in A \land x \notin B \rbrace$
 - **Propiedades**:
   - Si $A \cap B = \emptyset$ entonces $A - B = A$.
   - $A - B \neq B - A$ en general.
-- **Ejemplo**:
+- **Ejemplos**:
   - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 1, 2, 4 \rbrace$ entonces $A - B = \lbrace 3 \rbrace$.
   - Si $A = \lbrace 1, 2, 3 \rbrace$ y $B = \lbrace 4, 5, 6 \rbrace$ entonces $A - B = \lbrace 1, 2, 3 \rbrace$.
 
@@ -432,41 +434,45 @@
 ## Concepto
 
 - Modelo matemático de un dispositivo de computación.
-- Consiste en una cinta infinita dividida en infinitas celdas, un cabezal que se mueve sobre la cinta y puede leer y escribir símbolos en estas celdas.
+- Se compone de:
+  - Una cinta infinita que se divide en infinitas celdas.
+  - Un cabezal que se mueve sobre la cinta y que puede leer y escribir símbolos en cada celda.
 - En cada instante de tiempo, la máquina está en un estado determinado de un conjunto finito de estados.
 - La máquina puede cambiar de estado, escribir un símbolo en la celda actual y mover el cabezal a la izquierda o a la derecha, dependiendo del símbolo que está leyendo y del estado en el que se encuentra.
+- Existe un símbolo especial llamado blanco y denotado con el símbolo "B", que representa una celda vacía.
 
 ## Configuración inicial
 
-- Siempre inicia en el estado $q_0$.
+- La máquina siempre inicia en el estado $q_0$.
 - Si hay una cadena de entrada, esta se encuentra escrita en la cinta, comenzando desde la celda más a la izquierda. Además, esta cadena está delimitada por infinitos símbolos blancos (B) a la izquierda y a la derecha (principio y fin de la cadena en cuestión). No hay ningún blanco entre los símbolos de la cadena.
-  - Si no, la cinta está vacía (solo contiene el símbolo blanco, que denotamos como "B").
+- Si no hay cadena de entrada, la cinta contiene solo símbolos blancos (B) en todas sus celdas.
 
 ## Comportamiento
 
-- Está definido por una función de transición matemática que indica, según el estado actual y el símbolo que está leyendo el cabezal:
-  - El nuevo estado en el que se encontrará.
+- Está definido por una función matemática de transición que indica, según el estado actual y el símbolo que está leyendo el cabezal:
+  - El nuevo estado al que la máquina transicionará.
   - El símbolo que escribirá en la celda actual (puede ser el mismo que estaba leyendo).
   - La dirección en la que moverá el cabezal (izquierda o derecha).
 - Si la función de transición no está definida para el estado actual y el símbolo que está leyendo, la máquina se detiene.
-- El resultado del cómputo es la cadena que queda escrita en la cinta cuando la máquina se detiene.
+- **El resultado del cómputo de la MT es la cadena que queda escrita en la cinta cuando la máquina se detiene**.
 
 ## MT General
 
 - **Notación**: $M = \langle Q, Σ, Γ, δ, q_0 \rangle$
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
-  - $Γ$: Alfabeto de la cinta $(Σ \subseteq Γ$, $B \in (Γ - Σ))$.
+  - $Γ$: Alfabeto de la cinta $(Σ \subset Γ$, $B \in (Γ - Σ))$.
   - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \times Γ \times \lbrace D, I \rbrace$).
   - $q_0$: Estado inicial ($q_0 \in Q$).
-- Nota: $Q \cap Γ = \emptyset$
+- **Nota 1**: $Q \cap Γ = \emptyset$, es decir, ningun estado puede tener el mismo nombre que un símbolo del alfabeto de la cinta.
+- **Nota 2:** $\Sigma$ nunca puede ser igual a $\Gamma$, ya que $\Gamma$ siempre tiene el símbolo de blanco B pero $\Sigma$ nunca lo tiene.
 
 ## MT Alternativa
 
 - **Notación**: $M = \langle Q, Σ, Γ, δ, q_0, q_d \rangle$
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
-  - $Γ$: Alfabeto de la cinta $(Σ \subseteq Γ$, $B \in (Γ - Σ))$.
+  - $Γ$: Alfabeto de la cinta $(Σ \subset Γ$, $B \in (Γ - Σ))$.
   - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \cup \lbrace q_d \rbrace \times Γ \times \lbrace D, I \rbrace$).
   - $q_0$: Estado inicial ($q_0 \in Q$).
   - $q_d$: Estado de detención ($q_d \notin Q$).
@@ -477,7 +483,7 @@
 - **Notación**: $M = \langle Q, Σ, Γ, δ, q_0, q_A, q_R \rangle$
   - $Q$: Conjunto finito de estados.
   - $Σ$: Alfabeto de la entrada.
-  - $Γ$: Alfabeto de la cinta ($Σ \subseteq Γ$).
+  - $Γ$: Alfabeto de la cinta ($Σ \subset Γ$).
   - $δ$: Función de transición ($δ: Q \times Γ \rightarrow Q \cup \lbrace q_A, q_R \rbrace \times Γ \times \lbrace D, I \rbrace$).
   - $q_0$: Estado inicial ($q_0 \in Q$).
   - $q_A$: Estado de aceptación ($q_A \notin Q$).
@@ -488,7 +494,7 @@
   - En ambos casos, la máquina se detiene. Si no llega nunca a ninguno de estos estados, entonces nunca se detendrá.
 - **Lenguaje que acepta o reconoce**:
   - El lenguaje que acepta o reconoce una máquina de Turing reconocedora $M$ es el conjunto de todas las cadenas que $M$ **acepta**.
-  - Formalmente: $L(M) = \lbrace w \in Σ^*  | M \text{ acepta } w \rbrace$
+  - Formalmente: $L(M) = \lbrace w \in \Sigma^* \mid M \text{ acepta } w \rbrace$
   - Dicho de otra forma:
     - $w \in L(M) \leftrightarrow$ con entrada $w$, $M$ termina en el estado $q_A$.
     - Para $v \notin L(M)$, se tiene que $M$ termina en el estado $q_R$ o $M$ loopea infinitamente.
@@ -499,7 +505,7 @@
 
 ## Símbolo
 
-- **Notación**: x, y, z, ...
+- **Notación**: $x, y, z, \dots$
 - **Definición intuitiva**:
   - Un símbolo es un objeto indivisible.
 - **Definición formal**:
@@ -520,8 +526,8 @@
     - $\Sigma$ es finito
     - $(\forall x)(x \in \Sigma \rightarrow \text{x es un símbolo indivisible})$
 - **Ejemplo**:
-  - $\Sigma = \lbrace a, b, c \rbrace$ es un alfabeto con tres símbolos: a, b y c.
-  - $\Sigma = \lbrace aa, b, c \rbrace$ no es un alfabeto porque "aa" no es un símbolo indivisible.
+  - $\Sigma = \lbrace a, b, c \rbrace$ es un alfabeto con tres símbolos: a, b y c. ✅
+  - $\Sigma = \lbrace aa, b, c \rbrace$ no es un alfabeto porque "aa" no es un símbolo indivisible. ❌
 
 ## Cadena / palabra / sentencia / string
 
@@ -564,9 +570,9 @@
 - **Notación**: $\Sigma^*$
 - **Definición intuitiva**:
   - $\Sigma^*$ es el conjunto de todas las cadenas (incluyendo la cadena vacía) que se pueden formar con los símbolos del alfabeto $\Sigma$.
-  - Es un conjunto infinito.
+  - Es un conjunto infinito contable.
 - **Definición formal**:
-  - $\Sigma^* = \lbrace w | \text{w es una cadena (incluyendo la cadena vacía) formada por símbolos de } \Sigma \rbrace$
+  - $\Sigma^* = \lbrace w \mid w \text{ es una cadena (incluyendo la cadena vacía) formada por símbolos de } \Sigma \rbrace$
 - **Ejemplo**:
   - Si $\Sigma = \lbrace a, b \rbrace$, entonces:
     - $\Sigma^* = \lbrace \lambda, a, b, aa, ab, ba, bb, aaa, aab, aba, abb, baa, bab, bba, bbb, ... \rbrace$
@@ -577,8 +583,7 @@
 - **Definición intuitiva**:
   - Un lenguaje es un **conjunto** de una o más cadenas formadas a partir de un alfabeto $\Sigma$.
 - **Definición formal**:
-  - $L$ es un lenguaje si y solo si:
-    - $L \subseteq \Sigma^*$
+  - $L$ es un lenguaje si y solo si $L \subseteq \Sigma^*$
 - **Ejemplo**:
   - Si $\Sigma = \lbrace 0, 1 \rbrace$, entonces:
     - $\Sigma^* = \lbrace \lambda, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, 100, 101, 110, 111, ... \rbrace$
@@ -587,7 +592,10 @@
     - $L_2 = \emptyset$
     - $L_3 = \lbrace \lambda \rbrace$
     - $L_4 = \Sigma^*$
-    - $L_5 = \lbrace w | \text{w es una cadena que empieza con 1} \rbrace$
+    - $L_5 = \lbrace 1w \mid w \in \Sigma^* \rbrace$
+  - Los siguientes NO son lenguajes sobre $\Sigma$:
+    - $L_6 = \lbrace 2, 3 \rbrace$ (los símbolos 2 y 3 no pertenecen al alfabeto $\Sigma$)
+    - $L_7 = 5$ (5 no es un conjunto de cadenas, es un número)
 - **Nota**: Si $L$ es un lenguaje sobre el alfabeto $\Sigma$, su complemento también es un lenguaje sobre el mismo alfabeto, definido como $\overline{L} = \Sigma^* - L$.
 - **L cursiva ($\mathscr{L}$)**:
   - $\mathscr{L}$ es el conjunto de todos los lenguajes posibles sobre un alfabeto $\Sigma$.
