@@ -42,7 +42,7 @@ qd, 1, D
 
 ### b. Haga un corrimiento a izquierda.
 
-Si tenemos por ejemplo la cadena $w = 0110$ en la cinta, luego de aplicar el corrimiento a izquierda, la cinta debería quedar así: $...0 1 1 0 \#...$
+Si tenemos por ejemplo la cadena $w = 0110$ en la cinta, luego de aplicar el corrimiento a izquierda, la cinta debería quedar así: $...0 1 1 0 numeral...$
 
 ```
 // Ir al final de la cadena
