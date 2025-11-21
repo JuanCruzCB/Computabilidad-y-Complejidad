@@ -4,7 +4,7 @@
 
 ### a. Haga un corrimiento a derecha de la cadena binaria en la cinta, marcando con un símbolo especial \# la celda que corresponde al primer símbolo desplazado. $\Gamma = \lbrace B, numeral, 0, 1 \rbrace$.
 
-Si tenemos por ejemplo la cadena $w = 0110$ en la cinta, luego de aplicar el corrimiento a derecha, la cinta debería quedar así: $...\# 0 1 1 0...$
+Si tenemos por ejemplo la cadena $w = 0110$ en la cinta, luego de aplicar el corrimiento a derecha, la cinta debería quedar así: $...numeral 0 1 1 0...$
 
 ```
 // Cadena vacía
