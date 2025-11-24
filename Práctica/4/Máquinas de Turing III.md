@@ -2,57 +2,176 @@
 
 ## 1. Construir una máquina de Turing que escriba en la primera cinta las palabras de $\lbrace 0,1 \rbrace^*$ en orden canónico separadas por un símbolo ";". Obviamente esta máquina nunca se detiene.
 
-$\dots$
+Las primeras palabras de $\lbrace 0,1 \rbrace^*$ en orden canónico son: $\lambda; 0; 1; 00; 01; 10; 11; 000; 001; 010; 011; 100; 101; 110; 111; \dots$
+
+Es decir, se debe construir una MT que vaya sumando 1 en binario hasta el infinito, empezando desde la cadena vacía $\lambda$.
+
+Para esto se construirá una MT de dos cintas.
+
+```
+// Inicialmente la cinta está vacía, por lo que se escribe la cadena vacía seguida de ";"
+q0, B, B
+q1, ;, D, 0, S
+
+// Se copia la segunda cinta a la primera y se pone el símbolo ";"
+q1, B, 0
+q1, 0, D, 0, D
+
+q1, B, 1
+q1, 1, D, 1, D
+
+q1, B, B
+q2, ;, S, B, I
+
+// Se invierte el bit del extremo derecho de la segunda cinta
+q2, ;, 0
+q3, ;, S, 1, I
+
+q2, ;, 1
+q4, ;, S, 0, I
+
+// Se mueve al extremo izquierdo de la segunda cinta
+q3, ;, 0
+q3, ;, S, 0, I
+
+q3, ;, 1
+q3, ;, S, 1, I
+
+q3, ;, B
+q1, ;, D, B, D
+
+// Suma binaria con overflow
+q4, ;, 0
+q3, ;, S, 1, I
+
+q4, ;, 1
+q4, ;, S, 0, I
+
+q4, ;, B
+q1, ;, D, 0, S
+```
 
 ## 2. Sean $\Sigma = \lbrace a,b \rbrace$ y $\mathscr{L}$ el conjunto de todos los lenguajes definidos sobre $\Sigma$. Diga si las siguientes afirmaciones son verdaderas o falsas:
 
 ### a. $\mathscr{L} - R = \emptyset$
 
-**Falso**, porque $\mathscr{L}$ incluye a todos los lenguajes posibles sobre el alfabeto $\Sigma$. Si excluimos de este conjunto a todos los lenguajes decidibles, aún quedan los lenguajes recursivamente enumerables que no son decidibles. Contraejemplo: $\overline{L_d} \notin \mathscr{L}, \overline{L_d} \notin R$
+1. $\mathscr{L}$ incluye a todos los lenguajes posibles sobre el alfabeto $\Sigma$.
+2. $R$ son los lenguajes decidibles.
+3. $\mathscr{L} - R$ son todos los lenguajes que no son decidibles.
+4. Este conjunto no es vacío porque existen lenguajes recursivamente enumerables que no son decidibles.
+5. Contraejemplo: $\overline{L_D} \in \mathscr{L}$ pero $\overline{L_D} \notin R$
+
+**Por lo tanto la afirmación es falsa.** ❌
 
 ### b. $RE - R \neq \emptyset$
 
-**Verdadero**, porque existen lenguajes que son recursivamente enumerables pero no decidibles, como por ejemplo $L_u$. $L_u \in (RE - R)$
+1. $RE$ son todos los lenguajes recursivamente enumerables.
+2. $R$ son todos los lenguajes decidibles.
+3. $RE - R$ son todos los lenguajes que son recursivamente enumerables pero no decidibles.
+4. Este conjunto no es vacío porque existen lenguajes que son recursivamente enumerables pero no decidibles.
+5. Ejemplo: $L_u \in RE$ pero $L_u \notin R$
+
+**Por lo tanto la afirmación es verdadera.** ✅
 
 ### c. $\lbrace \lambda \rbrace \in (\mathscr{L} - \text{CO-RE})$
 
-**Verdadero**, porque $\lbrace \lambda \rbrace \in RE$ y $RE \subset (\mathscr{L} - \text{CO-RE})$ TODO: Mal resuelto, es falso.
+1. $\lbrace \lambda \rbrace$ es el lenguaje que contiene solo la cadena vacía. Este lenguaje es decidible porque todo lenguaje finito es decidible. $\lbrace \lambda \rbrace \in R$.
+2. $\mathscr{L}$ incluye a todos los lenguajes posibles sobre el alfabeto $\Sigma$.
+3. $\text{CO-RE}$ son todos los lenguajes cuyo complemento es recursivamente enumerable.
+4. Como $R \subset \text{CO-RE}$, se tiene que $\lbrace \lambda \rbrace \in \text{CO-RE}$.
+5. Por lo tanto, $\lbrace \lambda \rbrace \in \text{CO-RE}$ implica que $\lbrace \lambda \rbrace \notin (\mathscr{L} - \text{CO-RE})$.
+
+**Por lo tanto la afirmación es falsa.** ❌
 
 ### d. $RE \cup R = \mathscr{L}$
 
-**Falso**, contraejemplo: $\overline{L_u} \in \mathscr{L}$ pero $\overline{L_u} \notin (RE \cup R)$
+1. $RE$ son todos los lenguajes recursivamente enumerables.
+2. $R$ son todos los lenguajes decidibles.
+3. $\mathscr{L}$ incluye a todos los lenguajes posibles sobre el alfabeto $\Sigma$.
+4. Se sabe que $R \subseteq RE$.
+5. Por lo tanto $RE \cup R = RE$.
+6. Se reformula la afirmación como $RE = \mathscr{L}$.
+7. Esto no se cumple porque existen lenguajes que no son recursivamente enumerables.
+8. Contraejemplo: $\overline{L_u} \in \mathscr{L}$ pero $\overline{L_u} \notin RE$
+
+**Por lo tanto la afirmación es falsa.** ❌
 
 ### e. $\Sigma^* \in R$
 
-**Verdadero**. Existe MT $M$ que acepta todas las cadenas posibles del lenguaje y siempre se detiene. $\delta(q_0, x) = (q_A, x, S)$, $\forall x \in \Sigma$.
+1. $\Sigma^*$ es el conjunto de todas las cadenas posibles formadas por símbolos del alfabeto $\Sigma$.
+2. $R$ son todos los lenguajes decidibles.
+3. $\Sigma^* \in R$ se cumple porque se puede construir una MT que acepte todas las cadenas posibles del lenguaje y siempre se detenga:
+   1. $\delta(q_0, B) = (q_A, B, S)$
+   2. $\delta(q_0, x) = (q_A, x, S) \quad \forall x \in \Sigma$.
+
+**Por lo tanto la afirmación es verdadera.** ✅
 
 ### f. $\emptyset \in RE$
 
-**Verdadero**. Existe MT $M$ que rechaza todas las cadenas posibles del lenguaje, es decir, $L(M) = \emptyset$.
+1. $\emptyset$ es el lenguaje vacío, es decir, el lenguaje que no contiene ninguna cadena.
+2. $RE$ son todos los lenguajes recursivamente enumerables.
+3. $\emptyset \in RE$ se cumple porque se puede construir una MT que rechaza todas las cadenas posibles del lenguaje:
+   1. $\delta(q_0, B) = (q_R, B, S)$
+   2. $\delta(q_0, x) = (q_R, x, S) \quad \forall x \in \Sigma$.
+
+**Por lo tanto la afirmación es verdadera.** ✅
 
 ### g. $\text{CO-RE} = RE$
 
-**Falso**, contraejemplo: $(\text{CO-RE} - RE) \neq \emptyset$ porque por ejemplo $L_D \in (\text{CO-RE} - RE)$
+1. $RE$ son todos los lenguajes recursivamente enumerables.
+2. $\text{CO-RE}$ son todos los lenguajes cuyo complemento es recursivamente enumerable.
+3. $RE \neq \text{CO-RE}$ porque existen lenguajes que son recursivamente enumerables pero cuyo complemento no lo es.
+4. Si la afirmación fuera cierta, se cumpliría que $\text{CO-RE} - RE = \emptyset$.
+5. Contraejemplo: $L_D \in (\text{CO-RE} - RE)$, por lo que lo anterior no se cumple.
+
+**Por lo tanto la afirmación es falsa.** ❌
 
 ### h. $(\mathscr{L} - RE) = \text{CO-RE}$
 
-**Falso**, contraejemplo: $L \in (\mathscr{L} - RE)$ pero $L \notin \text{CO-RE}$, con $L$ el lenguaje visto en la teoría.
+1. $\mathscr{L}$ incluye a todos los lenguajes posibles sobre el alfabeto $\Sigma$.
+2. $RE$ son todos los lenguajes recursivamente enumerables.
+3. $\text{CO-RE}$ son todos los lenguajes cuyo complemento es recursivamente enumerable.
+4. $(\mathscr{L} - RE) = \text{CO-RE}$ no se cumple porque existen lenguajes que no son recursivamente enumerables y cuyo complemento tampoco lo es.
+5. Contraejemplo: $L \in (\mathscr{L} - RE)$ pero $L \notin \text{CO-RE}$, con $L$ el lenguaje visto en la teoría.
+
+**Por lo tanto la afirmación es falsa.** ❌
 
 ### i. $ab \in \Sigma^*$
 
-**Verdadero**. La cadena "ab" está formada por símbolos del alfabeto $\Sigma = \lbrace a,b \rbrace$, por lo tanto $ab \in \Sigma^*$
+1. $\Sigma^*$ es el conjunto de todas las cadenas posibles formadas por símbolos del alfabeto $\Sigma$.
+2. $ab$ es una cadena válida formada por símbolos del alfabeto $\Sigma = \lbrace a, b, \dots \rbrace$.
+3. $ab \in \Sigma^*$ se cumple porque es una cadena posible formada por símbolos del alfabeto.
+
+**Por lo tanto la afirmación es verdadera.** ✅
 
 ### j. $\text{CO-R} \subset \text{CO-RE}$
 
-**Verdadero**. Por teorema se sabe que $R \subseteq \text{CO-RE}$, y como $\text{CO-R} = R$, se puede reemplazar $\text{CO-R} \subset \text{CO-RE}$.
+1. $\text{CO-R}$ son todos los lenguajes cuyo complemento es decidible.
+2. $\text{CO-RE}$ son todos los lenguajes cuyo complemento es recursivamente enumerable.
+3. Se sabe que $R = \text{CO-R}$.
+4. Reemplazando, se tiene: $R \subset \text{CO-RE}$.
+5. Lo anterior se cumple por teorema.
+
+**Por lo tanto la afirmación es verdadera.** ✅
 
 ### k. $a \in R$
 
-**Falso**. El conjunto $R$ está formado por lenguajes (que son conjuntos), no por símbolos individuales. Por lo tanto, $a$ no puede pertenecer a $R$.
+1. $R$ son todos los lenguajes decidibles.
+2. $a$ es un símbolo individual del alfabeto $\Sigma$.
+3. $a \notin R$ porque $R$ está formado por lenguajes (que son conjuntos), no por símbolos individuales. Por lo tanto, $a$ no puede pertenecer a $R$.
+
+**Por lo tanto la afirmación es falsa.** ❌
 
 ### l. $\lbrace a \rbrace \in RE$
 
-**Verdadero**. Existe una máquina de Turing que acepta la cadena "a" y rechaza todas las demás cadenas, por lo tanto, el lenguaje $\lbrace a \rbrace$ es recursivamente enumerable. Es decir, $L(M) = \lbrace a \rbrace$
+1. $RE$ son todos los lenguajes recursivamente enumerables.
+2. $\lbrace a \rbrace$ es el lenguaje que contiene únicamente la cadena "a".
+3. Este lenguaje es recursivamente enumerable porque se puede construir una MT que acepte la cadena "a" y rechace todas las demás cadenas:
+   1. $\delta(q_0, a) = (q_A, a, S)$
+   2. $\delta(q_0, B) = (q_R, B, S)$
+   3. $\delta(q_0, x) = (q_R, x, S) \quad \forall x \in (\Sigma - a)$.
+
+**Por lo tanto la afirmación es verdadera.** ✅
 
 ## 3. Si $L \in (RE - R)$
 
@@ -65,9 +184,9 @@ Sí, existe una MT que cumple con las condiciones:
 
 Se puede construir con las siguientes deltas:
 
-$\delta(q_0, w) = (q_R, w, S) \quad \forall w \in L$
-$\delta(q_0, z) = (q_L, z, S) \quad \forall z \notin L$
-$\delta(q_L, z) = (q_L, z, S)$
+- $\delta(q_0, w) = (q_R, w, S) \quad \forall w \in L$
+- $\delta(q_0, z) = (q_L, z, S) \quad \forall z \notin L$
+- $\delta(q_L, z) = (q_L, z, S)$
 
 ### b. ¿Existirá alguna máquina de Turing que rechace loopeando si su entrada está en $L$ y rechace parando en $q_R$ si su entrada no está en $L$?
 
@@ -85,56 +204,119 @@ $L$ es otra forma de escribir al lenguaje $\Sigma^*$, porque todas las cadenas p
 
 $\Sigma^* \in R$ se cumple porque existe una máquina de Turing M que acepta todas las cadenas posibles del lenguaje y siempre se detiene. Por ejemplo, la máquina con la siguiente delta:
 
-$\delta(q_0, B) = (q_A, B, S)$
-$\delta(q_0, x) = (q_A, x, S) \quad \forall x \in \Sigma$
+- $\delta(q_0, B) = (q_A, B, S)$
+- $\delta(q_0, x) = (q_A, x, S) \quad \forall x \in \Sigma$
 
 ## 5. Conteste y justifique:
 
 ### a. ¿$\mathscr{L}$ es un conjunto infinito contable?
 
-$\mathscr{L} = \mathcal{P}(\Sigma^*)$.
-
-Como $\Sigma^*$ es un conjunto infinito contable, su conjunto potencia $\mathcal{P}(\Sigma^*)$ es un conjunto infinito **incontable** (por teorema de Cantor). Por lo tanto, $\mathscr{L}$ no es un conjunto infinito contable, si no **incontable**.
+1. $\mathscr{L}$ es el conjunto de todos los lenguajes posibles sobre un alfabeto $\Sigma$.
+2. Cada lenguaje $L \in \mathscr{L}$ es un subconjunto de $\Sigma^*$.
+3. Por lo tanto, el conjunto de todos los lenguajes $\mathscr{L}$ es el conjunto de partes del conjunto $\Sigma^*$: $\mathscr{L} = \mathcal{P}(\Sigma^*)$.
+4. Se sabe que todo conjunto de partes de un conjunto infinito contable es un conjunto infinito incontable (por teorema de Cantor).
+5. Por lo tanto, $\mathscr{L}$ no es un conjunto infinito contable, si no **incontable**.
 
 ### b. ¿$RE$ es un conjunto infinito contable?
 
-$RE$ es un conjunto infinito contable, ya que para todo lenguaje recursivamente enumerable $L$, existe al menos una máquina de Turing $M$ que lo reconoce. Y como el conjunto de todas las máquinas de Turing es infinito contable, entonces el conjunto de lenguajes recursivamente enumerables $RE$ también es infinito contable.
+1. $RE$ es el conjunto de todos los lenguajes recursivamente enumerables.
+2. Para que $RE$ sea infinito contable, debe existir una correspondencia uno a uno con los números naturales, es decir, para cada lenguaje $L \in RE$ debe existir un número natural $n \in \mathbb{N}$.
+3. Se sabe que el conjunto de todas las máquinas de Turing es infinito contable.
+4. Además se sabe que cada lenguaje $RE$, por definición, posee al menos una máquina de Turing que lo reconoce.
+5. Por lo tanto, $RE$ es un conjunto infinito contable, ya que para todo lenguaje recursivamente enumerable $L$, existe al menos una máquina de Turing $M$ que lo reconoce. Y como el conjunto de todas las máquinas de Turing es infinito contable, entonces el conjunto de lenguajes recursivamente enumerables $RE$ también es infinito contable.
 
-### c. ¿$\mathscr{L} – RE$ es un conjunto infinito contable?
+### c. ¿$\mathscr{L} - RE$ es un conjunto infinito contable?
 
-$\mathscr{L}$ es un conjunto infinito **incontable** y $RE$ es un conjunto infinito **contable**. Como la diferencia entre un conjunto infinito incontable y un conjunto infinito contable es siempre un conjunto infinito incontable, entonces $\mathscr{L} – RE$ es un conjunto infinito **incontable**.
+1. $\mathscr{L}$ es el conjunto de todos los lenguajes posibles sobre un alfabeto $\Sigma$.
+2. $RE$ es el conjunto de todos los lenguajes recursivamente enumerables.
+3. $\mathscr{L} - RE$ es el conjunto de todos los lenguajes que no son recursivamente enumerables.
+4. Se sabe que $\mathscr{L}$ es un conjunto infinito **incontable** y que $RE$ es un conjunto infinito **contable**.
+5. Como la diferencia entre un conjunto infinito incontable y un conjunto infinito contable es siempre un conjunto infinito incontable, entonces $\mathscr{L} - RE$ es un conjunto infinito **incontable**.
 
 ### d. Existe algún lenguaje $L \in \mathscr{L}$ tal que $L$ sea infinito no contable?
 
-Todo lenguaje $L \in \mathscr{L}$ es un subconjunto de $\Sigma^*$. Como se sabe que $\Sigma^*$ es un conjunto infinito contable, entonces todos sus subconjuntos también son conjuntos infinitos contables (o finitos). Por lo tanto, no existe ningún lenguaje $L \in \mathscr{L}$ que sea infinito no contable.
+1. $\mathscr{L}$ es el conjunto de todos los lenguajes posibles sobre un alfabeto $\Sigma$.
+2. Todo lenguaje de $\mathscr{L}$ es un subconjunto de $\Sigma^*$.
+3. $\Sigma^*$ es el conjunto de todas las cadenas posibles formadas por símbolos del alfabeto $\Sigma$, y se sabe que es infinito contable.
+4. Todo subconjunto de un conjunto infinito contable es también un conjunto infinito contable (o finito).
+5. Por lo tanto, no existe ningún lenguaje $L \in \mathscr{L}$ que sea infinito no contable.
 
 ## 6. Sea $L$ un lenguaje definido sobre $\Sigma$. Demostrar que:
 
 ### a. $\overline{L} \notin R \implies L \notin R$
 
-$\dots$
+1. Se reescribe la implicación con la contrarrecíproca $(p \rightarrow q \Leftrightarrow (\lnot q \rightarrow \lnot p))$:
+   1. $\overline{L} \notin R \implies L \notin R$
+   2. $\lnot (\overline{L} \in R) \implies \lnot (L \in R)$
+   3. $\lnot \lnot (L \in R) \implies \lnot \lnot (\overline{L} \in R)$
+   4. $L \in R \implies \overline{L} \in R$
+2. Por lo tanto se quiere demostrar que $L \in R \implies \overline{L} \in R$.
+3. Como $L \in R$, existe una máquina de Turing $M$ que decide $L$, es decir:
+   1. Si $w \in L$ entonces $M$ se detiene en el estado de aceptación $q_A$.
+   2. Si $w \notin L$ entonces $M$ se detiene en el estado de rechazo $q_R$.
+4. Se puede construir una máquina de Turing $M'$ que decide $\overline{L}$ a partir de $M$, simplemente intercambiando todas las transiciones que llevan al estado de aceptación $q_A$ por transiciones que llevan al estado de rechazo $q_R$, y todas las transiciones que llevan al estado de rechazo $q_R$ por transiciones que llevan al estado de aceptación $q_A$.
+   1. Claramente esta máquina $M'$ también se detiene siempre, por lo que decide $\overline{L}$.
+5. Por lo tanto, si $L \in R$ entonces $\overline{L} \in R$.
 
 ### b. $(L_1 \in RE) \land (L_2 \in RE) \implies L_1 \cap L_2 \in RE$
 
-$\dots$
+1. Como $L_1 \in RE$, existe una máquina de Turing $M_1$ tal que:
+   1. Si $w \in L_1$ entonces $M_1$ se detiene en el estado de aceptación $q_A$.
+   2. Si $w \notin L_1$ entonces $M_1$ se detiene en el estado de rechazo $q_R$ o loopea infinitamente.
+2. Como $L_2 \in RE$, existe una máquina de Turing $M_2$ tal que:
+   1. Si $w \in L_2$ entonces $M_2$ se detiene en el estado de aceptación $q_A$.
+   2. Si $w \notin L_2$ entonces $M_2$ se detiene en el estado de rechazo $q_R$ o loopea infinitamente.
+3. Se puede construir una MT $M_3$ que reconozca el lenguaje $L_1 \cap L_2$, es decir, las cadenas que pertenecen a ambos lenguajes, de la siguiente manera:
+   1. Dada una cadena de entrada $w$, $M_3$ simula a $M_1$ con la entrada $w$.
+   2. Si $M_1$ se detiene en el estado de rechazo $q_R$, entonces $M_3$ también se detiene en el estado de rechazo $q_R$.
+   3. Si $M_1$ se detiene en el estado de aceptación $q_A$, entonces $M_3$ simula a $M_2$ con la misma entrada $w$.
+   4. Si $M_2$ se detiene en el estado de rechazo $q_R$, entonces $M_3$ se detiene en el estado de rechazo $q_R$.
+   5. Si $M_2$ se detiene en el estado de aceptación $q_A$, entonces $M_3$ se detiene finalmente en el estado de aceptación $q_A$.
+   6. Si cualquiera de las máquinas loopea, entonces $M_3$ también loopea.
+4. Como $M_3$ acepta todas las cadenas que pertenecen a $L_1 \cap L_2$ y loopea o rechaza las demás, entonces $L_1 \cap L_2 \in RE$.
 
 ### c. $(L_1 \in RE) \land (L_2 \in RE) \implies L_1 \cup L_2 \in RE$
 
-$\dots$
+1. Como $L_1 \in RE$, existe una máquina de Turing $M_1$ tal que:
+   1. Si $w \in L_1$ entonces $M_1$ se detiene en el estado de aceptación $q_A$.
+   2. Si $w \notin L_1$ entonces $M_1$ se detiene en el estado de rechazo $q_R$ o loopea infinitamente.
+2. Como $L_2 \in RE$, existe una máquina de Turing $M_2$ tal que:
+   1. Si $w \in L_2$ entonces $M_2$ se detiene en el estado de aceptación $q_A$.
+   2. Si $w \notin L_2$ entonces $M_2$ se detiene en el estado de rechazo $q_R$ o loopea infinitamente.
+3. Se puede construir una MT $M_3$ que reconozca el lenguaje $L_1 \cup L_2$, es decir, las cadenas que pertenecen a al menos uno de los dos lenguajes, de la siguiente manera:
+   1. Dada una cadena de entrada $w$, $M_3$ simula a $M_1$ con la entrada $w$.
+   2. Si $M_1$ se detiene en el estado de aceptación $q_A$, entonces $M_3$ también se detiene en el estado de aceptación $q_A$, ya que no necesita chequear $M_2$, basta con que $w \in L_1$.
+   3. Si $M_1$ se detiene en el estado de rechazo $q_R$, entonces $M_3$ simula a $M_2$ con la misma entrada $w$.
+   4. Si $M_2$ se detiene en el estado de aceptación $q_A$, entonces $M_3$ se detiene en el estado de aceptación $q_A$ ya que por más que $w \notin L_1$, basta con que $w \in L_2$.
+   5. Si $M_2$ se detiene en el estado de rechazo $q_R$, entonces $M_3$ se detiene en el estado de rechazo $q_R$, es decir, la cadena $w$ no estaba en ninguno de los dos lenguajes.
+   6. Si cualquiera de las máquinas loopea, entonces $M_3$ también loopea.
+4. Como $M_3$ acepta todas las cadenas que pertenecen a $L_1 \cup L_2$ y loopea o rechaza las demás, entonces $L_1 \cup L_2 \in RE$.
 
 ### d. La unión de un número finito de lenguajes recursivamente enumerables es un lenguaje recursivamente enumerable.
 
-$\dots$
+La demostración es análoga a la del inciso c), pero en lugar de dos lenguajes se tiene un número finito $n$ de lenguajes recursivamente enumerables $L_1, L_2, \ldots, L_n$.
+
+Lo que se haría es construir una MT $M$ que simule secuencialmente a cada una de las máquinas de Turing $M_1, M_2, \ldots, M_n$ que reconocen a cada uno de los lenguajes $L_1, L_2, \ldots, L_n$ respectivamente. Si al menos una de ellas para en $q_A$, entonces $M$ también para en $q_A$. Si todas paran en $q_R$, entonces $M$ para en $q_R$. Si alguna loopea, entonces $M$ también loopea.
+
+Por lo tanto la unión de un número finito de lenguajes recursivamente enumerables es un lenguaje recursivamente enumerable.
 
 ## 7. Para los casos a, b y c del punto anterior ¿valen las recíprocas? Justifique.
 
-$\dots$
+1. Recíproca del inciso a: **$L \notin R \implies \overline{L} \notin R$**
+2. Recíproca del inciso b: **$L_1 \cap L_2 \in RE \implies (L_1 \in RE) \land (L_2 \in RE)$**
+
+3. Recíproca del inciso c: **$L_1 \cup L_2 \in RE \implies (L_1 \in RE) \land (L_2 \in RE)$**
 
 ## 8. Si $L$ es un subconjunto de un lenguaje recursivamente enumerable, ¿Puede afirmarse entonces que $L$ es recursivamente enumerable? Justifique.
 
-Sea $L_1 \in RE$ un lenguaje recursivamente enumerable y sea $L_2 \subseteq L_1$ un subconjunto de $L_1$.
-
-No es posible afirmar que $L_2$ es recursivamente enumerable, ya que existen subconjuntos de lenguajes recursivamente enumerables que no son recursivamente enumerables. Contraejemplo: $L_D \subseteq \Sigma^*, \Sigma^* \in RE, L_D \notin RE$.
+1. Sea $L' \in RE$.
+2. Sea $L \subseteq L'$.
+3. $L \in RE$?
+4. No es posible afirmar que $L$ es recursivamente enumerable, ya que existen subconjuntos de lenguajes recursivamente enumerables que no son recursivamente enumerables:
+5. Contraejemplo:
+   1. $\Sigma^* \in RE$
+   2. $L_D \subseteq \Sigma^*$
+   3. $L_D \notin RE$
 
 ## 9. Dado $L_1$, un lenguaje recursivo cualquiera
 
@@ -142,7 +324,7 @@ No es posible afirmar que $L_2$ es recursivamente enumerable, ya que existen sub
 
 ### $L_3 = \lbrace \langle M\rangle \mid L(M) = \overline{L_1} \text{ y } M \text{ siempre se detiene} \rbrace$
 
-### Determine si $(L_2 – L_3) = \emptyset$. Justifique su respuesta.
+### Determine si $(L_2 - L_3) = \emptyset$. Justifique su respuesta.
 
 $\dots$
 

@@ -404,12 +404,12 @@ Si queremos cadenas de longitud $n$, se pueden generar $3 \times 3 \times 3 \tim
 - Como $\emptyset \in \Sigma^* \implies \emptyset \cup \Sigma^*  = \Sigma^* \cup \emptyset = \Sigma^*$
 - Por lo tanto $L_1 = L_2$.
 
-### c. $L_1 = \Sigma^* – \emptyset$, $L_2 = \Sigma^*$
+### c. $L_1 = \Sigma^* - \emptyset$, $L_2 = \Sigma^*$
 
-- Como para todo conjunto, restarle $\emptyset$ resulta en ese mismo conjunto, $\Sigma^* – \emptyset = \Sigma^*$
+- Como para todo conjunto, restarle $\emptyset$ resulta en ese mismo conjunto, $\Sigma^* - \emptyset = \Sigma^*$
 - Por lo tanto $L_1 = L_2$.
 
-### d. $L_1 = \Sigma^* – \lbrace \lambda \rbrace$, $L_2 = \Sigma^*$
+### d. $L_1 = \Sigma^* - \lbrace \lambda \rbrace$, $L_2 = \Sigma^*$
 
 - Como $\lbrace \lambda \rbrace \in \Sigma^* \implies \Sigma^* - \lbrace \lambda \rbrace \ne \Sigma^*$
 - Por lo tanto $L_1 \ne L_2$.

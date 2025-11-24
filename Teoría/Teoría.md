@@ -664,64 +664,58 @@
 
 # Clasificación de lenguajes
 
-## Lenguajes recursivamente enumerables (RE)
+## Lenguajes recursivamente enumerables $(RE)$
 
-- Un lenguaje es recursivamente enumerable ($L \in RE$) si existe una máquina de Turing reconocedora que acepta todas las cadenas del lenguaje, pero **puede no detenerse para las cadenas que no pertenecen al lenguaje**.
-- Formalmente:
-  - $L \in RE \leftrightarrow \exists M \text{ tal que } L(M) = L$.
+- **Definición intuitiva**:
+  - Un lenguaje es recursivamente enumerable ($L \in RE$) si existe una máquina de Turing reconocedora que acepta todas las cadenas del lenguaje, pero **puede no detenerse para las cadenas que no pertenecen al lenguaje**.
+- **Definición formal**:
+  - $L \in RE \leftrightarrow \exists M \mid L(M) = L$.
   - Si $w \in L$ entonces:
     - $M$ **siempre se detiene** en el estado de aceptación $q_A$.
   - Si $w \notin L$ entonces:
-    - $M$ se detiene en el estado de rechazo $q_R$ o **no se detiene y loopea infinitamente**. No es posible saber cuál de los dos casos ocurrirá de antemano (Halting Problem).
+    - $M$ se detiene en el estado de rechazo $q_R$ o **no se detiene y loopea infinitamente**. No es posible saber cuál de los dos casos ocurrirá de antemano.
+- **Nota**: Todo lenguaje FINITO es recursivamente enumerable.
 
-## Lenguajes recursivos o decidibles (R)
+## Lenguajes recursivos o decidibles $(R)$
 
-- Un lenguaje es recursivo o decidible ($L \in R$) si existe una máquina de Turing reconocedora que acepta todas las cadenas del lenguaje y **se detiene para todas las cadenas, ya sea aceptándolas o rechazándolas**.
-- Formalmente:
-  - $L \in R \leftrightarrow \exists M \text{ tal que } L(M) = L$ y $M \text{ se detiene para todas las cadenas}$.
+- **Definición intuitiva**:
+  - Un lenguaje es recursivo o decidible ($L \in R$) si existe una máquina de Turing reconocedora que acepta todas las cadenas del lenguaje y **se detiene para todas las cadenas, ya sea aceptándolas o rechazándolas**.
+- **Definición formal**:
+  - $L \in R \leftrightarrow \exists M \mid L(M) = L$ y $M \text{ se detiene para todas las cadenas}$.
   - Si $w \in L$ entonces:
     - $M$ **siempre se detiene** en el estado de aceptación $q_A$.
   - Si $w \notin L$ entonces:
     - $M$ **siempre se detiene** en el estado de rechazo $q_R$.
-- Todo lenguaje decisible es recursivamente enumerable, pero no todo lenguaje recursivamente enumerable es decidible.
-  - $R \subseteq RE$
-- **Nota**: La intersección y la unión de dos lenguajes recursivos da como resultado otro lenguaje recursivo.
+- **Nota 1**: Todo lenguaje FINITO es decidible.
+- **Nota 2**: La intersección y la unión de dos lenguajes decidibles da como resultado otro lenguaje decidible.
   - Si $L_1, L_2 \in R$ entonces $L_1 \cap L_2 \in R$ y $L_1 \cup L_2 \in R$.
 
-## Lenguajes Co-R
+## Lenguajes $\text{CO-R}$
 
-- Un lenguaje es Co-R ($L \in \text{Co-R}$) si y solo si su complemento respecto de $\Sigma^*$ es decidible.
-- Formalmente:
-  - $L \in \text{Co-R} \leftrightarrow \overline{L} \in R$
+- **Definición intuitiva**:
+  - Un lenguaje es CO-R ($L \in \text{CO-R}$) si y solo si su complemento respecto de $\Sigma^*$ es decidible.
+- **Definición formal**:
+  - $L \in \text{CO-R} \leftrightarrow \overline{L} \in R$
   - $\overline{L} = \Sigma^* - L$
 
-## Lenguajes Co-RE
+## Lenguajes $\text{CO-RE}$
 
-- Un lenguaje es Co-RE ($L \in \text{Co-RE}$) si y solo si su complemento respecto de $\Sigma^*$ es recursivamente enumerable.
-- Formalmente:
-  - $L \in \text{Co-RE} \leftrightarrow \overline{L} \in RE$
+- **Definición intuitiva**:
+  - Un lenguaje es CO-RE ($L \in \text{CO-RE}$) si y solo si su complemento respecto de $\Sigma^*$ es recursivamente enumerable.
+- **Definición formal**:
+  - $L \in \text{CO-RE} \leftrightarrow \overline{L} \in RE$
   - $\overline{L} = \Sigma^* - L$
 
 ## Teoremas
 
-- **Todo lenguaje decidible es recursivamente enumerable**.
-  - $R \subseteq RE$
-- **Todo lenguaje decidible es Co-R**:
-  - $R \subseteq \text{Co-R}$
-- **Todo lenguaje Co-R es decidible**:
-  - $\text{Co-R} \subseteq R$
-- **Por lo tanto, todo lenguaje decidible es Co-R y viceversa, y además todo lenguaje Co-R es recursivamente enumerable**:
-  - $R = \text{Co-R}$
-  - $\text{Co-R} \subseteq RE$
-- **Todo lenguaje recursivo es Co-RE**:
-  - $R \subseteq \text{Co-RE}$
-- Por lo tanto, todo lenguaje decidible es Co-RE y viceversa, y además todo lenguaje Co-RE es recursivamente enumerable:
-  - $R = \text{Co-RE}$
-  - $R \subseteq (RE \cap \text{Co-RE})$
-- **Los lenguajes que son tanto RE como Co-RE son decidibles**:
-  - $(RE \cap \text{Co-RE}) \subseteq R$
-- **Los lenguajes que son tanto RE como Co-RE son exactamente los mismos que los decidibles**:
-  - $(RE \cap \text{Co-RE}) = R$
+1. **Todo lenguaje decidible es recursivamente enumerable, pero no todo lenguaje recursivamente enumerable es decidible**: $R \subseteq RE$
+2. **Todo lenguaje decidible es CO-R**: $R \subseteq \text{CO-R}$
+3. **Todo lenguaje CO-R es decidible**: $\text{CO-R} \subseteq R$
+4. **Por lo tanto, para cualquier lenguaje decidible, su complemento también es decidible, y además todo lenguaje CO-R es recursivamente enumerable**: $R = \text{CO-R}$ y $\text{CO-R} \subseteq RE$
+5. **Todo lenguaje recursivo es CO-RE**: $R \subseteq \text{CO-RE}$
+6. **Por lo tanto, todo lenguaje decidible es CO-RE y viceversa, y además todo lenguaje CO-RE es recursivamente enumerable**: $R = \text{CO-RE}$ y $R \subseteq (RE \cap \text{CO-RE})$
+7. **Los lenguajes que son tanto RE como CO-RE son decidibles**: $(RE \cap \text{CO-RE}) \subseteq R$
+8. **Los lenguajes decidibles son exactamente los mismos que los que son RE y CO-RE a la vez**: $R = (RE \cap \text{CO-RE})$
 
 ## Orden canónico para $\Sigma^*$
 
@@ -761,19 +755,23 @@
   - Si se da el caso que $w_i$ no es un código válido de una MT, entonces $M_i$ es una MT ficticia que rechaza todo, es decir $L(M_i) = \emptyset$.
   - Por lo tanto $\forall w_i \in \lbrace 0,1 \rbrace^* \exists M_i$.
 
-## Lenguaje diagonal ($L_D$)
+## Lenguaje diagonal $(L_D)$
 
-- **Definición intuitiva**: El lenguaje diagonal $L_D$ es el conjunto de todas las cadenas que no son aceptadas por su **correspondiente** máquina de Turing. Consiste en las codificaciones de MT que rechazan su propia codificación.
+- **Definición intuitiva**:
+  - El lenguaje diagonal $L_D$ es el conjunto de todas las cadenas que no son aceptadas por su **correspondiente** máquina de Turing. Consiste en las codificaciones de MT que rechazan su propia codificación.
 - **Definición formal**:
-  - $\Sigma = \lbrace 0,1 \rbrace$
+  - $\Sigma = \lbrace 0, 1 \rbrace$
   - $w_i = \text{i-ésimo string en orden canónico de } \Sigma^*$
   - $M_i = \text{i-ésima máquina de Turing}$
   - $L_D = \lbrace  w_i \in \Sigma^* \mid w_i \notin L(M_i)  \rbrace$
 - Este lenguaje no es recursivamente enumerable, por lo tanto no es decidible tampoco y no existe una máquina de Turing que lo reconozca.
+  - Es decir, no es posible construir una MT que diga, dada una cadena $w_i$ que representa una codificación de una MT $M_i$, si $M_i$ acepta o rechaza su propia codificación $w_i$.
+- **Ejemplo**:
+  - $w_{10}$ es el décimo string en orden canónico de $\lbrace 0,1 \rbrace^*$, es decir $w_{10} = 1010$.
+  - $M_{10}$ es la codificación de la máquina de Turing correspondiente a $w_{10}$, es decir $\langle M \rangle = 1010$. Obviamente esta codificación no corresponde a una MT válida, porque no hay suficientes bits para codificar todas sus partes. Pero si asumimos que $M_{10}$ es una MT ficticia que rechaza todo, es decir $L(M_{10}) = \emptyset$, entonces $w_{10} \in L_D$ porque $w_{10} \notin L(M_{10})$.
 - **Teoremas**:
-  - $L_D \notin RE$
-  - $L_D \notin R$
-  - $L_D \in \text{Co-RE}$
+  - $L_D \notin RE$ y por lo tanto obviamente $L_D \notin R$
+  - $L_D \in \text{CO-RE}$
   - $\overline{L_D} \in RE$
   - $\overline{L_D} \in (RE-R)$
 
@@ -793,11 +791,13 @@
   - Por lo tanto: $L_u \in (RE - R)$
   - $\overline{L_u} \notin RE$
 
-## Lenguaje L
+## Lenguaje $L$
 
+- **Definición intuitiva**:
+  - Se trata de un lenguaje que no es recursivamente enumerable (y por lo tanto tampoco decidible) y además no es $\text{CO-RE}$.
 - **Definición formal**:
   - $L = \lbrace 1w \mid w \in L_D \rbrace \cup \lbrace 0w \mid w \notin L_D \rbrace$
-- **Teorema**: $L \in (\mathscr{L} - (RE \cup \text{Co-RE}))$
+- **Teorema**: $L \in (\mathscr{L} - (RE \cup \text{CO-RE}))$
 
 ## Diagrama de Venn de los lenguajes vistos
 
