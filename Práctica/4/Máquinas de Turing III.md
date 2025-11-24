@@ -303,9 +303,11 @@ Por lo tanto la unión de un número finito de lenguajes recursivamente enumerab
 ## 7. Para los casos a, b y c del punto anterior ¿valen las recíprocas? Justifique.
 
 1. Recíproca del inciso a: **$L \notin R \implies \overline{L} \notin R$**
+   1. $\dots$
 2. Recíproca del inciso b: **$L_1 \cap L_2 \in RE \implies (L_1 \in RE) \land (L_2 \in RE)$**
-
+   1. $\dots$
 3. Recíproca del inciso c: **$L_1 \cup L_2 \in RE \implies (L_1 \in RE) \land (L_2 \in RE)$**
+   1. $\dots$
 
 ## 8. Si $L$ es un subconjunto de un lenguaje recursivamente enumerable, ¿Puede afirmarse entonces que $L$ es recursivamente enumerable? Justifique.
 
@@ -320,27 +322,47 @@ Por lo tanto la unión de un número finito de lenguajes recursivamente enumerab
 
 ## 9. Dado $L_1$, un lenguaje recursivo cualquiera
 
-### $L_2 = \lbrace \langle M\rangle \mid L(M) = \overline{L_1} \rbrace$
+### $L_2 = \lbrace \langle M \rangle \mid L(M) = \overline{L_1} \rbrace$
 
-### $L_3 = \lbrace \langle M\rangle \mid L(M) = \overline{L_1} \text{ y } M \text{ siempre se detiene} \rbrace$
+### $L_3 = \lbrace \langle M \rangle \mid L(M) = \overline{L_1} \text{ y } M \text{ siempre se detiene} \rbrace$
 
 ### Determine si $(L_2 - L_3) = \emptyset$. Justifique su respuesta.
 
-$\dots$
+1. $L_1 \in R$.
+2. Por lo tanto $\overline{L_1} \in R$.
+3. $L_2$ es el lenguaje cuyos elementos son las codificaciones de máquinas de Turing tal que el lenguaje que reconoce cada máquina es el complemento de $L_1$.
+4. $L_3$ es el lenguaje cuyos elementos son las codificaciones de máquinas de Turing tal que el lenguaje que reconoce cada máquina es el complemento de $L_1$ y además la máquina siempre se detiene.
+5. La diferencia $L_2 - L_3$ son las codificaciones de máquinas de Turing tal que el lenguaje que reconoce cada máquina es el complemento de $L_1$ pero la máquina no siempre se detiene.
+6. Este conjunto NO es vacío porque existen máquinas de Turing que reconocen a $\overline{L_1}$ pero no siempre se detienen.
+7. Es decir, para cualquier lenguaje recursivo, siempre se puede construir una MT que reconozca las cadenas del lenguaje pero loopee en las cadenas que no pertenecen al lenguaje, en lugar de detenerse y rechazarlas. Esto se logra fácilmente tomando cualquier MT que decida el lenguaje (es decir que nunca loopea), y cambiando sus transiciones hacia $q_R$ por transiciones hacia un estado de loopeo $q_L$.
 
-## 10. Sean los lenguajes $L = \lbrace \langle M\rangle \mid M \text{ siempre se detiene} \rbrace$ y $L_R = \lbrace \langle M\rangle \mid L(M) \in R  \rbrace$. ¿Cuál es la afirmación correcta?
+**Por lo tanto la afirmación es falsa, los lenguajes $L_2$ y $L_3$ son distintos.**
+
+## 10. Sean los lenguajes $L = \lbrace \langle M \rangle \mid M \text{ siempre se detiene} \rbrace$ y $L_R = \lbrace \langle M \rangle \mid L(M) \in R  \rbrace$. ¿Cuál es la afirmación correcta?
+
+Para este ejercicio, es clave recordar que $R \subseteq RE$.
 
 ### a. $L \subset L_R$
 
-$\dots$
+1. $L$ es el lenguaje cuyos elementos son las codificaciones de máquinas de Turing que siempre se detienen.
+2. $L_R$ es el lenguaje cuyos elementos son las codificaciones de máquinas de Turing cuyo lenguaje es decidible.
+3. Todo elemento de $L$ está también en $L_R$, porque si una máquina de Turing siempre se detiene, entonces el lenguaje que reconoce es decidible.
+
+**Por lo tanto la afirmación es verdadera**. ✅
 
 ### b. $L_R \subset L$
 
-$\dots$
+1. $L_R$ es el lenguaje cuyos elementos son las codificaciones de máquinas de Turing cuyo lenguaje es decidible.
+2. $L$ es el lenguaje cuyos elementos son las codificaciones de máquinas de Turing que siempre se detienen.
+3. En general, no todo elemento de $L_R$ está en $L$, porque existen máquinas de Turing cuyo lenguaje es decidible pero que no siempre se detienen (justificado en el punto 9).
+
+**Por lo tanto la afirmación es falsa**. ❌
 
 ### c. $L = L_R$
 
-$\dots$
+1. Como se tiene que $L \subset L_R$ y $L_R \not\subset L$, entonces trivialmente $L \neq L_R$.
+
+**Por lo tanto la afirmación es falsa**. ❌
 
 ## 11. Encuentre una justificación para cada una de las siguientes afirmaciones:
 
@@ -356,15 +378,25 @@ $\dots$
 
 1. $L = \lbrace w \rbrace$, con $w \in \Sigma^*$.
 2. $L \in R$ si existe una máquina de Turing que acepta la palabra $w$, rechaza todas las demás palabras, y además siempre se detiene.
-3. Toda palabra $w$ es una secuencia finita de símbolos de $\Sigma$.
-4. Por lo tanto se puede construir una MT $M$ que pase por una cantidad finita de estados para aceptar la palabra $w$, procesando sus símbolos uno por uno, y luego se detenga en el estado de aceptación $q_A$. Para todas las demás palabras, la máquina se detiene en el estado de rechazo $q_R$. Por lo tanto no loopea y $L \in R$.
+3. Toda palabra $w$ es una secuencia finita de símbolos de $\Sigma$, es decir $w = s_1, s_2, s_3, \dots, s_n$.
+4. Se puede construir una MT $M$ que pase por una cantidad finita de estados para aceptar la palabra $w$ de la siguiente manera:
+   1. $M$ comienza en el estado inicial $q_0$.
+   2. La máquina itera sobre cada símbolo $s_i$ de la palabra $w$ uno por uno asegurándose de que la cadena de entrada coincida exactamente con $w$.
+   3. Si en algún punto el símbolo de la cadena de entrada no coincide con el símbolo esperado $s_i$, la máquina para en $q_R$.
+   4. Luego de leer el último símbolo $s_n$, se lee un símbolo en blanco $B$ que indica el final de la cadena, y la máquina se detiene en el estado de aceptación $q_A$.
 
 ### c. Si $L$ es un lenguaje finito, entonces $L \in R$
 
 1. Sea $L = \lbrace w_1, w_2, \ldots, w_n \rbrace$ con $w_i \in \Sigma^*$.
 2. $L \in R$ si existe una máquina de Turing que acepta cada palabra $w_i$, rechaza todas las demás palabras, y además siempre se detiene.
-3. Como $L$ es finito, existe una cantidad finita de palabras $w_i$.
-4. Por lo tanto se puede construir una MT $M$ que pase por una cantidad finita de estados para aceptar cada palabra $w_i$, procesando sus símbolos uno por uno, y luego se detenga en el estado de aceptación $q_A$. Para todas las demás palabras, la máquina se detiene en el estado de rechazo $q_R$. Por lo tanto no loopea y $L \in R$.
+3. Toda palabra $w$ es una secuencia finita de símbolos de $\Sigma$, es decir $w = s_1, s_2, s_3, \dots, s_n$.
+4. Como $L$ es finito, existe una cantidad finita de palabras $w_i$.
+5. Se puede construir una MT $M$ que pase por una cantidad finita de estados para aceptar cada palabra $w_i$ de la siguiente manera:
+   1. $M$ comienza en el estado inicial $q_0$.
+   2. Para cada palabra $w_i$, la máquina itera sobre cada símbolo $s_j$ de la palabra uno por uno asegurándose de que la cadena de entrada coincida exactamente con $w_i$.
+   3. Si en algún punto el símbolo de la cadena de entrada no coincide con el símbolo esperado $s_j$, la máquina pasa a chequear la siguiente palabra $w_{i+1}$, para lo cual debe volver al inicio de la cinta.
+   4. Luego de leer el último símbolo $s_n$ de alguna palabra $w_i$, se lee un símbolo en blanco $B$ que indica el final de la cadena, y la máquina se detiene en el estado de aceptación $q_A$.
+   5. Si ninguna de las palabras coincide, la máquina se detiene en el estado de rechazo $q_R$.
 
 ## 12. Demuestre que si el $\text{Halting Problem (HP)}$ es un lenguaje recursivo entonces podría construirse una máquina de Turing que acepte el lenguaje universal $L_u$, y que se detenga para todo $w \in \Sigma^*$ ¿Qué puede decir entonces sobre la recursividad de $HP$?
 
