@@ -303,11 +303,36 @@ Por lo tanto la unión de un número finito de lenguajes recursivamente enumerab
 ## 7. Para los casos a, b y c del punto anterior ¿valen las recíprocas? Justifique.
 
 1. Recíproca del inciso a: **$L \notin R \implies \overline{L} \notin R$**
-   1. $\dots$
+   1. Se reescribe la implicación con la contrarrecíproca $(p \rightarrow q \Leftrightarrow (\lnot q \rightarrow \lnot p))$:
+      1. $L \notin R \implies \overline{L} \notin R$
+      2. $\lnot (\overline{L} \notin R) \implies \lnot (L \notin R)$
+      3. $\lnot \lnot (\overline{L} \in R) \implies \lnot \lnot (L \in R)$
+      4. $\overline{L} \in R \implies L \in R$
+      5. Por lo tanto se quiere demostrar que $\overline{L} \in R \implies L \in R$.
+      6. Como $\overline{L} \in R$, existe una máquina de Turing $M$ que decide $\overline{L}$.
+         1. Si $w \in \overline{L}$ entonces $M$ se detiene en el estado de aceptación $q_A$.
+         2. Si $w \notin \overline{L}$ entonces $M$ se detiene en el estado de rechazo $q_R$.
+      7. Se puede construir una máquina de Turing $M'$ que decide $L$ a partir de $M$, simplemente intercambiando todas las transiciones que llevan al estado de aceptación $q_A$ por transiciones que llevan al estado de rechazo $q_R$, y todas las transiciones que llevan al estado de rechazo $q_R$ por transiciones que llevan al estado de aceptación $q_A$.
+         1. Claramente esta máquina $M'$ también se detiene siempre, por lo que decide $L$.
+      8. Por lo tanto, si $\overline{L} \in R$ entonces $L \in R$.
 2. Recíproca del inciso b: **$L_1 \cap L_2 \in RE \implies (L_1 \in RE) \land (L_2 \in RE)$**
-   1. $\dots$
+   1. Esto no se cumple en general.
+   2. Contraejemplo:
+      1. Sea $L_1 = L_D$ el lenguaje diagonal.
+      2. Sea $L_2 = \overline{L_D}$ el complemento del lenguaje diagonal.
+      3. Se sabe que $L_D \notin RE$ y que $\overline{L_D} \in RE$.
+      4. Se tiene que $L_1 \cap L_2 = L_D \cap \overline{L_D} = \emptyset$.
+      5. Se sabe que $\emptyset \in RE$.
+      6. Por lo tanto, como se ha encontrado un contraejemplo donde $L_1 \in RE$, $L_2 \notin RE$ y $L_1 \cap L_2 \in RE$, entonces la recíproca no se cumple en general.
 3. Recíproca del inciso c: **$L_1 \cup L_2 \in RE \implies (L_1 \in RE) \land (L_2 \in RE)$**
-   1. $\dots$
+   1. Esto no se cumple en general.
+   2. Contraejemplo:
+      1. Sea $L_1 = L_D$ el lenguaje diagonal.
+      2. Sea $L_2 = \overline{L_D}$ el complemento del lenguaje diagonal.
+      3. Se sabe que $L_D \notin RE$ y que $\overline{L_D} \in RE$.
+      4. Se tiene que $L_1 \cup L_2 = L_D \cup \overline{L_D} = \Sigma^*$.
+      5. Se sabe que $\Sigma^* \in RE$.
+      6. Por lo tanto, como se ha encontrado un contraejemplo donde $L_1 \in RE$, $L_2 \notin RE$ y $L_1 \cup L_2 \in RE$, entonces la recíproca no se cumple en general.
 
 ## 8. Si $L$ es un subconjunto de un lenguaje recursivamente enumerable, ¿Puede afirmarse entonces que $L$ es recursivamente enumerable? Justifique.
 
