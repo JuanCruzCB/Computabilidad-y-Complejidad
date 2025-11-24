@@ -180,7 +180,7 @@ q1, ;, D, 0, S
 Sí, existe una MT que cumple con las condiciones:
 
 1. Para cada cadena válida $w \in L$, la máquina va al estado de rechazo $q_R$ y se detiene.
-2. Para cada cadena inválida $z \notin L$, la máquina va a un estado de loopeo $q_R$ y nunca se detiene.
+2. Para cada cadena inválida $z \notin L$, la máquina va a un estado de loopeo $q_L$ y nunca se detiene.
 
 Se puede construir con las siguientes deltas:
 
