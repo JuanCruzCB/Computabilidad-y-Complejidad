@@ -609,7 +609,10 @@
   - Los siguientes NO son lenguajes sobre $\Sigma$:
     - $L_6 = \lbrace 2, 3 \rbrace$ (los símbolos 2 y 3 no pertenecen al alfabeto $\Sigma$)
     - $L_7 = 5$ (5 no es un conjunto de cadenas, es un número)
-- **Nota**: Si $L$ es un lenguaje sobre el alfabeto $\Sigma$, su complemento también es un lenguaje sobre el mismo alfabeto, definido como $\overline{L} = \Sigma^* - L$.
+- **Nota 1**: Si $L$ es un lenguaje sobre el alfabeto $\Sigma$, su complemento también es un lenguaje sobre el mismo alfabeto, definido como $\overline{L} = \Sigma^* - L$.
+- **Nota 2**: Por definición, para cualquier lenguaje $L$ se cumple:
+  - $L \cup \overline{L} = \Sigma^*$
+  - $L \cap \overline{L} = \emptyset$
 - **L cursiva ($\mathscr{L}$)**:
   - $\mathscr{L}$ es el conjunto de todos los lenguajes posibles sobre un alfabeto $\Sigma$.
   - Es decir, $\mathscr{L} = \mathcal{P}(\Sigma^*)$.
