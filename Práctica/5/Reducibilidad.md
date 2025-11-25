@@ -12,10 +12,9 @@
 
 ### a. Demuestre que existe una reducción $(L_1$ $\alpha$ $L_2)$
 
-$L_1$ es un lenguaje con cadenas del estilo: $1, 01, 001, 0001, 00001, \dots$
-$L_2$ es un lenguaje con cadenas del estilo: $0, 10, 110, 1110, 11110, \dots$
-
-Se puede ver claramente que $L_2$ simplemente invierte todos los bits.
+- $L_1$ es un lenguaje con cadenas del estilo: $1, 01, 001, 0001, 00001, \dots$
+- $L_2$ es un lenguaje con cadenas del estilo: $0, 10, 110, 1110, 11110, \dots$
+- Se puede ver claramente que $L_2$ simplemente invierte todos los bits.
 
 $L_1$ $\alpha$ $L_2$ si existe una función total computable $f: \Sigma^* \rightarrow \Sigma^*$ tal que a cada palabra $w \in L_1$ le corresponde una palabra $f(w) \in L_2$, y a cada palabra $z \notin L_1$ le corresponde una palabra $f(z) \notin L_2$.
 
@@ -40,10 +39,9 @@ Y su función de transición $\delta$ es:
 
 ### b. Demuestre que existe una reducción $(L_1$ $\alpha$ $L_3)$
 
-$L_1$ es un lenguaje con cadenas del estilo: $1, 01, 001, 0001, 00001, \dots$
-$L_3$ es un lenguaje con una única cadena: $\lambda$, la cadena vacía.
-
-Se puede ver claramente que $L_3$ simplemente convierte toda la cadena, sea cual sea, en la cadena vacía.
+- $L_1$ es un lenguaje con cadenas del estilo: $1, 01, 001, 0001, 00001, \dots$
+- $L_3$ es un lenguaje con una única cadena: $\lambda$, la cadena vacía.
+- Se puede ver claramente que $L_3$ simplemente convierte toda la cadena, sea cual sea, en la cadena vacía.
 
 $L_1$ $\alpha$ $L_3$ si existe una función total computable $f: \Sigma^* \rightarrow \Sigma^*$ tal que a cada palabra $w \in L_1$ le corresponde una palabra $f(w) \in L_3$, y a cada palabra $z \notin L_1$ le corresponde una palabra $f(z) \notin L_3$.
 
@@ -89,10 +87,9 @@ Por lo tanto, $L_1$ $\alpha$ $L_3$.
 
 ### c. Demuestre que existe una reducción $(L_1$ $\alpha$ $L_4)$
 
-$L_1$ es un lenguaje con cadenas del estilo: $1, 01, 001, 0001, 00001, \dots$
-$L_4$ es un lenguaje con cadenas del estilo: $10, 110, 1110, 11110, \dots$
-
-Se puede ver claramente que la transformación que hay que hacer para pasar de $L_1$ a $L_4$ es, primero ir al final de la cadena e invertir todos los bits uno por uno yendo hacia la izquierda, y al llegar al símbolo blanco, agregar un uno (es decir, al principio de la cadena original). Por ejemplo, $001$ se transforma en $110$ al invertir todos sus bits, y luego le agregamos un uno al principio, por lo que $001$ se convierte en $1110$, que es $\in L_4$.
+- $L_1$ es un lenguaje con cadenas del estilo: $1, 01, 001, 0001, 00001, \dots$
+- $L_4$ es un lenguaje con cadenas del estilo: $10, 110, 1110, 11110, \dots$
+- Se puede ver claramente que la transformación que hay que hacer para pasar de $L_1$ a $L_4$ es, primero ir al final de la cadena e invertir todos los bits uno por uno yendo hacia la izquierda, y al llegar al símbolo blanco, agregar un uno (es decir, al principio de la cadena original). Por ejemplo, $001$ se transforma en $110$ al invertir todos sus bits, y luego le agregamos un uno al principio, por lo que $001$ se convierte en $1110$, que es $\in L_4$.
 
 $L_1$ $\alpha$ $L_4$ si existe una función total computable $f: \Sigma^* \rightarrow \Sigma^*$ tal que a cada palabra $w \in L_1$ le corresponde una palabra $f(w) \in L_4$, y a cada palabra $z \notin L_1$ le corresponde una palabra $f(z) \notin L_4$.
 
@@ -142,11 +139,11 @@ Es decir, si existe una reducción de $L_1$ a $L_2$, y se sabe que $L_2$ es recu
 
 ### b. Qué se puede afirmar de $L_1$ si se sabe que $L_2 \in (\text{CO-RE} - RE)$
 
-$L_2 \in (\text{CO-RE} - RE)$
-$\implies (L_2 \in \text{CO-RE}) \land (L_2 \notin RE)$ (Por def. de diferencia de conjuntos)
-$\implies (\overline{L_2} \in RE) \land (L_2 \notin RE)$ (Por def. de CO-RE)
-$\implies \overline{L_2} \in RE \rightarrow \overline{L_1} \in RE$ (Por teorema)
-$\implies \overline{L_1} \in RE \rightarrow L_1 \in \text{CO-RE}$ (Por def. de CO-RE)
+1. $L_2 \in (\text{CO-RE} - RE)$
+2. $\implies (L_2 \in \text{CO-RE}) \land (L_2 \notin RE)$ (Por def. de diferencia de conjuntos)
+3. $\implies (\overline{L_2} \in RE) \land (L_2 \notin RE)$ (Por def. de CO-RE)
+4. $\implies \overline{L_2} \in RE \rightarrow \overline{L_1} \in RE$ (Por teorema)
+5. $\implies \overline{L_1} \in RE \rightarrow L_1 \in \text{CO-RE}$ (Por def. de CO-RE)
 
 Por lo tanto se puede afirmar que si se sabe que $L_2 \in (\text{CO-RE} - RE)$, entonces esto implica que $L_1 \in \text{CO-RE}$
 
@@ -180,9 +177,9 @@ $\dots$
 
 ## 5. Demuestre que $L_V \notin RE$:
 
-### $L_V = \lbrace (\langle M \rangle) \mid L(M) = \emptyset \rbrace$.
+### $L_V = \lbrace \langle M \rangle \mid L(M) = \emptyset \rbrace$.
 
-### Considere que si $\langle M \rangle$ es un código inválido de máquina de Turing también pertence a $L_V$ (ya que no reconoce ningún string). Así $L_V$ es el complemento del lenguaje $L_{NV} = \lbrace (\langle M \rangle) \mid L(M) \neq \emptyset \rbrace$
+### Considere que si $\langle M \rangle$ es un código inválido de máquina de Turing también pertence a $L_V$ (ya que no reconoce ningún string). Así $L_V$ es el complemento del lenguaje $L_{NV} = \lbrace \langle M \rangle \mid L(M) \neq \emptyset \rbrace$
 
 ### (Ayuda: puede utilizar el complemento de $L_u$ para encontrar una reducción)
 
