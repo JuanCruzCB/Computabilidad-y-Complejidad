@@ -812,13 +812,15 @@
 
 ## Definición de reducción
 
-- Sean $L_1$ y $L_2$ dos lenguajes sobre un alfabeto $\Sigma$.
-- $L1$ se reduce a $L2$ (denotado $L_1$ $\alpha$ $L_2$) si existe una **función total computable** $f: \Sigma^* \rightarrow \Sigma^*$ tal que: $$(\forall w \in \Sigma^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
-- Equivalentemente: $$(\forall w \in \Sigma^*)((w \in L_1 \rightarrow f(w) \in L_2) \land (f(w) \in L_2 \rightarrow w \in L_1))$$
-- O, por contrarecíproco $(A \rightarrow B \Leftrightarrow \lnot B \rightarrow \lnot A)$ de lo anterior: $$(\forall w \in \Sigma^*)((w \in L_1 \rightarrow f(w) \in L_2) \land (w \notin L_1 \rightarrow f(w) \notin L_2)$$
-- Intuitivamente, una reducibilidad es una función que transforma instancias de un problema/lenguaje en otro.
+- **Definición intuitiva**:
+  - Una reducibilidad es una función que transforma instancias de un problema/lenguaje en otro.
   - A cada palabra de $L_1$ se le asigna una palabra de $L_2$.
   - A cada palabra que NO pertenece a $L_1$ se le asigna una palabra que NO pertenece a $L_2$.
+- **Definición formal**:
+  - Sean $L_1$ y $L_2$ dos lenguajes sobre un alfabeto $\Sigma$.
+  - $L_1$ se reduce a $L_2$ (denotado $L_1$ $\alpha$ $L_2$) si existe una **función total computable** $f: \Sigma^* \rightarrow \Sigma^*$ tal que: $$(\forall w \in \Sigma^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
+  - Equivalentemente: $$(\forall w \in \Sigma^*)((w \in L_1 \rightarrow f(w) \in L_2) \land (f(w) \in L_2 \rightarrow w \in L_1))$$
+  - O, por contrarecíproco $(A \rightarrow B \Leftrightarrow \lnot B \rightarrow \lnot A)$ de lo anterior: $$(\forall w \in \Sigma^*)((w \in L_1 \rightarrow f(w) \in L_2) \land (w \notin L_1 \rightarrow f(w) \notin L_2)$$
 
 ## Función total computable
 
@@ -831,8 +833,8 @@
 
 ## Ejemplo 1
 
-- Sea $L_1 = \lbrace w \in \lbrace a, b \rbrace^* \mid \text{w comienza con a} \rbrace$
-- Sea $L_2 = \lbrace w \in \lbrace a, b \rbrace^* \mid \text{w comienza con b} \rbrace$
+- Sea $L_1 = \lbrace w \in \lbrace a, b \rbrace^* \mid w \text{ comienza con a} \rbrace$
+- Sea $L_2 = \lbrace w \in \lbrace a, b \rbrace^* \mid w \text{ comienza con b} \rbrace$
 
 Se demostrará que existe una reducción: $L_1$ $\alpha$ $L_2$.
 
@@ -907,54 +909,63 @@ Podemos ver que:
 
 Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
-1. Se puede construir una MT que acpete $L_1$ a partir de la MT que acepta $L_2$ (si existe).
+1. Se puede construir una MT que acepte $L_1$ a partir de la MT que acepta $L_2$ (si existe).
 2. Intuitivamente, $L_1$ no puede ser más difícil computacionalmente que $L_2$, porque se puede usar $L_2$ para resolver $L_1$.
-3. Intuitivamente, la reducción establece una relación de $\leq$ grado de dificultad computacional entre los lenguajes. Si $L_1$ $\alpha$ $L_2$, entonces $L_1$ no es más dificil que $L_2$, es o igual de difícil o más fácil. Si puedo computar $L_2$, entonces puedo computar $L_1$.
+3. Intuitivamente, la reducción establece una relación de $\leq$ grado de dificultad computacional entre los lenguajes. Si $L_1$ $\alpha$ $L_2$, entonces $L_1$ no es más difícil que $L_2$, es o igual de difícil o más fácil. Si puedo computar $L_2$, entonces puedo computar $L_1$.
 
 ## Teoremas fundamentales
 
-### Decibilidad
+### Sobre $R$
 
 - Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1$ $\alpha$ $L_2$. Entonces:
   - $L_2 \in R \rightarrow L_1 \in R$
+    - Si $L_2$ es decidible, entonces $L_1$ también.
   - $L_1 \notin R \rightarrow L_2 \notin R$ (por contrarrecíproco)
-  - Es decir, si $L_2$ es decidible, entonces $L_1$ es decidible.
+    - Si $L_1$ NO es decidible, entonces $L_2$ tampoco.
 - Este teorema nos sirve para poder determinar si un lenguaje es decidible o no, partiendo de saber que otro lenguaje al que se reduce es decidible o no.
 
-## Recursivamente enumerable
+### Sobre $RE$
 
 - Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1$ $\alpha$ $L_2$. Entonces:
   - $L_2 \in RE \rightarrow L_1 \in RE$
+    - Si $L_2$ es recursivamente enumerable, entonces $L_1$ también.
   - $L_1 \notin RE \rightarrow L_2 \notin RE$ (por contrarrecíproco)
-  - Es decir, si $L_2$ es recursivamente enumerable, entonces $L_1$ es recursivamente enumerable.
+    - Si $L_1$ NO es recursivamente enumerable, entonces $L_2$ tampoco.
 - Este teorema nos sirve para poder determinar si un lenguaje es recursivamente enumerable o no, partiendo de saber que otro lenguaje al que se reduce es recursivamente enumerable o no.
 
 # Halting Problem (HP)
 
 ## Definición
 
-- El lenguaje Halting Problem se define como: $$HP = \lbrace (\langle M \rangle, w) \mid \text{M es una MT que se detiene con input w} \rbrace$$
-- Intuitivamente, este lenguaje contiene las codificaciones de todas las máquinas de Turing que se detienen al recibir una cadena de entrada específica.
+- **Definición intuitiva**:
+  - Este lenguaje contiene las codificaciones de todas las máquinas de Turing que se detienen al ejecutarse con una cadena de entrada $w$, ya sea aceptando o rechazando.
+- **Definición formal**:
+  - El lenguaje Halting Problem se define como: $$HP = \lbrace (\langle M \rangle, w) \mid \text{M es una MT que se detiene con input w} \rbrace$$
 - Este lenguaje es **recursivamente enumerable pero no decidible**, es decir: $$ HP \in (RE - R) \Leftrightarrow (HP \in RE) \land (HP \notin R)$$
 
 # Lenguaje $L_{\Sigma^*}$
 
 ## Definición
 
-- El lenguaje $L_{\Sigma^*}$ se define como: $$L_{\Sigma^*} = \lbrace \langle M \rangle \mid \text{M es una MT y } L(M) = \Sigma^*  \rbrace$$
-- Intuitivamente, este lenguaje contiene las codificaciones de todas las máquinas de Turing que aceptan todas las cadenas posibles sobre el alfabeto $\Sigma$.
-- Este lenguaje no es decidible ni recursivamente enumerable:
-  - $L_{\Sigma^*} \notin R$
+- **Definición intuitiva**:
+  - Este lenguaje contiene las codificaciones de todas las máquinas de Turing que aceptan todas las cadenas posibles sobre el alfabeto $\Sigma$.
+- **Definición formal**:
+  - El lenguaje $L_{\Sigma^*}$ se define como: $$L_{\Sigma^*} = \lbrace \langle M \rangle \mid \text{M es una MT y } L(M) = \Sigma^*  \rbrace$$
+- Este lenguaje no es recursivamente enumerable y por lo tanto tampoco decidible:
   - $L_{\Sigma^*} \notin RE$
+  - $L_{\Sigma^*} \notin R$
 
 # Lenguaje $L_{EQ}$
 
 ## Definición
 
-- El lenguaje $L_{EQ}$ se define como: $$L_{EQ} = \lbrace (\langle M_1 \rangle, \langle M_2 \rangle) \mid L(M_1) = L(M_2)  \rbrace$$
-- Intuitivamente, este lenguaje contiene los pares de codificaciones de máquinas de Turing que reconocen el mismo lenguaje.
-- Este lenguaje no es recursivamente enumerable:
+- **Definición intuitiva**:
+  - Este lenguaje contiene los pares de codificaciones de máquinas de Turing que reconocen el mismo lenguaje.
+- **Definición formal**:
+  - El lenguaje $L_{EQ}$ se define como: $$L_{EQ} = \lbrace (\langle M_1 \rangle, \langle M_2 \rangle) \mid L(M_1) = L(M_2)  \rbrace$$
+- Este lenguaje no es recursivamente enumerable y por lo tanto tampoco decidible:
   - $L_{EQ} \notin RE$
+  - $L_{EQ} \notin R$
 
 ---
 
