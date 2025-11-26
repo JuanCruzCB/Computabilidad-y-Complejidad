@@ -818,7 +818,7 @@
   - A cada palabra que NO pertenece a $L_1$ se le asigna una palabra que NO pertenece a $L_2$.
 - **Definición formal**:
   - Sean $L_1$ y $L_2$ dos lenguajes sobre un alfabeto $\Sigma$.
-  - $L_1$ se reduce a $L_2$ (denotado $L_1$ $\alpha$ $L_2$) si existe una **función total computable** $f: \Sigma^* \rightarrow \Sigma^*$ tal que: $$(\forall w \in \Sigma^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
+  - $L_1$ se reduce a $L_2$ (denotado $L_1 \space \alpha \space L_2$) si existe una **función total computable** $f: \Sigma^* \rightarrow \Sigma^*$ tal que: $$(\forall w \in \Sigma^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
   - Equivalentemente: $$(\forall w \in \Sigma^*)((w \in L_1 \rightarrow f(w) \in L_2) \land (f(w) \in L_2 \rightarrow w \in L_1))$$
   - O, por contrarecíproco $(A \rightarrow B \Leftrightarrow \lnot B \rightarrow \lnot A)$ de lo anterior: $$(\forall w \in \Sigma^*)((w \in L_1 \rightarrow f(w) \in L_2) \land (w \notin L_1 \rightarrow f(w) \notin L_2)$$
 
@@ -836,7 +836,7 @@
 - Sea $L_1 = \lbrace w \in \lbrace a, b \rbrace^* \mid w \text{ comienza con a} \rbrace$
 - Sea $L_2 = \lbrace w \in \lbrace a, b \rbrace^* \mid w \text{ comienza con b} \rbrace$
 
-Se demostrará que existe una reducción: $L_1$ $\alpha$ $L_2$.
+Se demostrará que existe una reducción: $L_1 \space \alpha \space L_2$.
 
 Para esto, queremos encontrar una función total computable $f: \lbrace a, b \rbrace^* \rightarrow \lbrace a, b \rbrace^*$ tal que: $$(\forall w \in \lbrace a, b \rbrace^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
 
@@ -872,7 +872,7 @@ Podemos ver que:
 - Sea $L_1 = \lbrace w \in \lbrace 0, 1 \rbrace^* \mid \text{Cantidad de unos de w es par} \rbrace$
 - Sea $L_2 = \lbrace w \in \lbrace 0, 1 \rbrace^* \mid \text{Cantidad de unos de w es impar} \rbrace$
 
-Se demostrará que existe una reducción: $L_1$ $\alpha$ $L_2$.
+Se demostrará que existe una reducción: $L_1 \space \alpha \space L_2$.
 
 Para esto, queremos encontrar una función total computable $f: \lbrace 0, 1 \rbrace^* \rightarrow \lbrace 0, 1 \rbrace^*$ tal que: $$(\forall w \in \lbrace 0, 1 \rbrace^*)(w \in L_1 \leftrightarrow f(w) \in L_2)$$
 
@@ -907,17 +907,17 @@ Podemos ver que:
 
 ## Implicaciones de la reducción
 
-Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
+Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 
 1. Se puede construir una MT que acepte $L_1$ a partir de la MT que acepta $L_2$ (si existe).
 2. Intuitivamente, $L_1$ no puede ser más difícil computacionalmente que $L_2$, porque se puede usar $L_2$ para resolver $L_1$.
-3. Intuitivamente, la reducción establece una relación de $\leq$ grado de dificultad computacional entre los lenguajes. Si $L_1$ $\alpha$ $L_2$, entonces $L_1$ no es más difícil que $L_2$, es o igual de difícil o más fácil. Si puedo computar $L_2$, entonces puedo computar $L_1$.
+3. Intuitivamente, la reducción establece una relación de $\leq$ grado de dificultad computacional entre los lenguajes. Si $L_1 \space \alpha \space L_2$, entonces $L_1$ no es más difícil que $L_2$, es o igual de difícil o más fácil. Si puedo computar $L_2$, entonces puedo computar $L_1$.
 
 ## Teoremas fundamentales
 
 ### Sobre $R$
 
-- Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1$ $\alpha$ $L_2$. Entonces:
+- Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1 \space \alpha \space L_2$. Entonces:
   - $L_2 \in R \rightarrow L_1 \in R$
     - Si $L_2$ es decidible, entonces $L_1$ también.
   - $L_1 \notin R \rightarrow L_2 \notin R$ (por contrarrecíproco)
@@ -926,7 +926,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 
 ### Sobre $RE$
 
-- Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1$ $\alpha$ $L_2$. Entonces:
+- Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1 \space \alpha \space L_2$. Entonces:
   - $L_2 \in RE \rightarrow L_1 \in RE$
     - Si $L_2$ es recursivamente enumerable, entonces $L_1$ también.
   - $L_1 \notin RE \rightarrow L_2 \notin RE$ (por contrarrecíproco)
@@ -1207,7 +1207,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1$ $\alpha$ $L_2$ implica que:
 ### Definición
 
 - Sean $L_1$ y $L_2$ dos lenguajes sobre un alfabeto $\Sigma$.
-- Decimos que $L_1$ se reduce polinomialmente a $L_2$, denotado como $L_1$ $\alpha_p$ $L_2$, si y solo si $L_1$ $\alpha$ $L_2$ y además la función de reducción $f$ es computada por una MTD que trabaja en tiempo polinomial, es decir, $(f \in P)$.
+- Decimos que $L_1$ se reduce polinomialmente a $L_2$, denotado como $L_1$ $\alpha_p$ $L_2$, si y solo si $L_1 \space \alpha \space L_2$ y además la función de reducción $f$ es computada por una MTD que trabaja en tiempo polinomial, es decir, $(f \in P)$.
 
 ### Teorema 3
 

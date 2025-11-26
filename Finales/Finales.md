@@ -26,7 +26,7 @@
 
 ## 1. $L_1$ $\alpha$ $L_u$, con $L_1 = \lbrace 0w \mid w \in \Sigma^* \rbrace$. Describir la función de transición de la MT $M_f$ que aplica la función de reducción.
 
-## 2. $L_1$ $\alpha$ $L_2$, con $L_1 = \lbrace \lambda \rbrace$ y $L_2 = \lbrace 0^n1^n \mid n < 0 \rbrace$. Explicar la función de reducción.
+## 2. $L_1 \space \alpha \space L_2$, con $L_1 = \lbrace \lambda \rbrace$ y $L_2 = \lbrace 0^n1^n \mid n < 0 \rbrace$. Explicar la función de reducción.
 
 ## 3. Marcar verdadero o falso, y justificar. Si $A$ y $B$ son conjuntos no contables.
 
