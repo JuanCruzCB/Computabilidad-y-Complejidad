@@ -139,29 +139,42 @@
 
 ### a. Qué se puede afirmar de $L_1$ si se sabe que $L_2 \in R$
 
-Si se sabe que $L_2 \in R$, esto implica, por teorema, que $L_1 \in R$ también.
+1. Por enunciado: $L_1 \space \alpha \space L_2$
+2. Por teorema se sabe que: $L_2 \in R \implies L_1 \in R$
 
-Es decir, si existe una reducción de $L_1$ a $L_2$, y se sabe que $L_2$ es recursivo, entonces $L_1$ también es recursivo.
+**Por lo tanto, se puede afirmar que $L_1 \in R$**.
 
 ### b. Qué se puede afirmar de $L_1$ si se sabe que $L_2 \in (\text{CO-RE} - RE)$
 
-1. $L_2 \in (\text{CO-RE} - RE)$
-2. $\implies (L_2 \in \text{CO-RE}) \land (L_2 \notin RE)$ (Por def. de diferencia de conjuntos)
-3. $\implies (\overline{L_2} \in RE) \land (L_2 \notin RE)$ (Por def. de CO-RE)
-4. $\implies \overline{L_2} \in RE \rightarrow \overline{L_1} \in RE$ (Por teorema)
-5. $\implies \overline{L_1} \in RE \rightarrow L_1 \in \text{CO-RE}$ (Por def. de CO-RE)
+1. Por enunciado: $L_1 \space \alpha \space L_2$
+2. Por teorema se sabe que: $L_2 \in RE \implies L_1 \in RE$
+3. $L_2 \in (\text{CO-RE} - RE)$
+4. $\implies (L_2 \in \text{CO-RE}) \land (L_2 \notin RE)$ (Por def. de diferencia de conjuntos)
+5. $\implies (\overline{L_2} \in RE) \land (L_2 \notin RE)$ (Por def. de CO-RE)
+6. $\implies \overline{L_2} \in RE \rightarrow \overline{L_1} \in RE$ (Por teorema)
+7. $\implies \overline{L_1} \in RE \implies L_1 \in \text{CO-RE}$ (Por def. de CO-RE)
+8. $\implies L_2 \in (\text{CO-RE} - RE) \implies L_1 \in \text{CO-RE}$
 
-Por lo tanto se puede afirmar que si se sabe que $L_2 \in (\text{CO-RE} - RE)$, entonces esto implica que $L_1 \in \text{CO-RE}$
+**Por lo tanto, se puede afirmar que si se sabe que $L_2 \in (\text{CO-RE} - RE)$, entonces esto implica que $L_1 \in \text{CO-RE}$**.
 
 ### c. Qué se puede afirmar de $L_2$ si se sabe que $L_1 \in R$
 
-Nada. La reducción $L_1 \space \alpha \space L_2$ solo garantiza que si $L_2$ es decidible, entonces $L_1$ también lo es. Pero si se sabe que $L_1$ es decidible pero no se sabe nada de $L_2$, no se puede concluir nada sobre $L_2$.
+1. Por enunciado: $L_1 \space \alpha \space L_2$
+2. Por teorema se sabe que: $L_2 \in R \implies L_1 \in R$
+3. La contrarrecíproca del teorema es: $L_1 \notin R \implies L_2 \notin R$
+4. La reducción establece una relación de grado de dificultad entre los lenguajes, por lo cual si $L_1$ es decidible, $L_2$ podría serlo también, o ser solo recursivamente enumerable, o incluso no ser ni siquiera recursivamente enumerable.
+
+**Por lo tanto, no se puede afirmar nada sobre $L_2$ si se sabe que $L_1 \in R$**.
 
 ### d. Qué se puede afirmar de $L_2$ si se sabe que $L_1 \in (\text{CO-RE} - RE)$
 
-Si $L_1 \in (\text{CO-RE} - RE)$, esto implica que $L_1 \notin RE$, y a su vez esto implica que $L_1 \notin R$. Luego, por la contrarrecíproca del teorema, se sabe que si $L_1 \notin R \rightarrow L_2 \notin R$, con lo cual se puede afirmar que $L_2 \notin RE$ y a su vez $L_2 \notin R$.
+1. Por enunciado: $L_1 \space \alpha \space L_2$
+2. Por teorema se sabe que: $L_2 \in RE \implies L_1 \in RE$
+3. La contrarrecíproca del teorema es: $L_1 \notin RE \implies L_2 \notin RE$
+4. $L_1 \in (\text{CO-RE} - RE) \implies L_1 \notin RE$
+5. $L_1 \notin RE \implies L_2 \notin RE$ (Por contrarrecíproca del teorema)
 
-Por lo tanto se puede afirmar que si se sabe que $L_1 \in (\text{CO-RE} - RE)$, entonces esto implica que $L_2 \notin RE$.
+**Por lo tanto, se puede afirmar que si se sabe que $L_1 \in (\text{CO-RE} - RE)$, entonces esto implica que $L_2 \notin RE$**.
 
 ## 3. Sean $\text{HP}$ y $L_u$ los lenguajes Halting Problem y Lenguaje Universal respectivamente.
 
