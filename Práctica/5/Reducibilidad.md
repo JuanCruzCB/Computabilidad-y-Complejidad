@@ -184,13 +184,40 @@
 
 ### Demuestre que existe una reducción $\text{HP}$ $\alpha$ $L_u$
 
-$\dots$
+1. **Análisis de los lenguajes**:
+   1. $\text{HP}$ contiene todos los pares (código binario de MT, cadena de entrada) tales que la MT se detiene, ya sea en $q_A$ o en $q_R$, cuando recibe esa cadena de entrada.
+   2. $L_u$ contiene todos los pares (código binario de MT, cadena de entrada) tales que la MT se detiene en $q_A$ cuando recibe esa cadena de entrada.
+2. **Definición de la reducción**:
+   1. $\text{HP} \space \alpha \space L_u$ si existe una función total computable $f: \Sigma^* \rightarrow \Sigma^*$ tal que a cada palabra $w \in \text{HP}$ le corresponde una palabra $f(w) \in L_u$, y a cada palabra $z \notin \text{HP}$ le corresponde una palabra $f(z) \notin L_u$.
+3. **Construcción de la $M_f$**:
+   1. Intuitivamente, lo que se debe hacer es:
+      1. Para cada par válido perteneciente a $HP$, se debe construir un par válido perteneciente a $L_u$.
+      2. Para cada par inválido NO perteneciente a $HP$, se debe construir un par inválido NO perteneciente a $L_u$.
+   2. Podemos definir una MT $M_f$ de cómputo que compute la función $f$ y que siempre se detenga:
+   3. La máquina $M_f$ recibe como entrada un par $(\langle M \rangle, w)$ y hace lo siguiente:
+      1. Si $(\langle M \rangle, w)$ es un **par inválido**, es decir que no hay un código de MT + una cadena de entrada, o que solo hay uno de los dos, o que la coma separadora no está, etc, entonces $(\langle M \rangle, w) \notin HP$, y por lo tanto se debe dejar algo en la cinta $\notin L_u$. Para esto simplemente la $M_f$ no hace absolutamente nada, ya que como el par es inválido, automáticamente no forma parte de $L_u$.
+      2. Si $(\langle M \rangle, w)$ es un **par válido pero $\langle M \rangle$ no es una codificación válida de MT**, se asume que $M$ es una MT que se detiene sin hacer nada, es decir, $L(M) = \emptyset$. Claramente esta MT se detiene con input $w$, porque se sabe que $\emptyset \in R$. Entonces, $(\langle M \rangle, w) \in HP$, y por lo tanto se debe dejar algo en la cinta $\in L_u$. Para esto, $M_f$ deja en la cinta un nuevo par $(\langle M' \rangle, w)$, donde $M'$ es una MT que acepta toda cadena de entrada, es decir, $L(M') = \Sigma^*$. La cadena de entrada $w$ es la misma que la del par original. Así, como $M'$ acepta toda cadena de entrada, en particular acepta $w$, por lo que $(\langle M' \rangle, w) \in L_u$.
+      3. Si $(\langle M \rangle, w)$ es un **par válido en todo sentido**, es decir que $\langle M \rangle$ es una codificación válida de MT y $w$ es una cadena de entrada, y está la coma separadora, entonces $M_f$ intercambia todas las transiciones hacia el estado $q_R$ por el estado $q_A$, y deja en la cinta el nuevo par $(\langle M'' \rangle, w)$, donde $M''$ es la MT resultante de hacer ese cambio en $M$. La cadena de entrada $w$ es la misma que la del par original.
+4. **Verificación de las condiciones de la reducción**:
+   1. $M_f$ es total?
+      1. Sí, porque está definida para todos los elementos de $\Sigma^*$. ✅
+   2. $M_f$ es computable?
+      1. Sí, porque siempre se detiene, debido a que el alfabeto es finito, la cadena de entrada es finita, y no hay bucles infinitos en ninguna transición. ✅
+   3. Para cada palabra $w \in \text{HP}$, $f(w) \in L_u$?
+      1. Si el par de entrada es válido pero $\langle M \rangle$ no es una codificación válida de MT, entonces $(\langle M \rangle, w) \in HP$, y al aplicar $f$ se obtiene $(\langle M' \rangle, w) \in L_u$ porque $M'$ acepta toda cadena de entrada. ✅
+      2. Si el par de entrada es válido en todo sentido, y $M$ se detiene en $q_R$ con input $w$, entonces $(\langle M \rangle, w) \in HP$, y al aplicar $f$ se obtiene $(\langle M'' \rangle, w)$, donde $M''$ se detiene en $q_A$ con input $w$, por lo que $(\langle M'' \rangle, w) \in L_u$. ✅
+      3. Si el par de entrada es válido en todo sentido, y $M$ se detiene en $q_A$ con input $w$, entonces $(\langle M \rangle, w) \in HP$, y al aplicar $f$ se obtiene exactamente el mismo par, por lo que $(\langle M'' \rangle, w) \in L_u$. ✅
+   4. Para cada palabra $z \notin \text{HP}$, $f(z) \notin L_u$?
+      1. Si el par de entrada es inválido, entonces $(\langle M \rangle, w) \notin HP$, y al aplicar $f$ se obtiene ese mismo par inválido que no pertenece a $L_u$. ✅
+      2. Si el par de entrada es válido en todo sentido, y $M$ loopea con input $w$, entonces $(\langle M \rangle, w) \notin HP$, y al aplicar $f$ se obtiene $(\langle M'' \rangle, w)$, donde $M''$ loopea con input $w$, por lo que $(\langle M'' \rangle, w) \notin L_u$. ✅
+
+**Por lo tanto, $\text{HP} \space \alpha \space L_u$**.
 
 ## 4. Sea $\text{HP}_\lambda$ el Halting Problem a partir de la cinta en blanco:
 
-### $\text{HP}_\lambda = \lbrace \langle M\rangle \mid \text{M se detiene con input } \lambda \rbrace$
+### $\text{HP}_\lambda = \lbrace \langle M \rangle \mid \text{M se detiene con input } \lambda \rbrace$
 
-### Demuestre que existe una reducción $\text{HP}$ $\alpha$ $\text{HP}_\lambda$
+### Demuestre que existe una reducción $\text{HP} \space \alpha \space \text{HP}_\lambda$
 
 $\dots$
 
