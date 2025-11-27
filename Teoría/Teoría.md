@@ -933,7 +933,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
     - Si $L_1$ NO es recursivamente enumerable, entonces $L_2$ tampoco.
 - Este teorema nos sirve para poder determinar si un lenguaje es recursivamente enumerable o no, partiendo de saber que otro lenguaje al que se reduce es recursivamente enumerable o no.
 
-# Halting Problem (HP)
+# Halting Problem $(HP)$
 
 ## Definición
 
@@ -1056,15 +1056,18 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
     - $f(n) \in O(g(n))$
     - $f(n) \in \Theta(g(n))$
     - $g(n) \in O(f(n))$
+    - Intuitivamente, esto dice que las funciones crecen al mismo ritmo, ya que la razón entre ambas tiende a una constante positiva.
   - Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$ se cumple:
     - $f(n) \in O(g(n))$
     - $f(n) \notin \Theta(g(n))$
     - $g(n) \notin O(f(n))$
+    - Intuitivamente, esto dice que $f(n)$ crece igual o más lento que $g(n)$, ya que la razón entre ambas tiende a cero.
   - Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty$ se cumple:
     - $f(n) \notin O(g(n))$
     - $f(n) \in \Omega(g(n))$
     - $f(n) \notin \Theta(g(n))$
     - $g(n) \in O(f(n))$
+    - Intuitivamente, esto dice que $f(n)$ crece igual o más rápido que $g(n)$, ya que la razón entre ambas tiende a infinito.
 
 ---
 
@@ -1150,12 +1153,14 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 
 - La clase de lenguajes $P$ está formada por todos los lenguajes que pueden ser decididos por una MTD en **tiempo polinomial**.
 - Formalmente: $P = \bigcup_{i \geq 0} DTIME(n^i)$
+- Todo lenguaje en $P$ es decidible, ya que las MTD siempre se detienen.
 
 ### NP
 
 - La clase de lenguajes $NP$ está formada por todos los lenguajes que pueden ser decididos por una MTN en **tiempo polinomial**.
 - Formalmente: $NP = \bigcup_{i \geq 0} NTIME(n^i)$
 - Claramente, $P \subseteq NP$, ya que todas las MTD son también MTN.
+- Todo lenguaje en $NP$ es decidible, ya que las MTN en tiempo polinomial siempre se detienen.
 
 ### Teorema
 
@@ -1194,13 +1199,29 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 
 ### CO-NP
 
+#### Definición
+
 - Sea $L$ un lenguaje.
 - Decimos que $L \in \text{CO-NP}$ si y solo si el complemento de $L$ pertenece a $NP$.
 - Es decir, $L \in \text{CO-NP} \leftrightarrow \overline{L} \in NP$
-- **Teorema 1**: $L \in P \implies L \in (NP \cap \text{CO-NP})$
-  - $L \in P \implies L \in NP$
-  - $L \in P \implies \overline{L} \in P \implies \overline{L} \in NP \implies L \in \text{CO-NP}$
+- No se sabe cómo están relacionados $NP$ y $\text{CO-NP}$. No se puede asumir que son iguales.
+
+#### Teorema 1
+
+- $L \in P \implies L \in (NP \cap \text{CO-NP})$
 - Si un lenguaje está en $NP$, no se puede saber si su complemento también está en $NP$.
+- Demostración:
+  - $L \in P \implies L \in NP$ (Por $P \subseteq NP$)
+  - $L \in P \implies \overline{L} \in P$ (Intercambiando estados de aceptación y rechazo en la MTD que decide a $L$)
+  - $\overline{L} \in P \implies \overline{L} \in NP$ (Por $P \subseteq NP$)
+  - $\overline{L} \in NP \implies L \in \text{CO-NP}$ (Por def. de CO-NP)
+
+#### Teorema 2
+
+- Hipotéticamente, si $NP \neq \text{CO-NP}$, entonces $P \neq NP$.
+- Demostración:
+  - Si $P = NP \implies NP = \text{CO-NP}$
+  - Por contrarrecíproco: Si $NP \neq \text{CO-NP} \implies P \neq NP$
 
 ## Reducción Polinomial
 
@@ -1226,23 +1247,25 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 
 ## NP-Completo
 
+### Definición
+
 - Sea $L$ un lenguaje.
 - $L \in NPC$ si y solo si:
   - $L \in NPH$
   - $L \in NP$
 
-## Teorema 5
+### Teorema 5
 
 - Si existe un lenguaje $L \in NPC$ tal que $L \in P$, entonces $P = NP$.
 - Hasta ahora no se ha encontrado ningún lenguaje que cumpla lo anterior.
 - Según este teorema, para demostrar que $P = NP$ alcanzaría con encontrar una solución polinomial para cualquiera de los problemas NPC conocidos.
 
-## Teorema 6
+### Teorema 6
 
 - Sean $L_1$ y $L_2$ dos lenguajes tal que $L_1 \in NP$ y $L_2 \in NP$.
 - Si $L_1 \in NPC$ y $L_1$ $\alpha_p$ $L_2$, entonces $L_2 \in NPC$.
 
-## Ejemplo de lenguaje NPC - SAT
+## Ejemplo de lenguaje $NPC : SAT$
 
 - **Literal**: Variable proposicional o su negación.
 - **FNC**: Forma normal conjuntiva, es una fórmula lógica que es una conjunción de cláusulas, donde cada cláusula es una disyunción de literales. Por ejemplo: $(x_1 \lor \neg x_2) \land (x_2 \lor x_3) \land (\neg x_1 \lor \neg x_3)$
@@ -1250,7 +1273,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 - $SAT = \lbrace \varphi \mid \varphi \text{ es una fórmula booleana en FNC satisfactible} \rbrace$
 - Se ha demostrado que $SAT \in NPC$ vía el teorema de Cook/Levin.
 
-## P = NP?
+## $P = NP$?
 
 - Por varias décadas de estudio los investigadores no han podido determinar si la afirmación $P = NP$ es verdadera o falsa.
 - Se cree ampliamente que $P \neq NP$, es decir, que existen problemas en $NP$ que no pueden ser resueltos en tiempo polinomial por una MTD, pero hasta ahora no se ha encontrado una prueba formal que lo demuestre.
