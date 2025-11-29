@@ -263,85 +263,155 @@ for i = 1  to n do
 
 ### A) $|P| < |\mathbb{N}|$
 
+❌, los números pares se pueden corresponder uno a uno con los números naturales (por ejemplo, mediante la función $f(n) = 2n$), por lo que tienen la misma cardinalidad.
+
 ### B) $|P| > |\mathbb{N}|$
+
+❌, idem a).
 
 ### C) $|P| = |\mathbb{N}|$
 
+✅, los números pares se pueden corresponder uno a uno con los números naturales (por ejemplo, mediante la función $f(n) = 2n$), por lo que tienen la misma cardinalidad.
+
 ### D) $|P| = |\mathbb{Z}|$
 
+✅, los números pares son infinitos contables como los naturales, y se sabe que los números enteros también son infinitos contables, por lo que tienen la misma cardinalidad.
+
 ### E) $|P| = |\mathbb{Q}|$
+
+✅, los números pares son infinitos contables como los naturales, y se sabe que los números racionales también son infinitos contables, por lo que tienen la misma cardinalidad.
 
 ## 2) ¿Cuál o cuáles de las siguientes opciones representa un lenguaje aceptado por una Máquina de Turing? (Considerar $\Sigma = \lbrace 0,1 \rbrace$)
 
 ### A) $L(M) = \lbrace w \in \Sigma^* \mid w \text{ termina en 0} \rbrace$
 
+✅, es un lenguaje válido ya que se puede construir una MT que acepte todas las cadenas que terminan en 0.
+
 ### B) $L(M) = \lbrace w \in \Sigma^* \mid w \text{ contiene al menos un 1} \rbrace$
+
+✅, es un lenguaje válido ya que se puede construir una MT que acepte todas las cadenas que contienen al menos un 1.
 
 ### C) $L(M) = \lbrace w \in \Sigma^* \mid w \text{ es un número binario terminado en 1} \rbrace$
 
+✅, es un lenguaje válido ya que se puede construir una MT que acepte todos los números binarios que terminan en 1.
+
 ### D) $L(M) = \emptyset - \lbrace \lambda \rbrace$
 
+✅, es un lenguaje válido ya que se puede construir una MT que no acepte ninguna cadena y simplemente se detenga rechazando para todo símbolo del alfabeto.
+
 ### E) $L(M) = \Sigma^* - \lbrace \lambda \rbrace$
+
+✅, es un lenguaje válido ya que se puede construir una MT que acepte todas las cadenas excepto la cadena vacía.
 
 ## 3) ¿Cuál o cuáles de las siguientes afirmaciones describe correctamente la definición de EQUIVALENCIA entre dos Máquinas de Turing (MT)?
 
 ### A) Dos MT son equivalentes si tienen el mismo número de estados.
 
+❌, la equivalencia no depende de la cantidad de estados, sino del lenguaje que aceptan.
+
 ### B) Dos MT son equivalentes si aceptan el mismo lenguaje.
+
+✅, esta es la definición correcta de equivalencia entre dos MT.
 
 ### C) Dos MT son equivalentes si tienen el mismo alfabeto de entrada $(\Sigma)$.
 
+❌, dos MT pueden tener diferentes alfabetos de entrada y aún así ser equivalentes si aceptan el mismo lenguaje.
+
 ### D) Dos MT son equivalentes si tienen el mismo alfabeto de entrada $(\Sigma)$ y el mismo alfabeto de cinta $(\Gamma)$.
 
+❌, idem c).
+
 ### E) Dos MT son equivalentes si los lenguajes aceptados por ambas tienen exactamente la misma cardinalidad.
+
+❌, la cardinalidad de los lenguajes no es relevante para la equivalencia, lo importante es que acepten el mismo conjunto de cadenas.
 
 ## 4) ¿Cuál o cuáles de las siguientes afirmaciones es verdadera?
 
 ### A) Un lenguaje $L \in \text{CO-RE}$ si existe una MT $M$ que lo rechaza y siempre se detiene para toda entrada.
 
+❌, CO-RE se define en términos del complemento del lenguaje, no en términos de una MT que lo rechaza.
+
 ### B) Un lenguaje $L \in \text{CO-RE}$ si su complemento está en $RE$.
+
+✅, esta es la definición correcta de $CO-RE$.
 
 ### C) Un lenguaje $L \in \text{CO-RE}$ si no existe una MT $M$ que lo acepte.
 
+❌, idem a).
+
 ### D) Un lenguaje $L \in \text{CO-RE}$ si existe una MT $M$ que lo acepta pero no siempre se detiene para toda entrada.
 
+❌, idem a).
+
 ### E) $\text{CO-RE}$ es el complemento de $RE$.
+
+❌, CO-RE está contenido en RE.
 
 ## 5) ¿Cual o cuáles de las siguientes afirmaciones describe correctamente el lenguaje Halting Problem $(HP)$?
 
 ### A) $HP = \lbrace \langle M, w \rangle \mid M \text{ se detiene con input w} \rbrace$
 
+✅, esta es la definición correcta del Halting Problem.
+
 ### B) $HP = \lbrace \langle M \rangle \mid M \text{ se detiene para todo input w}\rbrace$
+
+❌, el Halting Problem se refiere a si una máquina de Turing, dado una cadena de entrada, se detiene en algún momento o no.
 
 ### C) $HP = \lbrace \langle M, w \rangle \mid M \text{ acepta w }\rbrace$
 
+❌, idem b).
+
 ### D) $HP = \lbrace \langle M, w \rangle \mid M \text{ rechaza w }\rbrace$
 
+❌, idem b).
+
 ### E) $HP = \lbrace \langle M, w \rangle \mid M \text{ es una MT válida}\rbrace$
+
+❌, idem b).
 
 ## 6) ¿Cuál o cuáles de las siguientes afirmaciones es verdadera sobre la Regla del Limite?
 
 ### A) Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$, entonces $f(n) \in \Omega(g(n))$.
 
+❌, en este caso, $f(n)$ crece más lentamente que $g(n)$, por lo que $f(n) \in O(g(n))$, pero no en $\Omega(g(n))$.
+
 ### B) Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty$, entonces $f(n) \in O(g(n))$.
+
+❌, en este caso, $f(n)$ crece más rápido que $g(n)$, por lo que $f(n) \in \Omega(g(n))$, pero no en $O(g(n))$.
 
 ### C) Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} \in \mathbb{R^+}$, entonces $f(n) \in \Theta(g(n))$.
 
+✅, si el límite es una constante positiva, significa que ambas funciones crecen al mismo ritmo asintóticamente, por lo que $f(n) \in \Theta(g(n))$.
+
 ### D) Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$, entonces $f(n) \in O(g(n))$.
 
+✅, en este caso, $f(n)$ crece más lentamente que $g(n)$, por lo que $f(n) \in O(g(n))$.
+
 ### E) Si $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty$, entonces $f(n) \in \Omega(g(n))$.
+
+✅, en este caso, $f(n)$ crece más rápido que $g(n)$, por lo que $f(n) \in \Omega(g(n))$.
 
 ## 7) Si $L$ es un lenguaje $\text{NP-Hard}$ $(NPH)$
 
 ### A) $L$ es un lenguaje que puede ser aceptado por una MTD en tiempo polinomial.
 
+❌, si esto fuera cierto, implicaría que $P = NP$, lo cual no está resuelto.
+
 ### B) $L$ es un lenguaje que puede ser aceptado por una MTN en tiempo polinomial.
+
+❌, esto solo sería cierto si $L$ también estuviera en $NP$, pero no todos los lenguajes $NPH$ están a su vez en $NP$.
 
 ### C) Para todo lenguaje $L' \in NP$, se cumple que $L' \subseteq L$.
 
+❌, es falso que todo lenguaje en $NP$ esté contenido o sea igual a un lenguaje en $NPH$. Contraejemplo: El lenguaje vacío $\emptyset$ está en $NP$ pero no está contenido en ningún lenguaje $NPH$ porque el lenguaje vacío no contiene ninguna cadena, y por lo tanto no puede contener cadenas de ningún otro lenguaje.
+
 ### D) Para todo lenguaje $L' \in NP$, se cumple que $L' \space \alpha_p \space L$.
 
+✅, por definición de $NPH$, todo lenguaje en $NP$ se reduce polinomialmente a cualquier lenguaje en $NPH$.
+
 ### E) $L \in NPC$.
+
+❌, no todo lenguaje $NPH$ está en $NPC$. Contraejemplo: $HP \in NPH$ pero $HP \notin NPC$ porque $HP \notin NP$ debido a que $NP$ solo contiene lenguajes **decidibles** y $HP$ no es decidible.
 
 ## 8) Marcar sólo las afirmaciones verdaderas acerca del $t(n)$ del siguiente algoritmo:
 
@@ -355,10 +425,20 @@ for i = 1  to n do
 
 ### A) $t(n)$ es de $O(n)$
 
+❌, tenemos $n \times n^2 \times n^3 = n^6$, por lo que $t(n)$ no es de $O(n)$
+
 ### B) $t(n)$ es de $O(n^3)$
+
+❌, tenemos $n \times n^2 \times n^3 = n^6$, por lo que $t(n)$ no es de $O(n^3)$
 
 ### C) $t(n)$ es de $O(n^6)$
 
+✅, tenemos $n \times n^2 \times n^3 = n^6$, por lo que $t(n)$ es de $O(n^6)$
+
 ### D) $t(n)$ es de $O(n)$ en el mejor caso y $O(n^6)$ en el peor caso
 
+❌, no hay caso peor ni mejor, siempre es $n^6$
+
 ### E) Todas las afirmaciones anteriores son falsas
+
+❌, la afirmación C es verdadera
