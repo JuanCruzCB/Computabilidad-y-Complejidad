@@ -1281,6 +1281,25 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 - Mapa completo de P, NP, NPC, CO-NPC y CO-NP:
   ![Mapa completo de P, NP, NPC, CO-NPC y CO-NP](https://i.imgur.com/YNM7urQ.png)
 
+## Clasificación completa de todos los lenguajes vistos en la materia
+
+| Lenguaje                  | $\in RE$ | $\in R$ | $\in \text{CO-RE}$ | $\in P$ | $\in NP$ | $\in \text{CO-NP}$ | $\in NPH$ | $\in NPC$ |
+| ------------------------- | -------- | ------- | ------------------ | ------- | -------- | ------------------ | --------- | --------- |
+| $\emptyset$               | ✅       | ✅      | ✅                 | ✅      | ✅       | ✅                 | ❌        | ❌        |
+| $\lbrace \lambda \rbrace$ | ✅       | ✅      | ✅                 | ✅      | ✅       | ✅                 | ❌        | ❌        |
+| $\Sigma^*$                | ✅       | ✅      | ✅                 | ✅      | ✅       | ✅                 | ❌        | ❌        |
+| $L_D$                     | ❌       | ❌      | ✅                 | ❌      | ❌       | ❓                 | ✅        | ❌        |
+| $\overline{L_D}$          | ✅       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ❓        | ❓        |
+| $L_u$                     | ✅       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ❓        | ❓        |
+| $\overline{L_u}$          | ❌       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ❓        | ❓        |
+| $L$                       | ❌       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ❓        | ❓        |
+| $HP$                      | ✅       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ✅        | ❌        |
+| $\overline{HP}$           | ❌       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ❓        | ❓        |
+| $L_{\Sigma^*}$            | ❌       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ❓        | ❓        |
+| $L_{EQ}$                  | ❌       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ❓        | ❓        |
+| $TSP$                     | ✅       | ✅      | ✅                 | ❌      | ✅       | ❓                 | ✅        | ✅        |
+| $SAT$                     | ✅       | ✅      | ✅                 | ❌      | ✅       | ❓                 | ✅        | ✅        |
+
 ---
 
 # Análisis de Algoritmos
