@@ -30,9 +30,142 @@
 
 <h1 align="center">2022 - 1° fecha</h1>
 
----
+## 1) Dada la máquina de Turing $M_f$ y los lenguajes $L_1$, $L_2$, $L_3$ y $L_4$, marcar sólo las afirmaciones verdaderas.
 
-<h1 align="center">2022 - 3° fecha</h1>
+- $Q = \lbrace q_0 \rbrace$
+- $\Sigma = \lbrace 0, 1 \rbrace$
+- $\Gamma = \lbrace 0, 1, B \rbrace$
+- $\delta(q_0, 0) = (q_0, 1, D)$
+- $\delta(q_0, 1) = (q_0, 0, D)$
+- $\delta(q_0, B) = (q_d, B, D)$
+- $L_1 = \lbrace 0^n 1^m \mid n, m \geq 0 \rbrace$
+- $L_2 = \lbrace 1^n 0^m \mid n, m \geq 0 \rbrace$
+- $L_3 = \lbrace 0 w 1 \mid w \in \Sigma^* \rbrace$
+- $L_4 = \lbrace 1 w 0 \mid w \in \Sigma^*\rbrace$
+
+### a) $M_f$ computa una función de reducibilidad que permite afirmar que $L_1$ reduce a $L_2$.
+
+✅, la función computada por $M_f$ invierte todos los bits de la cadena de entrada, lo cual se condice con la relación clara que se ve entre $L_1$ y $L_2$. Por ejemplo, la cadena $011$ de $L_1$ se mapea a la cadena $100$ de $L_2$.
+
+### b) $M_f$ computa una función de reducibilidad que permite afirmar que $L_2$ reduce a $L_1$.
+
+✅, misma razón que en a), pero en sentido inverso. Por ejemplo, la cadena $100$ de $L_2$ se mapea a la cadena $011$ de $L_1$.
+
+### c) $M_f$ computa una función de reducibilidad que permite afirmar que $L_3$ reduce a $L_4$.
+
+✅, $L_3$ es un lenguaje muy similar a $L_1$ solo que no incluye a la cadena vacía y agrega un cero al principio y un uno al final de cada cadena. Lo mismo ocurre con $L_4$ respecto a $L_2$. Por lo tanto, la función computada por $M_f$ también mapea cadenas de $L_3$ a cadenas de $L_4$ invirtiendo todos los bits. Por ejemplo, la cadena $0011$ de $L_3$ se mapea a la cadena $1100$ de $L_4$.
+
+### d) $M_f$ computa una función de reducibilidad que permite afirmar que $L_4$ reduce a $L_3$.
+
+✅, misma razón que en c), pero en sentido inverso. Por ejemplo, la cadena $1100$ de $L_4$ se mapea a la cadena $0011$ de $L_3$.
+
+### e) $M_f$ computa una función de reducibilidad que permite afirmar que $L_1$ reduce a $L_4$.
+
+✅, $L_1$ se puede reducir a $L_4$ aplicando la función computada por $M_f$ que invierte todos los bits. Por ejemplo, la cadena $011$ de $L_1$ se mapea a la cadena $100$ de $L_4$.
+
+### f) $M_f$ computa una función de reducibilidad que permite afirmar que $L_1$ reduce a $L_3$.
+
+✅, $L_1$ se puede reducir a $L_3$ aplicando la función computada por $M_f$ que invierte todos los bits. Por ejemplo, la cadena $011$ de $L_1$ se mapea a la cadena $100$ de $L_3$.
+
+## 2) Sea $\mathscr{L}$ el conjunto de todos los lenguajes definidos sobre $\Sigma$.
+
+### a) $\mathscr{L} - R = \emptyset$
+
+❌, contraejemplo: $L_D \notin R$, por lo que $(\mathscr{L} - R) \neq \emptyset$.
+
+### b) $RE - R \neq \emptyset$
+
+✅, hay lenguajes que son $RE$ pero no $R$. Por ejemplo $HP$.
+
+### c) $\lbrace \lambda \rbrace \in (\mathscr{L} - \text{CO-RE})$
+
+❌, $\lbrace \lambda \rbrace$ es un lenguaje decidible, por lo que está en $R$. Dado que $R \subseteq \text{CO-RE}$, entonces $\lbrace \lambda \rbrace$ está en $\text{CO-RE}$. Por lo tanto no puede ocurrir que $\lbrace \lambda \rbrace \in (\mathscr{L} - \text{CO-RE})$.
+
+### d) $\Sigma^* \in R$
+
+✅, $\Sigma^*$ es decidible porque existe una MT que acepta cualquier cadena de entrada y siempre se detiene.
+
+## 3) Marcar solo las afirmaciones verdaderas.
+
+### a) La cardinalidad de $\mathbb{N}$ es mayor que la cardinalidad de los pares.
+
+❌, existe una función inyectiva de $\mathbb{N}$ en los números pares y además existe otra función inyectiva de los números pares en $\mathbb{N}$. Por lo tanto las cardinalidades son iguales.
+
+### b) La cardinalidad de $\mathbb{N}$ es igual a la cardinalidad de $\mathbb{N} - \lbrace 1, 2, 3, 4, 5 \rbrace$
+
+✅, existe una función inyectiva de $\mathbb{N}$ en $\mathbb{N} - \lbrace 1, 2, 3, 4, 5 \rbrace$ y además existe otra función inyectiva de $\mathbb{N} - \lbrace 1, 2, 3, 4, 5 \rbrace$ en $\mathbb{N}$. Por lo tanto las cardinalidades son iguales.
+
+### c) La cardinalidad de $\mathbb{N}$ es mayor a la cardinalidad de $\mathbb{N} - \lbrace n \mid n > 1000000000000 \rbrace$
+
+❌, existe una función inyectiva de $\mathbb{N}$ en $\mathbb{N} - \lbrace n \mid n > 1000000000000 \rbrace$ y además existe otra función inyectiva de $\mathbb{N} - \lbrace n \mid n > 1000000000000 \rbrace$ en $\mathbb{N}$. Por lo tanto las cardinalidades son iguales.
+
+### d) La cardinalidad de los racionales es igual que la cardinalidad de $\mathbb{N}$.
+
+✅, existe una función inyectiva de $\mathbb{N}$ en los números racionales y además existe otra función inyectiva de los números racionales en $\mathbb{N}$. Por lo tanto las cardinalidades son iguales.
+
+## 4) Marcar sólo las afirmaciones verdaderas.
+
+### a) La reducción polinomial es simétrica.
+
+❌, si $L_1 \space \alpha_p \space L_2$, no necesariamente implica que $L_2 \space \alpha_p \space L_1$.
+
+### b) La reducción polinomial es antisimétrica.
+
+❌, si $L_1 \space \alpha_p \space L_2$ y $L_2 \space \alpha_p \space L_1$, no necesariamente implica que $L_1 = L_2$.
+
+### c) Si $L_1$ y $L_2$ son lenguajes pertenecientes a $P$, entonces es posible reducir polinomialmente $L_1$ a $L_2$ y $L_2$ a $L_1$, asumiendo que ambos son distintos de $\emptyset$ y de $\Sigma^*$.
+
+✅, se sabe por teorema que todo lenguaje $L$ se puede reducir polinomialmente a cualquier otro lenguaje que no sea ni el lenguaje vacío ni $\Sigma^*$. Debido a esto, es posible que exista una reducción polinomial de $L_1$ a $L_2$ y de $L_2$ a $L_1$ en este caso.
+
+## 5) Marcar solo las afirmaciones verdaderas.
+
+### $L_1 = \lbrace 0^n1 \mid n > 0 \rbrace$, $L_2 = \emptyset$
+
+### a) $L_1$ reduce a $L_2$.
+
+❌, ningún lenguaje se puede reducir al lenguaje vacío excepto el mismo lenguaje vacío.
+
+### b) $L_1$ reduce a $HP$.
+
+✅, se puede construir una reducción polinomial de $L_1$ a $HP$.
+
+### c) $TSP$ reduce a $L_1$.
+
+✅, $TSP$ es decidible y $L_1$ también, y se sabe que cualquier lenguaje decidible se puede reducir polinomialmente a cualquier otro lenguaje decidible que no sea ni el lenguaje vacío ni $\Sigma^*$. Por lo tanto, $TSP$ reduce a $L_1$.
+
+### d) $TSP$ reduce a $HP$.
+
+✅, sí, porque como $TSP$ es $NPC$, es $NPH$ también, y se sabe que $HP$ es $NPH$. Por lo tanto, $TSP$ reduce a $HP$.
+
+## 6) Marcar sólo las afirmaciones verdaderas.
+
+### Desde el punto de vista de análisis de algoritmos, teniendo en cuenta los algoritmos Divide And Conquer para la multiplicación de matrices de Strassen y el algoritmo tradicional:
+
+### a) El algoritmo tradicional es mejor que el de Strassen.
+
+❌, el algoritmo tradicional es peor que el de Strassen.
+
+### b) El algoritmo tradicional es igual que el de Strassen.
+
+❌, idem a)
+
+### c) El algoritmo tradicional es del orden de $O(n^{log_2 7})$ y el de Strassen es del orden de $O(n^3)$.
+
+❌, el algoritmo tradicional es del orden de $O(n^3)$ y el de Strassen es del orden de $O(n^{log_2 7})$.
+
+## 7) Marcar sólo las afirmaciones verdaderas.
+
+### a) Si $P = NP$, entonces $HP$ está en $R$.
+
+❌, $P = NP$ solo implica que problemas que hasta ahora se consideran extremadamente ineficientes de resolver son en realidad posibles de resolver de forma eficiente. No dice nada sobre la decibilidad de los lenguajes.
+
+### b) Si $L$ pertenece a $NPC$ y se demuestra que $L$ reduce polinomialmente a un lenguaje de $P$, entonces se habrá demostrado que $P = NP$.
+
+✅, como todo lenguaje $NPC$ está tanto en $P$ como en $NP$, si se demuestra que un lenguaje $NPC$ reduce polinomialmente a un lenguaje de $P$, entonces se habrá demostrado que $P = NP$.
+
+### c) Si $L_1$ es un lenguaje de $NPC$ y se puede reducir polinomialmente a un lenguaje $L_2$ entonces $L_2$ es un lenguaje de $NPH$.
+
+❌, es posible reducir un lenguaje $NPC$ a un lenguaje que no está en $NPH$. Por ejemplo, $L_2$ podría estar en $NP$.
 
 ---
 
