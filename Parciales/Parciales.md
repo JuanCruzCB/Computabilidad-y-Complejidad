@@ -61,11 +61,11 @@
 
 ### e) $M_f$ computa una función de reducibilidad que permite afirmar que $L_1$ reduce a $L_4$.
 
-✅, $L_1$ se puede reducir a $L_4$ aplicando la función computada por $M_f$ que invierte todos los bits. Por ejemplo, la cadena $011$ de $L_1$ se mapea a la cadena $100$ de $L_4$.
+❌, la reducción no se cumple porque no toda cadena de $L_1$ es mapeada por la función a una cadena de $L_4$. Contraejemplo: si viene la cadena $\lambda$ que está en $L_1$, la función la mapea a $\lambda$ que NO está en $L_4$.
 
 ### f) $M_f$ computa una función de reducibilidad que permite afirmar que $L_1$ reduce a $L_3$.
 
-✅, $L_1$ se puede reducir a $L_3$ aplicando la función computada por $M_f$ que invierte todos los bits. Por ejemplo, la cadena $011$ de $L_1$ se mapea a la cadena $100$ de $L_3$.
+❌, la reducción no se cumple porque no toda cadena de $L_1$ es mapeada por la función a una cadena de $L_3$. Contraejemplo: si viene la cadena $\lambda$ que está en $L_1$, la función la mapea a $\lambda$ que NO está en $L_3$.
 
 ## 2) Sea $\mathscr{L}$ el conjunto de todos los lenguajes definidos sobre $\Sigma$.
 
@@ -97,7 +97,7 @@
 
 ### c) La cardinalidad de $\mathbb{N}$ es mayor a la cardinalidad de $\mathbb{N} - \lbrace n \mid n > 1000000000000 \rbrace$
 
-❌, existe una función inyectiva de $\mathbb{N}$ en $\mathbb{N} - \lbrace n \mid n > 1000000000000 \rbrace$ y además existe otra función inyectiva de $\mathbb{N} - \lbrace n \mid n > 1000000000000 \rbrace$ en $\mathbb{N}$. Por lo tanto las cardinalidades son iguales.
+✅, como $\mathbb{N} - \lbrace n \mid n > 1000000000000 \rbrace$ es igual a un conjunto finito, entonces su cardinalidad es estrictamente menor que la cardinalidad de $\mathbb{N}$. Esto se debe a que el conjunto $\lbrace n \mid n > 1000000000000 \rbrace$ es INFINITO.
 
 ### d) La cardinalidad de los racionales es igual que la cardinalidad de $\mathbb{N}$.
 
@@ -127,11 +127,11 @@
 
 ### b) $L_1$ reduce a $HP$.
 
-✅, se puede construir una reducción polinomial de $L_1$ a $HP$.
+✅, se puede construir una reducción de $L_1$ a $HP$.
 
 ### c) $TSP$ reduce a $L_1$.
 
-✅, $TSP$ es decidible y $L_1$ también, y se sabe que cualquier lenguaje decidible se puede reducir polinomialmente a cualquier otro lenguaje decidible que no sea ni el lenguaje vacío ni $\Sigma^*$. Por lo tanto, $TSP$ reduce a $L_1$.
+✅, $TSP$ es decidible y $L_1$ también, y se sabe que cualquier lenguaje decidible se puede reducir a cualquier otro lenguaje decidible que no sea ni el lenguaje vacío ni $\Sigma^*$. Por lo tanto, $TSP$ reduce a $L_1$.
 
 ### d) $TSP$ reduce a $HP$.
 
@@ -165,7 +165,7 @@
 
 ### c) Si $L_1$ es un lenguaje de $NPC$ y se puede reducir polinomialmente a un lenguaje $L_2$ entonces $L_2$ es un lenguaje de $NPH$.
 
-❌, es posible reducir un lenguaje $NPC$ a un lenguaje que no está en $NPH$. Por ejemplo, $L_2$ podría estar en $NP$.
+✅, como $L_1$ es $NPC$, todo lenguaje $NP$ se reduce a $L_1$. Luego, si se puede reducir polinomialmente $L_1$ a $L_2$, por transitividad de la reducción polinomial, todo lo que se reducía a $L_1$ ahora se reduce a $L_2$. Por lo tanto, $L_2$ es al menos igual de difícil que cualquier lenguaje en $NP$, por lo que $L_2$ es $NPH$.
 
 ---
 
