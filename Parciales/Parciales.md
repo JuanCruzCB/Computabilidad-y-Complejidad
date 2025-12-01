@@ -163,97 +163,181 @@ for i = 1  to n do
 
 ### A) $f(i, j) = i + j$
 
+❌, no es una función inyectiva. Contraejemplo: $f(1, 2) = 3$ y $f(2, 1) = 3$.
+
 ### B) $f(i, j) = 2i + j$
+
+❌, no es una función inyectiva. Contraejemplo: $f(1, 2) = 4$ y $f(2, 0) = 4$.
 
 ### C) $f(i, j) = i \times j$
 
+❌, no es una función inyectiva. Contraejemplo: $f(2, 1) = 2$ y $f(1, 2) = 2$.
+
 ### D) $f(i, j) = \frac{(i + j)(i + j + 1)}{2} + i$
 
+✅, esta es la función de Cantor, que es inyectiva y mapea $\mathbb{N} \times \mathbb{N}$ en $\mathbb{N}$.
+
 ### E) $f(i, j) = i^2 + j^2$
+
+❌, no es una función inyectiva. Contraejemplo: $f(1, 2) = 5$ y $f(2, 1) = 5$.
 
 ## 2) Dados los lenguajes $L_1 = \emptyset$ y $L_2 = \lbrace \lambda \rbrace$, ¿cuál de las siguientes afirmaciones es verdadera?
 
 ### A) $L_1 = L_2$
 
+❌, $L_1$ no contiene ninguna cadena, mientras que $L_2$ contiene la cadena vacía $\lambda$.
+
 ### B) $L_1 \subset L_2$
+
+✅, $L_1$ está contenido en $L_2$ porque el conjunto vacío es subconjunto de cualquier conjunto.
 
 ### C) $L_2 \subset L_1$
 
+❌, ningun conjunto es subconjunto del conjunto vacío, excepto el mismo conjunto vacío.
+
 ### D) $L_1 \cap L_2 = \lbrace \lambda \rbrace$
 
+❌, la intersección entre el conjunto vacío y cualquier otro conjunto es el conjunto vacío.
+
 ### E) $L_1 \cup L_2 = \Sigma^*$
+
+❌, la unión de $L_1$ y $L_2$ es simplemente $L_2$, que contiene solo la cadena vacía $\lambda$. Como $\Sigma^*$ contiene todas las cadenas posibles, incluyendo $\lambda$, pero también muchas otras, la unión no es igual a $\Sigma^*$.
 
 ## 3) ¿Cuál de las siguientes opciones describe correctamente la función de transición en una Máquina de Turing de 3 cintas?
 
 ### A) $\delta: Q \times \Gamma \rightarrow Q \cup \lbrace qA, qR \rbrace \times \Gamma \times \lbrace D, I \rbrace$
 
+❌, esta es la función de transición para una Máquina de Turing de una sola cinta.
+
 ### B) $\delta: Q \times \Gamma^3 \rightarrow Q \cup \lbrace qA, qR \rbrace \times (\Gamma \times \lbrace D, I, S \rbrace)^3$
+
+✅, esta es la función de transición para una Máquina de Turing de 3 cintas.
 
 ### C) $\delta: Q^3 \times \Gamma^3 \rightarrow Q \cup \lbrace qA, qR \rbrace \times \Gamma \times \lbrace D, I, S \rbrace^3$
 
+❌, la función de transición no debe tomar $Q^3$ como entrada, sino solo $Q$.
+
 ### D) $\delta: Q^3 \times \Gamma \rightarrow Q \cup \lbrace qA, qR \rbrace \times (\Gamma \times \lbrace D, I \rbrace)$
+
+❌, idem C).
 
 ### E) $\delta: Q^3 \times \Gamma \rightarrow Q^3 \cup \lbrace qA, qR \rbrace \times \Gamma \times \lbrace D \rbrace$
 
+❌, idem C).
+
 ## 4) Si $L = \lbrace \langle M \rangle \mid M \text{ siempre se detiene}\rbrace$ y $L_R = \lbrace \langle M \rangle \mid L(M) \in R\rbrace$, entonces:
+
+$L$ es el conjunto de códigos binarios de MT tal que la MT siempre se detiene para cualquier entrada. Dicho de otra forma, son MT decidibles. Esto implica que el lenguaje aceptado por la MT es un lenguaje decidible.
+
+$L_R$ es el conjunto de códigos binarios de MT tal que el lenguaje aceptado por la MT es un lenguaje decidible. Que la MT reconozca un lenguaje decidible no implica que la MT siempre se detenga para cualquier entrada, ya que puede haber otras MT que reconozcan el mismo lenguaje pero que no siempre se detienen.
 
 ### A) $L \subset L_R$
 
+✅, si una MT siempre se detiene, entonces el lenguaje que acepta es decidible, por lo que $L$ está contenido en $L_R$.
+
 ### B) $L_R \subset L$
+
+❌, no todas las MT que reconocen lenguajes decidibles siempre se detienen para cualquier entrada.
 
 ### C) $L = L_R$
 
+❌, como se cumple $L \subset L_R$ pero no se cumple $L_R \subset L$, entonces no pueden ser iguales.
+
 ### D) $L \cap L_R = \emptyset$
 
+❌, como $L$ está contenido en $L_R$, su intersección no puede ser vacía.
+
 ### E) $L \cup L_R = RE$
+
+❌, $L$ y $L_R$ no cubren todos los lenguajes recursivamente enumerables. Ejemplo: El lenguaje Halting Problem está en $RE$ pero no está en $L_R$ ni en $L$.
 
 ## 5) Si existe una reducción de $L_1$ a $L_2$ $(L_1 \space \alpha \space L_2)$ y se sabe que $L_2 \in R$ ¿qué se puede afirmar de $L_1$?
 
 ### A) $L_1 \in (RE - R)$
 
+❌, si $L_2$ es decidible y $L_1$ se reduce a $L_2$, entonces $L_1$ también es decidible, por lo que no puede estar en $RE - R$.
+
 ### B) $L_1 \in R$
+
+✅, si $L_1$ se reduce a $L_2$ y $L_2$ es decidible, entonces $L_1$ también es decidible.
 
 ### C) $L_1 \notin RE$
 
+❌, si $L_1$ se reduce a $L_2$ y $L_2$ es decidible, entonces $L_1$ también es decidible, por lo que está en $RE$ porque $R \subseteq RE$.
+
 ### D) No se puede afirmar nada sobre $L_1$
 
+❌, sí se puede afirmar que $L_1$ es decidible.
+
 ### E) Todas las afirmaciones anteriores son falsas
+
+❌, la afirmación B es verdadera.
 
 ## 6) ¿Cuál de las siguientes afirmaciones sobre la notación asintótica es falsa?
 
 ### A) $n^3 \in O(n^2)$
 
+❌, $n^3$ crece más rápido que $n^2$, por lo que no puede estar en $O(n^2)$.
+
 ### B) $(\frac{1}{2}n^2 - 3n) \in \Theta(n^2)$
+
+✅
 
 ### C) $n^2 \in O(n^3)$
 
+✅
+
 ### D) $2^n \in \Theta(2^{n+1})$
 
+✅
+
 ### E) $n! \in O((n + 1)!)$
+
+✅
 
 ## 7) Si $L_1$ se reduce polinomialmente a $L_2$ $(L_1 \space \alpha_p \space L_2)$ y $L_1 \in NPC$, entonces:
 
 ### A) $L_2$ debe estar en $P$.
 
+❌, no necesariamente. Un lenguaje $NPC$ puede reducirse a un lenguaje que no está en $P$. Contraejemplo: $L_1 = SAT$ y $L_2 = HP$. Sabemos que $SAT \in NPC$ y que $SAT \space \alpha_p \space HP$, pero $HP \notin P$.
+
 ### B) $L_2$ debe estar en $NP$.
+
+❌, no necesariamente. Un lenguaje $NPC$ puede reducirse a un lenguaje que no está en $NP$.
 
 ### C) Si $L_2 \in NP$, entonces $L_2 \in NPC$.
 
+✅, si $L_1$ es $NPC$ y se reduce polinomialmente a $L_2$, y si además $L_2$ está en $NP$, entonces $L_2$ debe ser $NPC$.
+
 ### D) $L_2$ puede o no estar en $NP$.
 
+✅, $L_2$ puede estar en $NP$ o no, ya que la reducción polinomial no implica que $L_2$ deba estar en $NP$.
+
 ### E) Ninguna de las afirmaciones anteriores es verdadera.
+
+❌, las afirmaciones C y D son verdaderas.
 
 ## 8) Un algoritmo tarda $1$ segundo en procesar $1000$ elementos. Si el tiempo de ejecución es $n^2$, ¿cuánto tardará en procesar $10000$ elementos?
 
 ### A) $10$ segundos
 
+❌
+
 ### B) $100$ segundos
+
+✅, tenemos que entre $1000$ y $10000$ se multiplica por $10$. Pero como la función es cuadrática, este factor se eleva al cuadrado: $10^2 = 100$. Entonces, si tarda $1$ segundo en procesar $1000$ elementos, tardará $100$ segundos en procesar $10000$ elementos.
 
 ### C) $1000$ segundos
 
+❌
+
 ### D) $10000$ segundos
 
+❌
+
 ### E) $100000$ segundos
+
+❌
 
 ---
 
