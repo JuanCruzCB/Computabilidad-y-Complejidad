@@ -42,21 +42,37 @@
 
 ### a) La cardinalidad de $\mathbb{N}$ es igual a la cardinalidad de los pares
 
+✅, existe una función inyectiva de $\mathbb{N}$ en los números pares y además existe otra función inyectiva de los números pares en $\mathbb{N}$.
+
 ### b) La cardinalidad de $\mathbb{N}$ es igual a la cardinalidad de los racionales
+
+✅, existe una función inyectiva de $\mathbb{N}$ en los números racionales y además existe otra función inyectiva de los números racionales en $\mathbb{N}$.
 
 ### c) La cardinalidad de $\mathbb{N}$ es igual a la cardinalidad de los reales
 
+❌, los reales tienen una cardinalidad estrictamente mayor que la de los naturales porque son incontables, mientras que los naturales son contables.
+
 ### d) Todas las anteriores son falsas
+
+❌, las afirmaciones a) y b) son verdaderas.
 
 ## 2) Marcar sólo las afirmaciones verdaderas
 
 ### a) La reducción es reflexiva
 
+✅, todo lenguaje se reduce a sí mismo mediante la función identidad.
+
 ### b) La reducción es simétrica
+
+❌, si $L_1 \space \alpha_p \space L_2$, no necesariamente implica que $L_2 \space \alpha_p \space L_1$.
 
 ### c) La función de reducción entre dos lenguajes debe ser computada por una MT en tiempo polinomial
 
+❌, la función de reducción debe ser total y computable. No importa si en tiempo polinomial o no.
+
 ### d) Todas las anteriores son falsas
+
+❌, la afirmación a) es verdadera.
 
 ## 3) Marcar sólo las afirmaciones verdaderas acerca de los lenguajes:
 
@@ -68,13 +84,23 @@
 
 ### a) $L_1$ es igual a $L_2$
 
+❌, $L_1$ no contiene ninguna cadena, mientras que $L_2$ contiene la cadena vacía $\lambda$.
+
 ### b) La cardinalidad de $L_1$ es igual a la cardinalidad de $L_2$
+
+❌, $|L_1| = 0$ y $|L_2| = 1$.
 
 ### c) Una MT que acepte $L_3$ también aceptará $L_4$ y $L_5$
 
+✅, $L_3$ es igual a $\Sigma^*$, dado que la unión con el conjunto vacío no agrega ningún elemento. Además, $L_4$ es igual a $\Sigma^*$ también, dado que el conjunto con la cadena vacía ya está contenido en $\Sigma^*$. Por lo tanto, $L_3 = L_4 = L_5 = \Sigma^*$. Entonces, una MT que acepte $L_3$ también aceptará $L_4$ y $L_5$.
+
 ### d) La cardinalidad de ($L_5 - L_1$) es igual a la cardinalidad de ($L_5 - L_2$)
 
+✅, quitarle un elemento a un conjunto infinito contable no cambia su cardinalidad. Entonces, $|L_5 - L_1| = |\Sigma^*|$ y $|L_5 - L_2| = |\Sigma^* - \lbrace \lambda \rbrace|$, y ambos tienen la misma cardinalidad.
+
 ### e) Todas las anteriores son falsas
+
+❌, las afirmaciones c) y d) son verdaderas.
 
 ## 4) Marcar sólo las afirmaciones verdaderas: en qué casos puede existir la reducción polinomial $L_1 \space \alpha_p \space L_2$?
 
@@ -95,29 +121,49 @@ $L_D$ es el Lenguaje Diagonal definido en la teoría.
 
 ### a) En (a) puede existir la reducción polinomial de $L_1$ a $L_2$
 
+❌, no puede existir una reducción polinomial de un lenguaje no vacío a un lenguaje vacío, ya que no hay forma de mapear las cadenas que están en $L_1$ a cadenas en $L_2$.
+
 ### b) En (b) puede existir la reducción polinomial de $L_1$ a $L_2$
+
+✅, puede existir una reducción polinomial de $L_1$ a $L_2$. Por ejemplo, la función de reducción podría mapear cualquier cadena en $\Sigma^*$ a una cadena en $L_2$ (por ejemplo, mapear cualquier cadena a "01").
 
 ### c) En (c) puede existir la reducción polinomial de $L_1$ a $L_2$
 
+❌, no puede existir una reducción polinomial de un lenguaje que no es $RE$ ($L_D$) a un lenguaje que sí es $RE$ ($\lbrace 0^n1 \mid n > 0 \rbrace$). Esto es porque se sabe por teorema que si $L_1 \space \alpha_p \space L_2$ y $L_2 \in RE$, entonces $L_1$ también debe estar en $RE$. Pero $L_D$ no está en $RE$.
+
 ### d) En (d) puede existir la reducción polinomial de $L_1$ a $L_2$
 
+✅, se sabe por teorema que todo lenguaje $L$ se puede reducir polinomialmente a cualquier otro lenguaje que no sea ni el lenguaje vacío ni $\Sigma^*$. Debido a esto, es posible que exista una reducción polinomial de $L_1$ a $L_2$ en este caso.
+
 ### e) Todas las anteriores son falsas
+
+❌, las afirmaciones b) y d) son verdaderas.
 
 ## 5) Marcar sólo las afirmaciones verdaderas
 
 ### a) $\emptyset \in RE$
 
+✅, existe una MT que rechaza cualquier cadena de entrada y siempre se detiene, por lo que acepta el lenguaje vacío.
+
 ### b) Si $L$ es un lenguaje formado por una sola palabra, entonces $L \in R$
+
+✅, todo lenguaje finito es decidible. Como $L$ posee una sola palabra, claramente es finto, por lo que $L \in R$.
 
 ### c) Si $L$ es un lenguaje finito, entonces $L \in R$
 
+✅, idem b).
+
 ### d) Si $L$ es un lenguaje infinito contable, entonces $L \in RE$
+
+❌, no todo lenguaje infinito contable está en $RE$. Como se sabe que todo lenguaje es un subconjunto de $\Sigma^*$, y se sabe que $\Sigma^*$ es infinito contable, entonces existen muchos lenguajes infinitos contables que no están en $RE$. Por ejemplo, el lenguaje diagonal $L_D$ es infinito contable pero no está en $RE$.
 
 ### e) Todas las anteriores son falsas
 
+❌, las afirmaciones a), b) y c) son verdaderas.
+
 ## 6) Sea $M$ la MT definida a continuación, marcar sólo las afirmaciones verdaderas (Todas las $\delta$ que faltan conducen a $q_R$)
 
-- $Q = \lbrace q_0, q_1, \rbrace$
+- $Q = \lbrace q_0, q_1 \rbrace$
 - $\Sigma = \lbrace 0, 1 \rbrace$
 - $\Gamma = \lbrace 0, 1, B \rbrace$
 - $\delta(q_0, 0) = (q_1, B, D)$
@@ -127,13 +173,23 @@ $L_D$ es el Lenguaje Diagonal definido en la teoría.
 
 ### a) $L(M) = \Sigma^*$
 
+❌, si la cadena empieza con un uno o con blanco, la MT se detiene en $q_R$ sin aceptar. Por lo tanto, no acepta todas las cadenas de $\Sigma^*$.
+
 ### b) $L(M) = \lbrace 0w \mid w \in \Sigma^* \rbrace$
+
+✅, porque primero se chequea que el primer símbolo de la cadena sea cero. Luego se detiene en $q_A$ sin importar qué símbolo le siga a ese cero, si otro cero, un uno, o simplemente blanco.
 
 ### c) $L(M) = \lbrace 0, 00, 01 \rbrace$
 
+❌, la MT acepta muchas más cadenas además de estas tres. Por ejemplo, acepta $000$, $001$, $010$, $011$, etc.
+
 ### d) $L(M) = \lbrace \lambda, 0, 00, 01 \rbrace$
 
+❌, la MT dada no acepta la cadena vacía.
+
 ### e) Ninguno de los anteriores
+
+❌, la afirmación b) es verdadera.
 
 ## 7) Marcar sólo las afirmaciones verdaderas acerca del $t(n)$ del siguiente algoritmo:
 
@@ -147,13 +203,23 @@ for i = 1  to n do
 
 ### A) $t(n)$ es de $O(n)$
 
+❌, el número total de iteraciones es $n \cdot n^2 \cdot n^3 = n^6$, por lo que no es de $O(n)$.
+
 ### B) $t(n)$ es de $O(n^3)$
+
+❌, el número total de iteraciones es $n \cdot n^2 \cdot n^3 = n^6$, por lo que no es de $O(n^3)$.
 
 ### C) $t(n)$ es de $O(n^6)$
 
+✅, el número total de iteraciones es $n \cdot n^2 \cdot n^3 = n^6$.
+
 ### D) $t(n)$ es de $O(n)$ en el mejor caso y $O(n^6)$ en el peor caso
 
+❌, el número de iteraciones es siempre $O(n^6)$, no hay un caso mejor.
+
 ### E) Todas las afirmaciones anteriores son falsas
+
+❌, la afirmación b) es verdadera.
 
 ---
 
