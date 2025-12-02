@@ -26,6 +26,50 @@
 
 <h1 align="center">2014 - 3° fecha</h1>
 
+## 1) Si $A$ es un conjunto incontable y $B$ es un conjunto contable, entonces $A - B$ es incontable.
+
+✅, si se le quita un conjunto contable a un conjunto incontable, el conjunto resultante sigue siendo incontable.
+
+## 2) Si $A$ es un conjunto incontable y $B$ es un conjunto contable entonces $A \cap B$ puede ser contable o incontable.
+
+❌, esta intersección siempre es un subconjunto de $B$, y se sabe que $B$ es contable, y además se sabe que todo subconjunto de un conjunto contable es contable. Por lo tanto $A \cap B$ siempre es contable.
+
+## 3) Las máquinas de Turing de $k$ cintas y las de $2^k$ cintas tienen el mismo poder computacional.
+
+✅, ambas tienen el mismo poder de cómputo, solo que las de $2^k$ cintas son más eficientes en tiempo. Pero no existe ningún problema que la máquina más eficiente pueda resolver que la otra jamás pueda resolver.
+
+## 4) Las máquinas de Turing determinísticas tienen el mismo computacional que las máquinas de Turing no determinísticas.
+
+✅, idem 3), las no determinísticas solo son más eficientes.
+
+## 5) Sea $M$ una máquina de Turing del modelo "D-I-S" visto en la teoría. Siempre es posible construir una máquina de Turing $M'$ equivalente que comience con el cabezal apuntando a un número desconocido de celdas a la derecha del input.
+
+❌, no siempre es posible, depende de qué lenguaje esté reconociendo la máquina $M$.
+
+## 6) $\text{CO-RE} \cup RE$ es un conjunto infinito contable
+
+✅, se sabe que $RE$ es infinito contable y que $\text{CO-RE}$ también es infinito contable. La unión de dos conjuntos infinitos contables es otro conjunto infinito contable.
+
+## 7) $RE - \text{CO-RE} = R$
+
+❌, $RE - \text{CO-RE}$ es el conjunto de lenguajes que están en $RE$ pero no en $\text{CO-RE}$. Se sabe que $RE \cap \text{CO-RE} = R$, por lo que $RE - \text{CO-RE}$ no puede ser igual a $R$.
+
+## 8) Es posible realizar la reducción $L_D \space \alpha \space L_u$
+
+❌, se sabe por teorema que si $L_1$ se reduce a $L_2$ y $L_2 \in RE$, entonces $L_1$ también debe estar en $RE$. Como $L_u \in RE$ pero $L_D \notin RE$, nunca puede existir la reducción $L_D \space \alpha \space L_u$.
+
+## 9) Si existe la reducción $HP$ a $L_1$ entonces $L_1 \notin RE$
+
+❌, $L_1$ puede o no estar en $RE$. Si $L_1$ está en $RE$, entonces $L_1$ es al menos tan difícil como $HP$. Si $L_1$ no está en $RE$, entonces es más difícil que $HP$. Por lo tanto, no se puede afirmar nada sobre si $L_1$ está o no en $RE$.
+
+## 10) Si $L_1 = \lbrace 0^n 1^{3n} \mid n \geq 0 \rbrace$ entonces existe una reducción $L_1 \space \alpha \space L_D$
+
+✅, siempre es posible reducir un lenguaje "fácil" a uno "difícil", excepto que el lenguaje a la derecha de la reducción sea el lenguaje vacío o $\Sigma^*$. Por lo tanto, siempre es posible reducir $L_1$ a $L_D$.
+
+## 11) El lenguaje $SAT$ pertenece a $NPH$
+
+✅, $SAT$ es $NPC$, por ende es tanto $NP$ como $NPH$.
+
 ---
 
 <h1 align="center">2022 - 1° fecha</h1>
