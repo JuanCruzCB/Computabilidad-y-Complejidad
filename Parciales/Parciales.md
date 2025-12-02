@@ -22,6 +22,142 @@
 
 <h1 align="center">2014 - 2° fecha</h1>
 
+## 1) Cuál de las siguientes afirmaciones es FALSA?
+
+### A) Si $A$ es un conjunto incontable y $B$ es un conjunto contable, entonces $A - B$ es incontable.
+
+✅, si se le quita un conjunto contable a un conjunto incontable, el conjunto resultante sigue siendo incontable.
+
+### B) Si $A$ y $B$ son dos conjuntos incontables, entonces $A - B$ es un conjunto contable.
+
+❌, si se le quita un conjunto incontable a otro conjunto incontable, el conjunto resultante puede ser incontable.
+
+### C) $|\mathbb{N} \times \mathbb{N}| = |Pares|$, donde $Pares = \lbrace p \mid p = 2n, n \in \mathbb{N} \rbrace$.
+
+✅, existe una función inyectiva de $\mathbb{N} \times \mathbb{N}$ en los números pares y además existe otra función inyectiva de los números pares en $\mathbb{N}$. Por lo tanto las cardinalidades son iguales.
+
+## 2) Dada la siguiente máquina de Turing:
+
+- $M = \langle Q, \Sigma, \Gamma, \delta, q_0, F\rangle$
+- $Q = \lbrace q_0, q_1 \rbrace$
+- $\Sigma = \lbrace a, b \rbrace$
+- $\Gamma = \lbrace a, b, x, B \rbrace$
+- $F = \lbrace q_1 \rbrace$
+- $\delta: Q \times \Gamma \rightarrow Q \times \Gamma \times \lbrace D, I, S \rbrace$
+- $\delta(q_0, a) = (q_1, a, I)$
+- $\delta(q_1, B) = (q_0, x, D)$
+
+### Cuál de las siguientes afirmaciones es VERDADERA?
+
+### A) $L(M) = \lbrace aw \mid w \in \Sigma^* \rbrace$
+
+✅, la máquina acepta cualquier cadena que comience con una 'a', ya que en ese caso la transición la lleva al estado de aceptación $q_1$.
+
+### B) $L(M) = \lbrace a \rbrace$
+
+❌, la máquina acepta muchas más cadenas además de 'a'. Por ejemplo, acepta 'ab', 'aa', 'aab', etc.
+
+### C) $L(M) = \emptyset$
+
+❌, como la máquina acepta muchas cadenas, el lenguaje no es vacío.
+
+## 3) Sea $M$ una máquina de Turing del modelo "D-I-S" visto en la teoría. Si se sabe que $\lambda \notin L(M)$, ¿existe una máquina de Turing $M'$ que comience con el cabezal apuntando a cualquier celda de la cinta, tal que $L(M') = L(M)$?
+
+### A) No existe.
+
+❌, sí existe.
+
+### B) Sí existe.
+
+✅, si $\lambda \notin L(M)$, entonces se puede construir una máquina $M'$ que primero se mueva hacia la derecha hasta encontrar el primer símbolo de la cadena de entrada, y luego simule a $M$ desde allí. Dado que $\lambda$ no está en el lenguaje, no hay problema en que el cabezal comience en cualquier celda a la derecha del inicio de la cadena.
+
+### C) En algunos casos existe y en otros no, depende de la forma de las transiciones de $M$.
+
+❌, no depende de las transiciones de $M$, siempre es posible construir $M'$ siempre y cuando $\lambda \notin L(M)$.
+
+## 4) Cuál de las siguientes afirmaciones es verdadera?
+
+### A) $RE - R$ es infinito incontable.
+
+❌, $RE - R$ es infinito contable, ya que tanto $RE$ como $R$ son conjuntos infinitos contables, y la diferencia de dos conjuntos infinitos contables es otro conjunto infinito contable.
+
+### B) $(L_1 \subseteq L_2) \land (L_2 \in R) \implies (L_1 \in R)$.
+
+❌, no necesariamente. Contraejemplo, $L_1 = HP$, $L_2 = \Sigma^*$. Se cumple que $L_1 \subseteq L_2$ y $L_2 \in R$, pero $L_1 \notin R$.
+
+### C) $\mathscr{L} - \text{CO-RE}$ es infinito incontable.
+
+✅, se sabe que $\mathscr{L}$ es infinito incontable y que $\text{CO-RE}$ es infinito contable. La diferencia entre un conjunto infinito incontable y un conjunto infinito contable es otro conjunto infinito incontable.
+
+## 5) Para qué caso NO puede existir una reducción $L_1 \space \alpha \space L_2$?
+
+### A) $L_1 = \lbrace 0^n 1 \mid n \geq 0 \rbrace$, $L_2 = L_u$
+
+✅, sí puede existir una reducción de $L_1$ a $L_u$, porque $L_1$ es decidible y $L_u$ es $RE$.
+
+### B) $L_1 = \overline{HP}$, $L_2 = HP$
+
+❌, no puede existir una reducción de $\overline{HP}$ a $HP$, porque $\overline{HP} \notin RE$ y $HP \in RE$. Se sabe por teorema que si $L_1 \space \alpha \space L_2$ y $L_2 \in RE$, entonces $L_1$ también debe estar en $RE$. Pero $\overline{HP}$ no está en $RE$.
+
+### C) $L_1 = HP$, $L_2 = L_u$
+
+✅, sí puede existir una reducción de $HP$ a $L_u$.
+
+## 6) Cuál de las siguientes afirmaciones es verdadera?
+
+### A) El lenguaje $L_u$ pertenece a $NPС$
+
+❌, $L_u$ no pertenece a $NPC$, porque como es recursivamente enumerable pero NO es decidible, no pertenece ni a $P$ ni a $NP$. Como no pertenece a $NP$, no puede jamás ser $NPC$, ya que es requisito ser $NP$ para ser $NPC$, por definición.
+
+### B) Si $P = NP$ entonces todo lenguaje de $NPC$ pertenece a $P$
+
+✅, si $P = NP$, entonces todo lenguaje que está en $P$ también está en $NP$ y viceversa. Dado que todo lenguaje $NPC$ está, por definición, en $NP$, si $P = NP$, entonces todo lenguaje $NPC$ también estará en $P$.
+
+### C) Si $L_1$ está en $P$ y existe la reducción $L_1 \space \alpha \space L_2$, entonces $L_2$ está en $P$
+
+❌, no necesariamente. Contraejemplo: $L_1 = \lbrace 0^n 1^n \mid n \geq 0 \rbrace$ (que está en $P$) y $L_2 = HP$ (que no está en $P$). Existe una reducción de $L_1$ a $L_2$, pero $L_2$ no está en $P$.
+
+## 7) Sea el siguiente código:
+
+```
+for i = 0 to n^2 do
+  j = i
+  while j > 0 do
+    j = j - 2
+```
+
+### ¿Cuál de las siguientes afirmaciones es verdadera?
+
+### A) El tamaño de la entrada del while es $n^2$
+
+❓
+
+### B) El peor caso para el análisis del while es $n^2$
+
+❓
+
+### C) Hay dos formas de llevar a cabo el análisis del while
+
+❓
+
+## 8) ¿Cuál de las siguientes afirmaciones es FALSA? Teniendo en cuenta los métodos de resolución de recurrencias y el algoritmo Divide And Conquer tradicional para multiplicación de matrices.
+
+### A) El algoritmo se puede analizar con alguno de los métodos
+
+✅, el algoritmo de multiplicación de matrices tradicional se puede analizar vía recurrencias.
+
+### B) El algoritmo es $O(n^2)$
+
+❌, el algoritmo tradicional de multiplicación de matrices es $O(n^3)$, y claramente ese orden es estrictamente mayor que $O(n^2)$.
+
+### C) El algoritmo es $O(n^3)$
+
+✅, el algoritmo tradicional de multiplicación de matrices es $O(n^3)$.
+
+### D) El algoritmo es $O(n^4)$
+
+✅, el algoritmo tradicional de multiplicación de matrices es $O(n^3)$, y claramente ese orden es estrictamente menor que $O(n^4)$. Por lo tanto, el algoritmo también es $O(n^4)$.
+
 ---
 
 <h1 align="center">2014 - 3° fecha</h1>
