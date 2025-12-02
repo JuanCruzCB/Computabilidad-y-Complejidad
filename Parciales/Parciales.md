@@ -18,6 +18,129 @@
 
 <h1 align="center">2014 - 1° fecha</h1>
 
+## 1) Sea $F$ el conjunto de todas las funciones de $\mathbb{N}$ en $\mathbb{N}$, es decir $F= \{f \mid f:\mathbb{N} \rightarrow \mathbb{N}\}$ y $G$ el conjunto de todas las funciones de $\mathbb{N}$ en $\mathbb{N}^2$, es decir $G= \{f \mid f:\mathbb{N} \rightarrow \mathbb{N}^2\}$ ¿Cuál de las siguientes afirmaciones es cierta?
+
+### A) $|F| = |G|$
+
+✅, existe una función inyectiva de $F$ en $G$ y además existe otra función inyectiva de $G$ en $F$. Por lo tanto las cardinalidades son iguales.
+
+### B) $|F| < |G|$
+
+❌, no es cierto, ver A).
+
+## 2) Sea la siguiente máquina de Turing:
+
+- $M_f = \langle Q, \Sigma, \Gamma, \delta, q_0, F\rangle$
+- $Q = \lbrace q_0, q_1 \rbrace$
+- $\Sigma = \lbrace 0, 1 \rbrace$
+- $\Gamma = \lbrace 0, 1, B \rbrace$
+- $F = \emptyset$
+- $\delta: Q \times \Gamma \rightarrow Q \times \Gamma \times \lbrace D, I, S \rbrace$
+- $\delta(q_0, 0) = (q_0, 1, D)$
+- $\delta(q_0, 1) = (q_0, 0, D)$
+
+### Para qué par de lenguajes $L_1$ y $L_2$ la $M_f$ NO computa una función de reducibilidad de $L_1$ a $L_2$?
+
+### A) $L_1 = \lbrace 0^n 1^n \mid n \geq 0 \rbrace$ y $L_2 = \lbrace 1^n 0^n \mid n ≥ 0 \rbrace$
+
+✅, claramente la $M_f$ invierte todos los bits, por lo que se condice con la relación clara que se ve entre $L_1$ y $L_2$. Por ejemplo, la cadena $0011$ de $L_1$ se mapea a la cadena $1100$ de $L_2$. Por lo tanto, la $M_f$ computa una función de reducibilidad de $L_1$ a $L_2$.
+
+### B) $L_1 = \lbrace 0 w 1 \mid w \in \Sigma^* \rbrace$ y $L_2 = \lbrace 1 w 0 \mid w \in \Sigma^* \rbrace$
+
+✅, idem A).
+
+### C) $L_1 = \lbrace 0^n 1^m \mid n \geq 0, m > 1 \rbrace$ y $L_2 = \lbrace 1^m 0^n \mid n \geq 0, m > 1 \rbrace$
+
+❌, contraejemplo: si viene la cadena $11$ que está en $L_1$, la función la mapea a $00$ que NO está en $L_2$. Por lo tanto, la $M_f$ NO computa una función de reducibilidad de $L_1$ a $L_2$.
+
+## 3) ¿Cuál de las siguientes afirmaciones es verdadera?
+
+### A) Una MT de $2k$ cintas, tiene mayor poder computacional que una MT de $k$ cintas.
+
+❌, ambas tienen el mismo poder de cómputo, solo que las de $2k$ cintas son más eficientes en tiempo. Pero no existe ningún problema que la máquina más eficiente pueda resolver que la otra jamás pueda resolver.
+
+### B) Una MT de $2^k$ cintas tiene mayor poder computacional que una MT de $k$ cintas.
+
+❌, idem A).
+
+### C) Ninguna de las afirmaciones anteriores es verdadera
+
+✅, tanto A) como B) son falsas.
+
+## 4) ¿Cuál de las siguientes afirmaciones es falsa?
+
+### A) $(\mathscr{L} - \text{CO-RE})$ es un conjunto infinito incontable
+
+✅, se sabe que $\mathscr{L}$ es infinito incontable y que $\text{CO-RE}$ es infinito contable. La diferencia entre un conjunto infinito incontable y un conjunto infinito contable es otro conjunto infinito incontable.
+
+### B) $(\mathscr{L} - \text{RE})$ es un conjunto infinito incontable
+
+✅, misma razón que A), ya que $RE$ también es infinito contable.
+
+### C) $(\text{CO-RE} \cup \text{RE})$ es un conjunto infinito incontable
+
+❌, se sabe que $RE$ es infinito contable y que $\text{CO-RE}$ también es infinito contable. La unión de dos conjuntos infinitos contables es otro conjunto infinito contable.
+
+## 5) Para qué caso NO puede existir una reducción $L_1 \space \alpha_p \space L_2$
+
+### A) $L_1 = \lbrace 0^n 1 \mid n \geq 0 \rbrace$, $L_2 = \Sigma^*$
+
+❌, no puede existir esta reducción, porque para cada cadena que NO está en $L_1$, no es posible asignarle una cadena que NO esté en $L_2$, debido a que todas las cadenas posibles están en $L_2$.
+
+### B) $L_1 = HP$, $L_2 = L_u$
+
+✅, sí puede existir una reducción de $HP$ a $L_u$.
+
+### C) $L_1 = \lbrace 0^n 1 \mid n \geq 0 \rbrace$, $L_2 = HP$
+
+✅, sí puede existir una reducción de $L_1$ a $HP$.
+
+## 6) Con $t_{A1}(n) \in \Theta(n^2)$ y $t_{A2}(n) \in \Theta(n^3)$, $n_1, n_2 \in \mathbb{N}$, indicar cuál de las siguientes afirmaciones es verdadera. Es posible que..
+
+### A) $t_{A1}(n_1)$ será $=$, $>$ o $<$ a $t_{A2}(n_2)$, dependiendo de $n_1, n_2$ y de las funciones $t_{A1}(n)$ y $t_{A2}(n)$.
+
+✅, dependiendo qué valores de $n_1$ y $n_2$ se tomen, y de qué funciones concretamente estemos hablando, puede ocurrir que las funciones sean iguales, una mayor que la otra, o una menor que la otra.
+
+### B) $\forall n_1, n_2 \in \mathbb{N}, t_{A1}(n_1) \geq t_{A2}(n_2)$
+
+❌, no es cierto, ya que $t_{A1}(n)$ crece más lentamente que $t_{A2}(n)$.
+
+### C) $\forall n_1, n_2 \in \mathbb{N}, t_{A1}(n_1) \leq t_{A2}(n_2)$
+
+❌, si bien $t_{A1}(n)$ crece más lentamente que $t_{A2}(n)$, esto depende de los valores de $n_1$ y $n_2$. Por ejemplo, si $n_1$ es muy grande y $n_2$ es muy pequeño, puede ocurrir que $t_{A1}(n_1) > t_{A2}(n_2)$.
+
+## 7) ¿Cuál de las siguientes afirmaciones es verdadera?
+
+### A) La reducción polinomial no es transitiva
+
+❌, la reducción polinomial sí es transitiva, es decir, si $L_1 \space \alpha_p \space L_2$ y $L_2 \space \alpha_p \space L_3$, entonces $L_1 \space \alpha_p \space L_3$.
+
+### B) La reducción polinomial es reflexiva
+
+✅, todo lenguaje se puede reducir polinomialmente a sí mismo.
+
+### C) La reducción polinomial es antisimétrica
+
+❌, si $L_1 \space \alpha_p \space L_2$ y $L_2 \space \alpha_p \space L_1$, no necesariamente implica que $L_1 = L_2$.
+
+## 8) ¿Cuál de las siguientes afirmaciones es falsa? Los métodos de resolución de recurrencias vistos...
+
+### A) Permiten analizar el $t_{DC}(n)$ de los algoritmos $DC$ asociados a los que se pueden aplicar
+
+✅, los métodos de resolución de recurrencias permiten analizar el tiempo de los algoritmos Divide And Conquer asociados a los que se pueden aplicar.
+
+### B) Utilizan la recurrencia correspondiente al algoritmo $DC$ que se quiere analizar
+
+✅, los métodos de resolución de recurrencias utilizan la recurrencia correspondiente al algoritmo Divide And Conquer que se quiere analizar.
+
+### C) Proveen el $t_{DC}(n)$ de los algoritmos $DC$ asociados
+
+❌, los métodos de resolución de recurrencias no siempre proveen el tiempo exacto del algoritmo Divide And Conquer asociado, sino que en muchos casos solo permiten obtener una cota asintótica del tiempo.
+
+### D) Permiten comparar dos algoritmos $DC$ en los cuales se pueden aplicar
+
+✅, los métodos de resolución de recurrencias permiten comparar dos algoritmos Divide And Conquer en los cuales se pueden aplicar.
+
 ---
 
 <h1 align="center">2014 - 2° fecha</h1>
