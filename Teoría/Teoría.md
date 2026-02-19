@@ -425,14 +425,21 @@
 
 - Un conjunto infinito es **contable** si tiene la misma cardinalidad que $\mathbb{N}$ (números naturales).
 - Para saber si un conjunto es contable alcanza con probar que $|A| \leq |\mathbb{N}|$ ya que si $A$ es infinito se sabe que $|\mathbb{N}| \leq |A|$. Por lo tanto: Si $|A| \leq |\mathbb{N}| \implies \text{A es contable}$
-- **Propiedad**: La unión de dos conjuntos infinitos contables es un conjunto infinito contable.
 
 ### Incontables
 
 - Un conjunto infinito es **incontable** si no tiene la misma cardinalidad que $\mathbb{N}$ (números naturales).
 - Para saber si un conjunto es incontable alcanza con probar que $|\mathbb{N}| < |A|$. Por lo tanto: Si $|\mathbb{N}| < |A| \implies \text{A es incontable}$
-- **El conjunto de partes de cualquier conjunto infinito contable es incontable**.
-  - Por ejemplo, el conjunto de partes de los números naturales, $\mathcal{P}(\mathbb{N})$, es incontable, ya que $|\mathbb{N}| < |\mathcal{P}(\mathbb{N})|$.
+
+### Propiedades fundamentales
+
+Sean $A$ y $B$ conjuntos infinitos.
+
+1. Si $A$ es contable y $B$ es contable, entonces $A \cup B$ es contable.
+2. Si $A$ es incontable, entonces $A \cup B$ es incontable, sin importar la cardinalidad de $B$.
+3. Si $A$ es incontable y $B$ es incontable, $A \cap B$ puede ser contable o incontable, dependiendo de los conjuntos en cuestión.
+4. Si $A$ es incontable y $B$ es contable, entonces $A - B$ es incontable.
+5. Si $A$ es contable, su conjunto de partes $\mathcal{P}(A)$ es incontable.
 
 ## Clasificación de cardinalidades de conjuntos infinitos típicos
 
@@ -609,6 +616,7 @@
   - Los siguientes NO son lenguajes sobre $\Sigma$:
     - $L_6 = \lbrace 2, 3 \rbrace$ (los símbolos 2 y 3 no pertenecen al alfabeto $\Sigma$)
     - $L_7 = 5$ (5 no es un conjunto de cadenas, es un número)
+    - $L_8 = \lambda$ ($\lambda$ no es un conjunto, es la cadena vacía)
 - **Nota 1**: Si $L$ es un lenguaje sobre el alfabeto $\Sigma$, su complemento también es un lenguaje sobre el mismo alfabeto, definido como $\overline{L} = \Sigma^* - L$.
 - **Nota 2**: Por definición, para cualquier lenguaje $L$ se cumple:
   - $L \cup \overline{L} = \Sigma^*$
@@ -677,12 +685,15 @@
     - $M$ **siempre se detiene** en el estado de aceptación $q_A$.
   - Si $w \notin L$ entonces:
     - $M$ se detiene en el estado de rechazo $q_R$ o **no se detiene y loopea infinitamente**. No es posible saber cuál de los dos casos ocurrirá de antemano.
-- **Nota**: Todo lenguaje FINITO es recursivamente enumerable.
+- **Nota 1**: Todo lenguaje FINITO es recursivamente enumerable.
+- **Nota 2**: Si $L$ es recursivamente enumerable, entonces su complemento $\overline{L}$ no necesariamente es recursivamente enumerable.
+  - Si $L \in RE \nrightarrow \overline{L} \in RE$.
 
 ## Lenguajes recursivos o decidibles $(R)$
 
 - **Definición intuitiva**:
-  - Un lenguaje es recursivo o decidible ($L \in R$) si existe una máquina de Turing reconocedora que acepta todas las cadenas del lenguaje y **se detiene para todas las cadenas, ya sea aceptándolas o rechazándolas**.
+  - Un lenguaje es recursivo o decidible ($L \in R$) si existe una máquina de Turing reconocedora que se detiene para toda cadena, aceptando a las que pertenecen al lenguaje y rechazando a las que no.
+  - Si bien pueden existir infinitas MT que reconozcan el lenguaje pero no lo decidan, es decir, que se detengan en $q_A$ para las cadenas que pertenecen al lenguaje pero que loopeen infinitamente para las cadenas que no pertenecen al lenguaje, esto no rompe la decibilidad del lenguaje, ya que basta con que exista al menos UNA SOLA MT que se detenga para todas las cadenas.
 - **Definición formal**:
   - $L \in R \leftrightarrow \exists M \mid L(M) = L$ y $M \text{ se detiene para todas las cadenas}$.
   - Si $w \in L$ entonces:
@@ -692,6 +703,8 @@
 - **Nota 1**: Todo lenguaje FINITO es decidible.
 - **Nota 2**: La intersección y la unión de dos lenguajes decidibles da como resultado otro lenguaje decidible.
   - Si $L_1, L_2 \in R$ entonces $L_1 \cap L_2 \in R$ y $L_1 \cup L_2 \in R$.
+- **Nota 3**: Si $L$ es decidible, entonces su complemento $\overline{L}$ también es decidible.
+  - Si $L \in R$ entonces $\overline{L} \in R$.
 
 ## Lenguajes $\text{CO-R}$
 
@@ -863,7 +876,6 @@ Podemos ver que:
 1. $M_f$ **siempre se detiene**, ya que en cualquier caso llega al estado de detención $q_d$ después de leer el primer símbolo.
 2. $f$ es **total**, ya que está definida para todas las cadenas en $\lbrace a, b \rbrace^*$.
 3. La función $f$ cumple con la **condición de reducción**:
-
    - $(\forall w \in \Sigma^*)(w \in L_1 \rightarrow f(w) \in L_2)$ se cumple porque si $w$ comienza con "a", entonces $f(w)$ comenzará con "b", por lo cual se cumple que $f(w) \in L_2$, ya que cumple la condición de $L_2$.
    - $(\forall w \in \Sigma^*)(w \notin L_1 \rightarrow f(w) \notin L_2)$ se cumple porque si $w$ no comienza con "a" (es decir, comienza con "b" o es la cadena vacía), entonces $f(w)$ no comenzará con "b" (comenzará con "a" o será vacío).
 
@@ -900,7 +912,6 @@ Podemos ver que:
 1. $M_f$ **siempre se detiene**, ya que en cualquier caso llega al estado de detención $q_d$ después de leer el primer símbolo y moverse a la izquierda, dado que siempre hay blanco a la izquierda del inicio de la cadena.
 2. $f$ es **total**, ya que está definida para todas las cadenas en $\lbrace 0, 1 \rbrace^*$.
 3. La función $f$ cumple con la **condición de reducción**:
-
    - $(\forall w \in \Sigma^*)(w \in L_1 \rightarrow f(w) \in L_2)$ se cumple porque si $w$ tiene una cantidad par de unos, al agregarle un 1 al inicio, la cantidad de unos en $f(w)$ siempre será impar, por lo cual se cumple que $f(w) \in L_2$, ya que cumple la condición de $L_2$ que es tener una cantidad impar de unos.
    - $(\forall w \in \Sigma^*)(w \notin L_1 \rightarrow f(w) \notin L_2)$ se cumple porque si $w$ tiene una cantidad impar de unos, al agregarle un 1 al inicio, la cantidad de unos en $f(w)$ siempre será par, por lo cual se cumple que $f(w) \notin L_2$, ya que no cumple la condición de $L_2$.
    - **En ambos casos se aprovecha la propiedad matemática**: $$\text{par} + 1 = \text{impar}$$ $$\text{impar} + 1 = \text{par}$$
@@ -1178,7 +1189,6 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 - El mapa de la tratabilidad es el siguiente:
 
   ![Mapa de la tratabilidad](https://i.imgur.com/BMrA9g1.png)
-
   - El punto principal es que la brecha es inaceptablemente grande pues existen muchos problemas importantes que están en $NP$ a los que no se les conoce una solución tratable, pero tampoco se ha demostrado que esta solución no exista.
 
 ### Problema del Viajante de Comercio (TSP)
