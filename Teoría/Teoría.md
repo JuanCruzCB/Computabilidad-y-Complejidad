@@ -1080,6 +1080,38 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
     - $g(n) \in O(f(n))$
     - Intuitivamente, esto dice que $f(n)$ crece igual o más rápido que $g(n)$, ya que la razón entre ambas tiende a infinito.
 
+## Tabla de resumen
+
+| Notación                | Intuición                                          |
+| ----------------------- | -------------------------------------------------- |
+| $f(n) \in O(g(n))$      | $f(n)$ crece igual o más lento que $g(n)$          |
+| $f(n) \in \Omega(g(n))$ | $f(n)$ crece igual o más rápido que $g(n)$         |
+| $f(n) \in \Theta(g(n))$ | $f(n)$ crece exactamente al mismo ritmo que $g(n)$ |
+
+## Ejemplos
+
+- Si $f(n) = n^3$ y $g(n) = n^2$, entonces:
+  - $f(n) \notin O(g(n))$
+  - $g(n) \in O(f(n))$
+  - $f(n) \in \Omega(g(n))$
+  - $g(n) \notin \Omega(f(n))$
+  - $f(n) \notin \Theta(g(n))$
+  - $g(n) \notin \Theta(f(n))$
+- Si $f(n) = \log_2(n)$ y $g(n) = n$, entonces:
+  - $f(n) \in O(g(n))$
+  - $g(n) \notin O(f(n))$
+  - $f(n) \notin \Omega(g(n))$
+  - $g(n) \in \Omega(f(n))$
+  - $f(n) \notin \Theta(g(n))$
+  - $g(n) \notin \Theta(f(n))$
+- Si $f(n) = 2^n$ y $g(n) = 2^n$, entonces:
+  - $f(n) \in O(g(n))$
+  - $g(n) \in O(f(n))$
+  - $f(n) \in \Omega(g(n))$
+  - $g(n) \in \Omega(f(n))$
+  - $f(n) \in \Theta(g(n))$
+  - $g(n) \in \Theta(f(n))$
+
 ---
 
 # Complejidad Temporal
@@ -1309,6 +1341,24 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 | $L_{EQ}$                  | ❌       | ❌      | ❌                 | ❌      | ❌       | ❓                 | ❓        | ❓        |
 | $TSP$                     | ✅       | ✅      | ✅                 | ❌      | ✅       | ❓                 | ✅        | ✅        |
 | $SAT$                     | ✅       | ✅      | ✅                 | ❌      | ✅       | ❓                 | ✅        | ✅        |
+
+## Mapa completo de computabilidad y complejidad y resumen final
+
+![Mapa de clases de computabilidad y complejidad](https://i.imgur.com/OmdCCnt.png)
+
+1. Todo problema que está en $P$ está también en $NP$, es decir, $P \subseteq NP$. Lo inverso no se sabe, es decir, no se sabe si $NP \subseteq P$ o $NP \not\subseteq P$. Por lo tanto, no se sabe si $P = NP$ o $P \neq NP$, aunque se cree ampliamente que $P \neq NP$.
+2. Todos los problemas que están en $P$ y/o en $NP$ son decidibles, es decir, pertenecen a $R$.
+3. Todos los problemas que están tanto en $RE$ como en $\text{CO-RE}$ son decidibles, es decir, pertenecen a $R$.
+4. Existen problemas que están en $RE$ pero no en $\text{CO-RE}$, es decir, problemas que son semi-decidibles pero no decidibles.
+5. Existen problemas que están en $\text{CO-RE}$ pero no en $RE$, es decir, problemas que son co-semi-decidibles pero no decidibles.
+6. Existen problemas que no están ni en $RE$ ni en $\text{CO-RE}$, es decir, problemas que son completamente no computables.
+7. Todo problema que está tanto en $NP$ como en $NPH$ es un problema $NPC$.
+8. Los problemas $NPH$ son los problemas más difíciles de $NP$. Algunos son decidibles y otros no.
+9. Todo problema que está en $P$ está también en $\text{Co-P}$ y viceversa, por lo tanto $P = \text{Co-P}$.
+10. Todo problema que está en $R$ está también en $\text{Co-R}$ y viceversa, por lo tanto $R = \text{Co-R}$.
+11. Todo problema decidible es también semi-decidible y co-semi-decidible, es decir, $R \subseteq RE$ y $R \subseteq \text{CO-RE}$.
+12. Existen problemas que son decidibles pero no están ni en $P$ ni en $NP$, es decir, problemas decidibles pero no tratables. Esto se debe a que son extremadamente ineficientes de resolver, por más que técnicamente se pueden resolver.
+13.
 
 ---
 
