@@ -382,7 +382,7 @@
 
 ### Concepto
 
-- La cardinalidad de un conjunto finito es un número, pero la cardinalidad de un conjunto infinito no lo es, sino que es una **propiedad** del conjunto llamada número cardinal. Éste nos permite hacer comparaciones de tamaño entre conjuntos infinitos.
+- La cardinalidad de un conjunto finito es un número, mientras que la de un conjunto infinito es una **propiedad** del conjunto llamada número cardinal. Éste nos permite hacer comparaciones de tamaño entre conjuntos infinitos.
 - Para entender este concepto, se suele usar el principio del Palomar:
   - Si se tienen muchos objetos y varios cajones, pero menos cajones que objetos, entonces al menos un cajón debe contener más de un objeto.
   - Por ejemplo, si se tienen 10 objetos y 9 cajones, al menos un cajón debe contener más de un objeto.
@@ -443,7 +443,7 @@ Sean $A$ y $B$ conjuntos infinitos.
 
 ## Clasificación de cardinalidades de conjuntos infinitos típicos
 
-- $\mathbb{N} = \mathbb{Q} = \mathbb{Z} < \mathbb{R} = \mathcal{P}(\mathbb{N})$
+- |$\mathbb{N}| = |\mathbb{Q}| = |\mathbb{Z}| < |\mathbb{R}| = |\mathcal{P}(\mathbb{N})|$
 - Es decir, los números naturales, enteros y racionales son conjuntos infinitos **contables**, mientras que los números reales y el conjunto de partes de los números naturales son conjuntos infinitos **incontables**.
 - Además existen muchos otros ejemplos, como que el conjunto de los numeros impares tiene la misma cardinalidad que los números naturales, y lo mismo con los números pares y los números naturales.
 
@@ -455,26 +455,23 @@ Sean $A$ y $B$ conjuntos infinitos.
 
 - Modelo matemático de un dispositivo de computación.
 - Se compone de:
-  - Una cinta infinita que se divide en infinitas celdas.
-  - Un cabezal que se mueve sobre la cinta y que puede leer y escribir símbolos en cada celda.
-- En cada instante de tiempo, la máquina está en un estado determinado de un conjunto finito de estados.
-- La máquina puede cambiar de estado, escribir un símbolo en la celda actual y mover el cabezal a la izquierda o a la derecha, dependiendo del símbolo que está leyendo y del estado en el que se encuentra.
+  - Una cinta infinita dividida en celdas.
+  - Un cabezal que lee y escribe un único símbolo indivisible en la celda donde está apuntando actualmente y luego se mueve a izquierda o derecha.
+  - Un conjunto finito de estados.
+  - Una función de transición.
 - Existe un símbolo especial llamado blanco y denotado con el símbolo "B", que representa una celda vacía.
+- En cada instante de tiempo la máquina hace uso de su función de transición: está en un estado determinado de un conjunto finito de estados, y según el símbolo que el cabezal lee, la máquina:
+  - Transiciona a un nuevo estado (puede ser el mismo en el que ya estaba).
+  - Escribe un símbolo en la celda actual (puede ser el mismo que ya estaba ahí).
+  - Mueve el cabezal hacia la izquierda o la derecha.
+- Si la función de transición no está definida para el estado actual y el símbolo que está leyendo, la máquina se detiene.
+- **El resultado del cómputo de la MT es la cadena que queda escrita en la cinta una vez la máquina se detiene**.
 
 ## Configuración inicial
 
 - La máquina siempre inicia en el estado $q_0$.
-- Si hay una cadena de entrada, esta se encuentra escrita en la cinta, comenzando desde la celda más a la izquierda. Además, esta cadena está delimitada por infinitos símbolos blancos (B) a la izquierda y a la derecha (principio y fin de la cadena en cuestión). No hay ningún blanco entre los símbolos de la cadena.
+- Si hay una cadena de entrada, esta se encuentra escrita en la cinta símbolo por símbolo (uno por celda), comenzando desde la celda más a la izquierda. Además, esta cadena está delimitada por infinitos símbolos blancos (B) a la izquierda y a la derecha (principio y fin de la cadena en cuestión). Nunca hay ningún símbolo blanco (B) entre el inicio y el fin de la cadena, inclusive, a no ser que la cadena en sí sea B.
 - Si no hay cadena de entrada, la cinta contiene solo símbolos blancos (B) en todas sus celdas.
-
-## Comportamiento
-
-- Está definido por una función matemática de transición que indica, según el estado actual y el símbolo que está leyendo el cabezal:
-  - El nuevo estado al que la máquina transicionará.
-  - El símbolo que escribirá en la celda actual (puede ser el mismo que estaba leyendo).
-  - La dirección en la que moverá el cabezal (izquierda o derecha).
-- Si la función de transición no está definida para el estado actual y el símbolo que está leyendo, la máquina se detiene.
-- **El resultado del cómputo de la MT es la cadena que queda escrita en la cinta cuando la máquina se detiene**.
 
 ## MT General
 
@@ -529,8 +526,7 @@ Sean $A$ y $B$ conjuntos infinitos.
 - **Definición intuitiva**:
   - Un símbolo es un objeto indivisible.
 - **Definición formal**:
-  - $x$ es un símbolo si y solo si:
-    - $x$ es un objeto indivisible.
+  - $x$ es un símbolo si y solo si $x$ es un objeto indivisible.
   - Un símbolo es un objeto indivisible que pertenece a un conjunto **finito** llamado **alfabeto**.
 - **Ejemplo**:
   - a, b, c, 1, 2, 3, @, #, $, %, &, ...
@@ -551,6 +547,8 @@ Sean $A$ y $B$ conjuntos infinitos.
 
 ## Cadena / palabra / sentencia / string
 
+### Concepto
+
 - **Notación**: $w$ o $\lambda$ (para la cadena vacía)
 - **Definición intuitiva**:
   - Una cadena es una secuencia **finita** de símbolos tomados de un **alfabeto** $\Sigma$.
@@ -564,33 +562,42 @@ Sean $A$ y $B$ conjuntos infinitos.
     - $w_2 = aab$
     - $w_3 = b$
     - $w_4 = \lambda$ (cadena vacía)
-- **Longitud de una cadena**:
-  - Se denota como $|w|$ y es el número de símbolos en la cadena $w$.
-  - Ejemplo: Si $w = abba$, entonces $|w| = 4$.
-  - Para la cadena vacía $\lambda$, $|\lambda| = 0$.
-- **Concatenación de cadenas**:
-  - Si $w_1$ y $w_2$ son cadenas, la concatenación de $w_1$ y $w_2$ se denota como $w_1 w_2$ y es la cadena formada al unir $w_1$ seguido de $w_2$.
-    - Ejemplo: Si $w_1 = ca$ y $w_2 = sa$, entonces $w_1 w_2 = casa$.
-  - Esta operación es **asociativa** pero no **conmutativa**: $(w_1 w_2) w_3 = w_1 (w_2 w_3)$ pero $w_1 w_2 \neq w_2 w_1$ en general.
-  - La cadena vacía $\lambda$ actúa como el elemento neutro en la concatenación: $w \lambda = \lambda w = w$ para cualquier cadena $w$.
-  - La concatenación de cadenas puede aumentar la longitud: $|w_1 w_2| = |w_1| + |w_2|$.
-    - Ejemplo: Si $w_1 = ab$ y $w_2 = ba$, entonces $w_1 w_2 = abba$ y $|w_1 w_2| = 4$.
-- **Potencia i-ésima de una cadena**:
-  - La potencia i-ésima de una cadena $w$, denotada como $w^i$, es la concatenación de $i$ copias de $w$.
-    - Si $i = 0$, entonces $w^0 = \lambda$ (cadena vacía).
-    - Si $i > 0$, entonces $w^{(i + 1)} = ww^i (\forall i \geq 0)$.
-    - Ejemplo: Si $w = ab$ y $i = 3$, entonces $w^3 = ababab$.
-  - Por convención, $w^0 = \lambda$ para cualquier cadena $w$.
-- **Inverso de una cadena**:
-  - El inverso de una cadena $w = x_1 x_2 ... x_n$ se denota como $w^R$ y es la cadena formada al escribir los símbolos de $w$ en orden inverso: $w^R = x_n x_{n-1} ... x_1$.
-    - Ejemplo: Si $w = auto$, entonces $w^R = otua$.
+
+### Longitud
+
+- Se denota como $|w|$ y es la cantidad de símbolos que tiene la cadena $w$.
+- Ejemplo: Si $w = abba$, entonces $|w| = 4$.
+- Para la cadena vacía $\lambda$, $|\lambda| = 0$.
+
+### Concatenación
+
+- Si $w_1$ y $w_2$ son cadenas, la concatenación de $w_1$ y $w_2$ se denota como $w_1 w_2$ y es la cadena formada al unir $w_1$ seguido de $w_2$.
+- Ejemplo: Si $w_1 = ca$ y $w_2 = sa$, entonces $w_1 w_2 = casa$.
+- Esta operación es **asociativa** pero no **conmutativa**:
+  - $(w_1 w_2) w_3 = w_1 (w_2 w_3)$
+  - $w_1 w_2 \neq w_2 w_1$ en general.
+- La cadena vacía $\lambda$ actúa como el **elemento neutro** en la concatenación: $w \lambda = \lambda w = w$ para cualquier cadena $w$.
+- La concatenación de cadenas puede aumentar la longitud: $|w_1 w_2| = |w_1| + |w_2|$.
+- Ejemplo: Si $w_1 = ab$ y $w_2 = ba$, entonces $w_1 w_2 = abba$ y $|w_1 w_2| = 4$.
+
+### Potencia i-ésima de una cadena
+
+- La potencia i-ésima de una cadena $w$, denotada como $w^i$, es la concatenación de $i$ copias de $w$.
+  - Si $i = 0$, entonces $w^0 = \lambda$ (cadena vacía).
+  - Si $i > 0$, entonces $w^{(i + 1)} = ww^i (\forall i \geq 0)$.
+  - Ejemplo: Si $w = ab$ y $i = 3$, entonces $w^3 = ababab$.
+
+### Inverso de una cadena
+
+- El inverso de una cadena $w = x_1 x_2 ... x_n$ se denota como $w^R$ y es la cadena formada al escribir los símbolos de $w$ en orden inverso: $w^R = x_n x_{n-1} ... x_1$.
+- Ejemplo: Si $w = auto$, entonces $w^R = otua$.
 
 ## Sigma estrella
 
 - **Notación**: $\Sigma^*$
 - **Definición intuitiva**:
-  - $\Sigma^*$ es el conjunto de todas las cadenas (incluyendo la cadena vacía) que se pueden formar con los símbolos del alfabeto $\Sigma$.
-  - Es un conjunto infinito contable.
+  - $\Sigma^*$ es el conjunto de todas las cadenas (incluyendo la cadena vacía) posibles que se pueden formar usando los símbolos del alfabeto $\Sigma$.
+  - Es un conjunto **infinito contable**.
 - **Definición formal**:
   - $\Sigma^* = \lbrace w \mid w \text{ es una cadena (incluyendo la cadena vacía) formada por símbolos de } \Sigma \rbrace$
 - **Ejemplo**:
@@ -608,15 +615,15 @@ Sean $A$ y $B$ conjuntos infinitos.
   - Si $\Sigma = \lbrace 0, 1 \rbrace$, entonces:
     - $\Sigma^* = \lbrace \lambda, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, 100, 101, 110, 111, ... \rbrace$
   - Posibles lenguajes definidos sobre $\Sigma$ podrían ser:
-    - $L_1 = \lbrace 0, 1, 00, 01 \rbrace$
-    - $L_2 = \emptyset$
-    - $L_3 = \lbrace \lambda \rbrace$
-    - $L_4 = \Sigma^*$
+    - $L_1 = \emptyset$
+    - $L_2 = \lbrace \lambda \rbrace$
+    - $L_3 = \Sigma^*$
+    - $L_4 = \lbrace 0, 1, 00, 01 \rbrace$
     - $L_5 = \lbrace 1w \mid w \in \Sigma^* \rbrace$
   - Los siguientes NO son lenguajes sobre $\Sigma$:
     - $L_6 = \lbrace 2, 3 \rbrace$ (los símbolos 2 y 3 no pertenecen al alfabeto $\Sigma$)
-    - $L_7 = 5$ (5 no es un conjunto de cadenas, es un número)
-    - $L_8 = \lambda$ ($\lambda$ no es un conjunto, es la cadena vacía)
+    - $L_7 = 5$ (5 es un número, no es un conjunto de cadenas)
+    - $L_8 = \lambda$ ($\lambda$ es la cadena vacía, no es un conjunto de cadenas)
 - **Nota 1**: Si $L$ es un lenguaje sobre el alfabeto $\Sigma$, su complemento también es un lenguaje sobre el mismo alfabeto, definido como $\overline{L} = \Sigma^* - L$.
 - **Nota 2**: Por definición, para cualquier lenguaje $L$ se cumple:
   - $L \cup \overline{L} = \Sigma^*$
@@ -624,6 +631,7 @@ Sean $A$ y $B$ conjuntos infinitos.
 - **L cursiva ($\mathscr{L}$)**:
   - $\mathscr{L}$ es el conjunto de todos los lenguajes posibles sobre un alfabeto $\Sigma$.
   - Es decir, $\mathscr{L} = \mathcal{P}(\Sigma^*)$.
+  - Este conjunto es **infinito incontable**.
 
 ---
 
@@ -826,7 +834,7 @@ Sean $A$ y $B$ conjuntos infinitos.
 ## Definición de reducción
 
 - **Definición intuitiva**:
-  - Una reducibilidad es una función que transforma instancias de un problema/lenguaje en otro.
+  - Una reducibilidad es una **función** que transforma instancias de un problema/lenguaje en otro.
   - A cada palabra de $L_1$ se le asigna una palabra de $L_2$.
   - A cada palabra que NO pertenece a $L_1$ se le asigna una palabra que NO pertenece a $L_2$.
 - **Definición formal**:
@@ -918,11 +926,13 @@ Podemos ver que:
 
 ## Implicaciones de la reducción
 
-Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
+Sean $L_1$ y $L_2$ dos lenguajes. Si $L_1$ se reduce a $L_2$ esto implica 3 cosas fundamentales:
 
-1. Se puede construir una MT que acepte $L_1$ a partir de la MT que acepta $L_2$ (si existe).
-2. Intuitivamente, $L_1$ no puede ser más difícil computacionalmente que $L_2$, porque se puede usar $L_2$ para resolver $L_1$.
-3. Intuitivamente, la reducción establece una relación de $\leq$ grado de dificultad computacional entre los lenguajes. Si $L_1 \space \alpha \space L_2$, entonces $L_1$ no es más difícil que $L_2$, es o igual de difícil o más fácil. Si puedo computar $L_2$, entonces puedo computar $L_1$.
+1. **Si existe una MT que decide/acepta $L_2$, entonces puedo construir una MT que decide/acepta $L_1$.** La idea es que para resolver instancias de $L_1$​, las transformo (mediante una función computable) en instancias de $L_2$​, y luego uso la máquina de $L_2$​ como subrutina.
+2. **$L_1$​ no es más difícil que $L_2$​.** Resolver $L_1$​ no requiere “más poder computacional” que resolver $L_2$​, porque cualquier solución para $L_2$​​ me sirve para resolver $L_1$​​.
+3. La reducción define un orden de dificultad. Cuando $L_1$ se reduce a $L_2$, estamos diciendo que $L_1$ es a lo sumo tan difícil como $L_2$. Puede ser igual de difícil, más fácil, pero nunca más difícil.
+
+En síntesis, una reducción es una **forma de comparar la dificultad computacional entre lenguajes**.
 
 ## Teoremas fundamentales
 
@@ -933,7 +943,9 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
     - Si $L_2$ es decidible, entonces $L_1$ también.
   - $L_1 \notin R \rightarrow L_2 \notin R$ (por contrarrecíproco)
     - Si $L_1$ NO es decidible, entonces $L_2$ tampoco.
-- Este teorema nos sirve para poder determinar si un lenguaje es decidible o no, partiendo de saber que otro lenguaje al que se reduce es decidible o no.
+- Como se explicó antes, la reducción nos da un orden de dificultad entre lenguajes. Claramente, un lenguaje que es $RE$ pero no $R$ es más difícil que un lenguaje que es $R$. Por lo tanto, si $L_1$ se reduce a $L_2$ y $L_2$ es decidible, entonces necesariamente $L_1$ debe ser decidible también, porque no puede ser más difícil que $L_2$.
+- Nunca puede ocurrir que un lenguaje que no es decidible se reduzca a un lenguaje que sí es decidible, porque eso implicaría que el lenguaje no decidible es a lo sumo tan difícil como el decidible, lo cual es una contradicción.
+- Por ejemplo, $L_u$ no se puede reducir a $\Sigma^*$, porque $L_u$ no es decidible y $\Sigma^*$ sí lo es. Sin embargo, $\Sigma^*$ se puede reducir a $L_u$, porque $\Sigma^*$ es decidible y $L_u$ no lo es.
 
 ### Sobre $RE$
 
@@ -942,7 +954,9 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
     - Si $L_2$ es recursivamente enumerable, entonces $L_1$ también.
   - $L_1 \notin RE \rightarrow L_2 \notin RE$ (por contrarrecíproco)
     - Si $L_1$ NO es recursivamente enumerable, entonces $L_2$ tampoco.
-- Este teorema nos sirve para poder determinar si un lenguaje es recursivamente enumerable o no, partiendo de saber que otro lenguaje al que se reduce es recursivamente enumerable o no.
+- Nuevamente, un lenguaje que es $RE$ pero no $R$ es más difícil que un lenguaje que es $R$. Por lo tanto, si $L_1$ se reduce a $L_2$ y $L_2$ es recursivamente enumerable, entonces necesariamente $L_1$ debe ser recursivamente enumerable también, porque no puede ser más difícil que $L_2$.
+- Nunca puede ocurrir que un lenguaje que no es recursivamente enumerable se reduzca a un lenguaje que sí es recursivamente enumerable, porque eso implicaría que el lenguaje no recursivamente enumerable es a lo sumo tan difícil como el recursivamente enumerable, lo cual es una contradicción.
+- Por ejemplo, $L_D$ no se puede reducir a $L_u$, porque $L_D$ no es recursivamente enumerable y $L_u$ sí lo es. Sin embargo, $L_u$ se puede reducir a $L_D$, porque $L_u$ es recursivamente enumerable y $L_D$ no lo es.
 
 # Halting Problem $(HP)$
 
@@ -1001,7 +1015,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
   - $\forall$: Todos los elementos satisfacen la propiedad, sin excepción.
   - $\forall^\infty$: Todos los elementos excepto un número **finito** de ellos satisfacen la propiedad.
 
-## Orden O
+## Orden $O$
 
 ### Primera definición
 
@@ -1209,7 +1223,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 
 - Si $L$ es un lenguaje recursivo que es aceptado por una MTN $M_1$ en tiempo $t(n)$, entonces existe una MTD $M_2$ que acepta a $L$ en tiempo menor o igual que $d^{t(n)}$ con $d$ una constante mayor que $1$ que depende de $M_1$.
 - Es decir, para todo lenguaje que es aceptado por una MTN en $t(n)$, existe una MTD que lo acepta en tiempo exponencial $d^{t(n)}$.
-- Se sabe que existen lenguajes recursivos que NO pertenecen a $NP$, es decir, $(R - NP) \neq \emptyset$ pero no se sabe si $NP = P$.
+- Se sabe que existen lenguajes recursivos que NO pertenecen a $NP$, es decir, $(R - NP) \neq \emptyset$ pero no se sabe si $P = NP$.
 
 ### Tratabilidad
 
@@ -1251,6 +1265,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 #### Teorema 1
 
 - $L \in P \implies L \in (NP \cap \text{CO-NP})$
+- Es decir, si $L$ está en $P$, entonces $L$ también está en $NP$ y en $\text{CO-NP}$.
 - Si un lenguaje está en $NP$, no se puede saber si su complemento también está en $NP$.
 - Demostración:
   - $L \in P \implies L \in NP$ (Por $P \subseteq NP$)
@@ -1276,16 +1291,19 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 
 - Sean $L_1$ y $L_2$ dos lenguajes.
 - Si $L_1$ $\alpha_p$ $L_2$ y además $L_2 \in P$ entonces $L_1 \in P$.
+- Es decir, si $L_1$ se reduce polinomialmente a $L_2$ y $L_2$ es un lenguaje tratable, entonces $L_1$ también es tratable. Esto tiene sentido ya que los lenguajes tratables son más "fáciles" que los lenguajes no tratables, por lo tanto, si $L_1$ se reduce a $L_2$ y $L_2$ es tratable, entonces $L_1$ también debe ser tratable.
 
 ### Teorema 4
 
 - Sea $L$ un lenguaje tal que $\emptyset \subset L \subset \Sigma^*$.
 - Entonces para cualquier lenguaje $L'$ con $L' \in P$, se tiene que $L'$ $\alpha_p$ $L$.
+- Básicamente, si $L$ es un lenguaje no trivial, entonces cualquier lenguaje tratable se puede reducir polinomialmente a $L$. Esto se debe a que los lenguajes no triviales son lo suficientemente "complejos" como para contener la complejidad de cualquier lenguaje tratable, por lo tanto, cualquier lenguaje tratable se puede transformar en una instancia de $L$ en tiempo polinomial.
 
 ## NP-Hard
 
 - Sea $L$ un lenguaje.
 - $L \in NPH$ si para todo lenguaje $L' \in NP$, se cumple que $L'$ $\alpha_p$ $L$.
+- Este tipo de lenguajes son los más difíciles de $NP$, es decir, cualquier lenguaje en $NP$ se puede reducir polinomialmente a un lenguaje $NPH$. Sin embargo, no se requiere que un lenguaje $NPH$ esté en $NP$, es decir, un lenguaje $NPH$ puede ser tan difícil que ni siquiera pueda ser reconocido por una MTN en tiempo polinomial.
 
 ## NP-Completo
 
@@ -1295,6 +1313,7 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 - $L \in NPC$ si y solo si:
   - $L \in NPH$
   - $L \in NP$
+- Es decir, los lenguajes $NPC$ son aquellos que son tanto $NP$ como $NPH$.
 
 ### Teorema 5
 
@@ -1323,7 +1342,20 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 - Mapa completo de P, NP, NPC, CO-NPC y CO-NP:
   ![Mapa completo de P, NP, NPC, CO-NPC y CO-NP](https://i.imgur.com/YNM7urQ.png)
 
-## Clasificación completa de todos los lenguajes vistos en la materia
+## Definición y clasificación completa de todos los lenguajes vistos en la materia
+
+- $\emptyset$ es el lenguaje vacío, es decir, el lenguaje que **no posee ninguna cadena**, ni siquiera la cadena vacía $\lambda$.
+- $\lbrace \lambda \rbrace$ es el lenguaje que **únicamente contiene la cadena vacía** $\lambda$.
+- $\Sigma^*$ es el lenguaje que contiene **todas las cadenas posibles** sobre el alfabeto $\Sigma$.
+- $L_D$ es el lenguaje diagonal, es decir, el lenguaje que contiene todas las codificaciones binarias de máquinas de Turing tales que la máquina de Turing codificada **rechaza** su propia codificación.
+- $\overline{L_D}$ es el complemento del lenguaje diagonal, es decir, el lenguaje que contiene todas las codificaciones binarias de máquinas de Turing tales que la máquina de Turing codificada **acepta** su propia codificación.
+- $L_u$ es el lenguaje universal, es decir, el lenguaje que contiene todos los pares (codificación de máquina de Turing, cadena de entrada) tales que la máquina de Turing codificada **acepta** la cadena de entrada.
+- $\overline{L_u}$ es el complemento del lenguaje universal, es decir, el lenguaje que contiene todos los pares (codificación de máquina de Turing, cadena de entrada) tales que la máquina de Turing codificada **rechaza** la cadena de entrada.
+- $L$ es un lenguaje definido como $L = \lbrace 1w \mid w \in L_D \rbrace \cup \lbrace 0w \mid w \notin L_D \rbrace$, es decir, el lenguaje que contiene todas las cadenas que empiezan con $1$ seguidas de una codificación de máquina de Turing que rechaza su propia codificación, y todas las cadenas que empiezan con $0$ seguidas de una codificación de máquina de Turing que no rechaza su propia codificación.
+- $HP$ es el lenguaje que contiene todos los pares (codificación de máquina de Turing, cadena de entrada) tales que la máquina de Turing codificada **se detiene**, ya sea aceptando o rechazando, con esa cadena de entrada.
+- $\overline{HP}$ es el complemento del lenguaje $HP$, es decir, el lenguaje que contiene todos los pares (codificación de máquina de Turing, cadena de entrada) tales que la máquina de Turing codificada **no se detiene** con esa cadena de entrada.
+- $L_{\Sigma^*}$ es el lenguaje que contiene todas las codificaciones binarias de máquinas de Turing tales que la máquina de Turing codificada acepta **todas las cadenas** sobre el alfabeto $\Sigma$.
+- $L_{EQ}$ es el lenguaje que contiene todos los pares (codificación de máquina de Turing, codificación de máquina de Turing) tales que las máquinas de Turing codificadas aceptan exactamente el mismo lenguaje.
 
 | Lenguaje                  | $\in RE$ | $\in R$ | $\in \text{CO-RE}$ | $\in P$ | $\in NP$ | $\in \text{CO-NP}$ | $\in NPH$ | $\in NPC$ |
 | ------------------------- | -------- | ------- | ------------------ | ------- | -------- | ------------------ | --------- | --------- |
@@ -1358,7 +1390,6 @@ Sean $L_1$ y $L_2$ dos lenguajes. $L_1 \space \alpha \space L_2$ implica que:
 10. Todo problema que está en $R$ está también en $\text{Co-R}$ y viceversa, por lo tanto $R = \text{Co-R}$.
 11. Todo problema decidible es también semi-decidible y co-semi-decidible, es decir, $R \subseteq RE$ y $R \subseteq \text{CO-RE}$.
 12. Existen problemas que son decidibles pero no están ni en $P$ ni en $NP$, es decir, problemas decidibles pero no tratables. Esto se debe a que son extremadamente ineficientes de resolver, por más que técnicamente se pueden resolver.
-13.
 
 ---
 
